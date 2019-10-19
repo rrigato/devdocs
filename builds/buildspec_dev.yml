@@ -24,12 +24,15 @@ phases:
   install:
     runtime-versions:
        python: 3.7
+       nodejs: 10
     commands:
       - echo Entered the install phase...
 
       - BUILD_ENVIRONMENT=dev
       - pip install -r tests/requirements.txt
       - ls -l
+      - npm -v
+      - python --version
     finally:
       - echo This always runs even if the update or install command fails
   # pre_build:
