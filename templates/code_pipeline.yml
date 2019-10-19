@@ -117,7 +117,7 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
-      Name: dev-devdocs-tests-two #!Ref DevBuildName
+      Name: dev-devdocs-tests-three #!Ref DevBuildName
       ServiceRole: !Ref CodeBuildRole
       #CodeCommit Git repo used for CodeBuild
       Source:
@@ -167,6 +167,47 @@ Resources:
         Location: !GetAtt GitRepo.CloneUrlHttp
         Type: CODECOMMIT
       TimeoutInMinutes: 5
+
+ #################################
+ #Production Code Build that runs python
+ #tests and deploys code to prod
+ #
+ ###################################
+  ProdSneakPeekDeploy2:
+   #Need the ProdArtifactsBucket Created first before This
+   #CodeBuild Project can start
+   DependsOn: ProdArtifactsBucket
+   Type: AWS::CodeBuild::Project
+   Properties:
+     #Output location for the CodeBuild Project
+     Artifacts:
+       Type: S3
+       Location: codebuild-prod-devdocs
+       Packaging: NONE
+     #Allows for git badge at top of git repo
+     BadgeEnabled: true
+     #Where logs are written to from code build
+     LogsConfig:
+         CloudWatchLogs:
+             Status: ENABLED
+             GroupName: codebuild-prod-devdocs
+         S3Logs:
+             Status: ENABLED
+             Location: codebuild-prod-devdocs/buildlogs
+     #Standard Linux Image environment
+     Environment:
+       ComputeType: BUILD_GENERAL1_SMALL
+       Type: LINUX_CONTAINER
+       Image: aws/codebuild/standard:2.0
+     Name: prod-2 #!Ref ProdBuildName
+     ServiceRole: !Ref CodeBuildRole
+     #CodeCommit Git repo used for CodeBuild
+     Source:
+       #Buildspec file to use for the prod build
+       BuildSpec: builds/buildspec_prod.yml
+       Location: !GetAtt GitRepo.CloneUrlHttp
+       Type: CODECOMMIT
+     TimeoutInMinutes: 5
 
 
   ##########################################
@@ -264,7 +305,7 @@ Resources:
             #
             #########################################
             Configuration:
-                ProjectName: dev-devdocs-tests-two
+                ProjectName: dev-devdocs-tests-three
             RunOrder: 1
 
 ####################################
