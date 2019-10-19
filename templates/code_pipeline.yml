@@ -84,7 +84,7 @@ Resources:
   #unit/integration tests
   #
   ###################################
-  CodeBuildPythonTests:
+  SneakPeekPythonTests:
     #Need the DevArtifactsBucket Created first before This
     #CodeBuild Project can start
     DependsOn: DevArtifactsBucket
@@ -107,7 +107,7 @@ Resources:
                 !Join ['', ['codebuild-dev-', !Ref ProjectName]]
           S3Logs:
               Status: ENABLED
-              Location: 
+              Location:
                 !Join ['', ['codebuild-dev-', !Ref ProjectName,
                 '/buildlogs']]
       #Standard Linux Image environment
@@ -115,7 +115,54 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
-      Name: !Ref DevBuildName
+      Name: dev-devdocs-tests2
+      ServiceRole: !Ref CodeBuildRole
+      #CodeCommit Git repo used for CodeBuild
+      Source:
+        #Buildspec file to use for the dev build
+        BuildSpec: builds/buildspec_dev.yml
+        Location: !GetAtt GitRepo.CloneUrlHttp
+        Type: CODECOMMIT
+      TimeoutInMinutes: 5
+
+
+  #################################
+  #Code Build Project that runs python
+  #unit/integration tests
+  #
+  ###################################
+  SneakPeekPythonTests2:
+    #Need the DevArtifactsBucket Created first before This
+    #CodeBuild Project can start
+    DependsOn: DevArtifactsBucket
+    Type: AWS::CodeBuild::Project
+    Properties:
+      #Output location for the CodeBuild Project
+      Artifacts:
+        Type: S3
+        Location:
+            !Join ['', ['codebuild-dev-', !Ref ProjectName]]
+        Packaging: NONE
+      #Allows for git badge at top of git repo
+      BadgeEnabled: true
+
+      #Where logs are written to from code build
+      LogsConfig:
+          CloudWatchLogs:
+              Status: ENABLED
+              GroupName:
+                !Join ['', ['codebuild-dev-', !Ref ProjectName]]
+          S3Logs:
+              Status: ENABLED
+              Location:
+                !Join ['', ['codebuild-dev-', !Ref ProjectName,
+                '/buildlogs']]
+      #Standard Linux Image environment
+      Environment:
+        ComputeType: BUILD_GENERAL1_SMALL
+        Type: LINUX_CONTAINER
+        Image: aws/codebuild/standard:2.0
+      Name: dev-devdocs-tests2 #!Ref DevBuildName
       ServiceRole: !Ref CodeBuildRole
       #CodeCommit Git repo used for CodeBuild
       Source:
@@ -130,7 +177,7 @@ Resources:
   #tests and deploys code to prod
   #
   ###################################
-  ProdCodeBuildDeploy:
+  ProdSneakPeekDeploy:
     #Need the ProdArtifactsBucket Created first before This
     #CodeBuild Project can start
     DependsOn: ProdArtifactsBucket
@@ -262,7 +309,7 @@ Resources:
             #
             #########################################
             Configuration:
-                ProjectName: !Ref DevBuildName
+                ProjectName: dev-devdocs-tests2
             RunOrder: 1
 
 ####################################
