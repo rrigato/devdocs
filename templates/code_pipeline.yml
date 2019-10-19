@@ -4,8 +4,9 @@ Parameters:
   RepositoryBranch:
     Type: String
     Default: dev
-  #Default git repository used
-  GitRepoName:
+  #Default project name that
+  #the git repo will be called
+  ProjectName:
     Type: String
     Default: devdocs
   # TagKey:
@@ -22,16 +23,14 @@ Parameters:
   ProdBuildName:
     Type: String
     Default: prod-devdocs-deploy
-  ProdStackName:
-    Type: String
-    Default: prod-devdocs
 
 Resources:
   ArtifactStoreBucket:
     Type: AWS::S3::Bucket
     Properties:
       AccessControl: BucketOwnerFullControl
-      BucketName: artifacts-bucket-devdocs
+      BucketName:
+          !Join ['', ['artifacts-bucket-', !Ref ProjectName]]
       Tags:
         -
           Key: stage
