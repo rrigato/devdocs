@@ -17,14 +17,14 @@ Parameters:
 
   DevBuildName:
     Type: String
-    Default: dev-sneakpeek-tests
+    Default: dev-devdocs-tests
 
   ProdBuildName:
     Type: String
-    Default: prod-sneakpeek-deploy
+    Default: prod-devdocs-deploy
   ProdStackName:
     Type: String
-    Default: prod-sneakpeek
+    Default: prod-devdocs
 
 Resources:
   ArtifactStoreBucket:
@@ -91,7 +91,7 @@ Resources:
       #Output location for the CodeBuild Project
       Artifacts:
         Type: S3
-        Location: codebuild-dev-sneakpeek
+        Location: codebuild-dev-devdocs
         Packaging: NONE
       #Allows for git badge at top of git repo
       BadgeEnabled: true
@@ -100,17 +100,24 @@ Resources:
       LogsConfig:
           CloudWatchLogs:
               Status: ENABLED
-              GroupName: codebuild-dev-sneakpeek
+              GroupName: codebuild-dev-devdocs
           S3Logs:
               Status: ENABLED
-              Location: codebuild-dev-sneakpeek/buildlogs
+              Location: codebuild-dev-devdocs/buildlogs
       #Standard Linux Image environment
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
       Name: !Ref DevBuildName
-      ServiceRole: arn:aws:iam::350255258796:role/DevSneakPeekCodeBuild
+      ServiceRole:
+        Fn::Join:
+          - ""
+          #uses psuedo parameters to join the
+          #arn together
+          - - "arn:aws:iam::"
+            - Ref: 'AWS::AccountId'
+            - :role/DevSneakPeekCodeBuild          
       #CodeCommit Git repo used for CodeBuild
       Source:
         #Buildspec file to use for the dev build
@@ -133,7 +140,7 @@ Resources:
       #Output location for the CodeBuild Project
       Artifacts:
         Type: S3
-        Location: codebuild-prod-sneakpeek
+        Location: codebuild-prod-devdocs
         Packaging: NONE
       #Allows for git badge at top of git repo
       BadgeEnabled: true
@@ -141,10 +148,10 @@ Resources:
       LogsConfig:
           CloudWatchLogs:
               Status: ENABLED
-              GroupName: codebuild-prod-sneakpeek
+              GroupName: codebuild-prod-devdocs
           S3Logs:
               Status: ENABLED
-              Location: codebuild-prod-sneakpeek/buildlogs
+              Location: codebuild-prod-devdocs/buildlogs
       #Standard Linux Image environment
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
