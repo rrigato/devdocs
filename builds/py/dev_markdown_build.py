@@ -53,7 +53,7 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     return(boto3.client(resource_name, region_name))
 
 
-def iterate_markdown(relative_dir="docs/"):
+def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
 
         Parameters
@@ -71,16 +71,17 @@ def iterate_markdown(relative_dir="docs/"):
             AssertionError is raised the proper files are
             not found
     '''
-    with open(webpage_config_dir) as json_file:
-        original_file = json.load(json_file)
 
+    for root, dirs, files in os.walk(relative_dir):
+        import pdb; pdb.set_trace()
 
     logging.info("config file after modification: ")
 
     logging.info(original_file)
-
+    """
     with open(webpage_config_dir, 'w') as modified_config:
         json.dump(original_file, modified_config, indent=4)
+    """
 
     logging.info("Wrote the new cognito credientials to the config file")
 
@@ -99,46 +100,8 @@ def main():
         ------
     '''
     get_logger()
-    cf_cognito_response = describe_stacks_response(
-            stack_name='cognito-prod-sneakpeek'
-            )
-    cf_backend_response = describe_stacks_response(
-            stack_name='dev-sneakpeek-backend'
-            )
 
-    output_dict = {}
-
-    """
-        Cloudformation outputs that need to be iterated over
-    """
-    cf_output_values = [
-        'UserPoolClientId', 'UserPoolId',
-        'IdentityAuthorizedRoleArn', 'IdentityPoolId'
-    ]
-
-    cf_backend_values= [
-        'ImageUploadBucket'
-    ]
-
-    output_dict = iterate_stack_outputs(
-        cf_output_dict=output_dict,
-        cf_output_list=cf_output_values,
-        cf_response=cf_cognito_response
-        )
-
-    output_dict = iterate_stack_outputs(
-        cf_output_dict=output_dict,
-        cf_output_list=cf_backend_values,
-        cf_response=cf_backend_response
-        )
-
-
-    """
-        Populates the /static/js/cognito_config.json
-        file
-    """
-    populate_json(input_dict=output_dict,
-        webpage_config_dir="static/js/cognito_config.json")
+    iterate_markdown()
 
 
 main()
