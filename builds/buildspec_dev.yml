@@ -31,8 +31,8 @@ phases:
       - BUILD_ENVIRONMENT=dev
       - pip install -r tests/requirements.txt
       - ls -l
-      - npm -v
-      - python --version
+      - npm install showdown -g
+      - showdown -h
     finally:
       - echo This always runs even if the update or install command fails
   # pre_build:
