@@ -110,14 +110,7 @@ Resources:
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
       Name: !Ref DevBuildName
-      ServiceRole:
-        Fn::Join:
-          - ""
-          #uses psuedo parameters to join the
-          #arn together
-          - - "arn:aws:iam::"
-            - Ref: 'AWS::AccountId'
-            - :role/DevSneakPeekCodeBuild
+      ServiceRole: !Ref CodeBuildRole
       #CodeCommit Git repo used for CodeBuild
       Source:
         #Buildspec file to use for the dev build
@@ -158,14 +151,7 @@ Resources:
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
       Name: !Ref ProdBuildName
-      ServiceRole:
-        Fn::Join:
-          - ""
-          #uses psuedo parameters to join the
-          #arn together
-          - - "arn:aws:iam::"
-            - Ref: 'AWS::AccountId'
-            - :role/DevSneakPeekCodeBuild
+      ServiceRole: !Ref CodeBuildRole
       #CodeCommit Git repo used for CodeBuild
       Source:
         #Buildspec file to use for the prod build
@@ -289,8 +275,9 @@ Resources:
             Service: [codebuild.amazonaws.com]
         Version: '2012-10-17'
       ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AWSCodeCommitPowerUser
         - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
+        - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
       Path: /
       Policies:
           - PolicyName: PassIamRole
