@@ -115,7 +115,7 @@ Resources:
       Source:
         #Buildspec file to use for the dev build
         BuildSpec: builds/buildspec_dev.yml
-        Location: !GetAtt GitRepo.Name
+        Location: !GetAtt GitRepo.CloneUrlHttp
         Type: CODECOMMIT
       TimeoutInMinutes: 5
 
@@ -156,7 +156,7 @@ Resources:
       Source:
         #Buildspec file to use for the prod build
         BuildSpec: builds/buildspec_prod.yml
-        Location: !GetAtt GitRepo.Name
+        Location: !GetAtt GitRepo.CloneUrlHttp
         Type: CODECOMMIT
       TimeoutInMinutes: 5
 
