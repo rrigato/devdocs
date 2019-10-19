@@ -115,7 +115,7 @@ Resources:
       Source:
         #Buildspec file to use for the dev build
         BuildSpec: builds/buildspec_dev.yml
-        Location: !Ref GitRepo
+        Location: !GetAtt GitRepo.Name
         Type: CODECOMMIT
       TimeoutInMinutes: 5
 
@@ -156,7 +156,7 @@ Resources:
       Source:
         #Buildspec file to use for the prod build
         BuildSpec: builds/buildspec_prod.yml
-        Location: !Ref GitRepo
+        Location: !GetAtt GitRepo.Name
         Type: CODECOMMIT
       TimeoutInMinutes: 5
 
@@ -213,7 +213,7 @@ Resources:
                 Version: '1'
                 Provider: CodeCommit
               OutputArtifacts:
-                - Name: !Ref GitRepoName
+                - Name: !GetAtt GitRepo.Name
             #Git repo for first stage
             #########################################
             #Configuration Details by provider can be found here:
@@ -222,7 +222,7 @@ Resources:
             #########################################
               Configuration:
                 BranchName: !Ref RepositoryBranch
-                RepositoryName: !Ref GitRepoName
+                RepositoryName: !GetAtt GitRepo.Name
               #Run order within stage not between stages
               RunOrder: 1
         ###############################
