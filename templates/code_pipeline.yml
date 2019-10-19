@@ -82,7 +82,7 @@ Resources:
   #unit/integration tests
   #
   ###################################
-  SneakPeekPythonTests:
+  CodeBuildPythonTests:
     #Need the DevArtifactsBucket Created first before This
     #CodeBuild Project can start
     DependsOn: DevArtifactsBucket
@@ -124,7 +124,7 @@ Resources:
   #tests and deploys code to prod
   #
   ###################################
-  ProdSneakPeekDeploy:
+  ProdCodeBuildDeploy:
     #Need the ProdArtifactsBucket Created first before This
     #CodeBuild Project can start
     DependsOn: ProdArtifactsBucket
