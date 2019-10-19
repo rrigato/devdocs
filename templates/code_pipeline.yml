@@ -117,7 +117,7 @@ Resources:
           #arn together
           - - "arn:aws:iam::"
             - Ref: 'AWS::AccountId'
-            - :role/DevSneakPeekCodeBuild          
+            - :role/DevSneakPeekCodeBuild
       #CodeCommit Git repo used for CodeBuild
       Source:
         #Buildspec file to use for the dev build
@@ -272,6 +272,51 @@ Resources:
             Configuration:
                 ProjectName: !Ref DevBuildName
             RunOrder: 1
+
+####################################
+#Role that will be assumed when
+#CodeBuild runs for dev
+#
+####################################
+  CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: ['sts:AssumeRole']
+          Effect: Allow
+          Principal:
+            Service: [codebuild.amazonaws.com]
+        Version: '2012-10-17'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
+      Path: /
+      Policies:
+          - PolicyName: PassIamRole
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Sid: IAMallow
+                  Effect: Allow
+                  #######################################
+                  #Allowing lambda to perform a PutItem on
+                  #DynamoDB
+                  #
+                  #######################################
+                  Action:
+                    - iam:PassRole
+                    - iam:CreateRole
+                    - iam:GetRole
+                    - iam:UpdateAssumeRolePolicy
+                    - iam:DetachRolePolicy
+                    - iam:DeleteRolePolicy
+                    - iam:PutRolePolicy
+                  Resource:
+                    - "*"
+
+
+
   CFNRole:
     Type: AWS::IAM::Role
     Properties:
