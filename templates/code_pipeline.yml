@@ -16,9 +16,7 @@ Parameters:
   #   Type: String
   #   Default: CodeDeployEC2Tag
 
-  DevBuildName:
-    Type: String
-    Default: dev-devdocs-tests
+
 
   ProdBuildName:
     Type: String
@@ -117,7 +115,8 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
         Image: aws/codebuild/standard:2.0
-      Name: !Ref DevBuildName
+      Name:
+          !Join ['', ['dev-tests-', !Ref ProjectName]]
       ServiceRole: !Ref CodeBuildRole
       #CodeCommit Git repo used for CodeBuild
       Source:
@@ -270,7 +269,8 @@ Resources:
             #
             #########################################
             Configuration:
-                ProjectName: !Ref DevBuildName
+                ProjectName:
+                    !Join ['', ['dev-tests-', !Ref ProjectName]]
             RunOrder: 1
 
 ####################################
