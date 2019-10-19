@@ -40,7 +40,7 @@ Resources:
           Value: "false"
         -
           Key: project
-          Value: "devdocs"
+          Value: !Ref ProjectName
 
   GitRepo:
     Type: AWS::CodeCommit::Repository
@@ -52,7 +52,8 @@ Resources:
   DevArtifactsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: codebuild-dev-devdocs
+      BucketName:
+        !Join ['', ['codebuild-dev-', !Ref ProjectName]]
       Tags:
         -
           Key: stage
@@ -62,11 +63,12 @@ Resources:
           Value: "false"
         -
           Key: project
-          Value: "devdocs"
+          Value: !Ref ProjectName
   ProdArtifactsBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: codebuild-prod-devdocs
+      BucketName:
+         !Join ['', ['codebuild-prod-', !Ref ProjectName]]
       Tags:
         -
           Key: stage
@@ -76,7 +78,7 @@ Resources:
           Value: "false"
         -
           Key: project
-          Value: "devdocs"
+          Value: !Ref ProjectName
   #################################
   #Code Build Project that runs python
   #unit/integration tests
@@ -92,6 +94,7 @@ Resources:
       Artifacts:
         Type: S3
         Location: codebuild-dev-devdocs
+            
         Packaging: NONE
       #Allows for git badge at top of git repo
       BadgeEnabled: true
