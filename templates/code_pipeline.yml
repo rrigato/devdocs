@@ -93,8 +93,8 @@ Resources:
       #Output location for the CodeBuild Project
       Artifacts:
         Type: S3
-        Location: codebuild-dev-devdocs
-            
+        Location:
+            !Join ['', ['codebuild-dev-', !Ref ProjectName]]
         Packaging: NONE
       #Allows for git badge at top of git repo
       BadgeEnabled: true
@@ -103,10 +103,13 @@ Resources:
       LogsConfig:
           CloudWatchLogs:
               Status: ENABLED
-              GroupName: codebuild-dev-devdocs
+              GroupName:
+                !Join ['', ['codebuild-dev-', !Ref ProjectName]]
           S3Logs:
               Status: ENABLED
-              Location: codebuild-dev-devdocs/buildlogs
+              Location: 
+                !Join ['', ['codebuild-dev-', !Ref ProjectName,
+                '/buildlogs']]
       #Standard Linux Image environment
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
