@@ -280,7 +280,7 @@ Resources:
         - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
       Path: /
       Policies:
-          - PolicyName: PassIamRole
+          - PolicyName: CodeBuildCustomerManaged
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
@@ -299,6 +299,23 @@ Resources:
                     - iam:DetachRolePolicy
                     - iam:DeleteRolePolicy
                     - iam:PutRolePolicy
+                  Resource:
+                    - "*"
+                #######################
+                #Permissions needed for aws
+                #CodeBuild service to run
+                #######################
+                - Sid: ServiceRole
+                  Effect: Allow
+                  #######################################
+                  #Allowing lambda to perform a PutItem on
+                  #DynamoDB
+                  #
+                  #######################################
+                  Action:
+                    - iam:PassRole
+                    - iam:CreateRole
+                    - iam:GetRole
                   Resource:
                     - "*"
 
