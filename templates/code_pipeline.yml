@@ -245,7 +245,7 @@ Resources:
                 Provider: CodeBuild
 
             InputArtifacts:
-              - Name: !Ref GitRepoName
+              - Name: !GetAtt GitRepo.Name
             OutputArtifacts:
               - Name: BuildDev
 
@@ -392,6 +392,6 @@ Outputs:
           - "#/repository/"
           - Ref: AWS::StackName
           - "/browse/HEAD/--/"
-  CloneUrlSsh:
-    Description: SSH command for connecting to the CodeCommit repo
-    Value: !Ref GitRepo
+  GitRepoName:
+    Description: Name of the git repository
+    Value: !GetAtt GitRepo.Name
