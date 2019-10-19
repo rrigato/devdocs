@@ -1,0 +1,65 @@
+############################
+#Accomplishes the following build tasks
+#
+#1) Runs the cloudformation template to create the necessary resources
+#2) Runs python coverage function to generate Auto HTML documentation
+##) Runs unit tests of lambda functions, checks aws resources created
+#
+#
+############################
+version: 0.2
+
+# env:
+  # variables:
+  #   JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+  # parameter-store:
+  #   LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+
+phases:
+  ###########################################
+  #Uses a python runtime
+  #Note that you do not need the \ to escape
+  #aws cli commands
+  ###########################################
+  install:
+    runtime-versions:
+       python: 3.7
+    commands:
+      - echo Entered the install phase...
+
+      - BUILD_ENVIRONMENT=dev
+      - pip install -r tests/requirements.txt
+      - ls -l
+    finally:
+      - echo This always runs even if the update or install command fails
+  # pre_build:
+  #   commands:
+  #     - echo Entered the pre_build phase...
+  #     - docker login –u User –p $LOGIN_PASSWORD
+  #   finally:
+  #     - echo This always runs even if the login command fails
+  #
+  #Builds the cloudformation stack that contains the
+  #static webpage
+  build:
+    commands:
+      - echo $BUILD_ENVIRONMENT
+      - echo Entered the build phase...
+      - echo Build started on `date`
+
+
+
+
+
+
+
+  post_build:
+    commands:
+      - echo cleaning up resources if build was successful
+      #deleting bucket and stack after testing
+
+
+
+artifacts:
+  files:
+    - ./logs/*
