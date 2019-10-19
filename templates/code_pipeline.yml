@@ -5,12 +5,9 @@ Parameters:
     Type: String
     Default: dev
   #Default git repository used
-  GitRepo:
-    Type: String
-    Default: https://git-codecommit.us-east-1.amazonaws.com/v1/repos/sneakpeek
   GitRepoName:
     Type: String
-    Default: sneakpeek
+    Default: devdocs
   # TagKey:
   #   Type: String
   #   Default: Name
@@ -46,7 +43,12 @@ Resources:
           Key: project
           Value: "devdocs"
 
-
+  GitRepo:
+    Type: AWS::CodeCommit::Repository
+    Properties:
+        RepositoryDescription:
+            Repo for devdocs, automated markdown to html builds
+        RepositoryName: devdocs
   DevArtifactsBucket:
     Type: AWS::S3::Bucket
     Properties:
