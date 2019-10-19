@@ -9,18 +9,8 @@ Parameters:
   ProjectName:
     Type: String
     Default: devdocs
-  # TagKey:
-  #   Type: String
-  #   Default: Name
-  # TagValue:
-  #   Type: String
-  #   Default: CodeDeployEC2Tag
 
 
-
-  ProdBuildName:
-    Type: String
-    Default: prod-devdocs-deploy
 
 Resources:
   ArtifactStoreBucket:
@@ -163,7 +153,8 @@ Resources:
        ComputeType: BUILD_GENERAL1_SMALL
        Type: LINUX_CONTAINER
        Image: aws/codebuild/standard:2.0
-     Name: !Ref ProdBuildName
+     Name:
+        !Join ['', ['prod-build-', !Ref ProjectName]]
      ServiceRole: !Ref CodeBuildRole
      #CodeCommit Git repo used for CodeBuild
      Source:
