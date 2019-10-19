@@ -276,7 +276,6 @@ Resources:
         Version: '2012-10-17'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCodeCommitPowerUser
-        - arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
         - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
       Path: /
       Policies:
@@ -313,9 +312,11 @@ Resources:
                   #
                   #######################################
                   Action:
-                    - iam:PassRole
-                    - iam:CreateRole
-                    - iam:GetRole
+                    - s3:GetObject
+                    - s3:GetObjectVersion
+                    - s3:PutObject
+                    - s3:GetBucketAcl
+                    - s3:GetBucketLocation
                   Resource:
                     - "*"
 
