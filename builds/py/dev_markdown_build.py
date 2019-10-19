@@ -1,4 +1,6 @@
+from pathlib import Path
 import boto3
+import glob
 import json
 import logging
 import os
@@ -52,6 +54,27 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     '''
     return(boto3.client(resource_name, region_name))
 
+def call_showdown(markdown_path):
+    '''Calls showdownjs to turn markdown into html
+
+        Parameters
+        ----------
+        markdown_path : str
+            path to the markdown file
+
+        Returns
+        -------
+
+        Raises
+        ------
+    '''
+    import pdb; pdb.set_trace()
+    subprocess.call([
+    'showdown -i ' + markdown_path +
+    ' -o ' + str(Path(markdown_path).parent) +
+    "/markdown_output.html"]
+    )
+
 
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
@@ -88,14 +111,18 @@ def iterate_markdown(relative_dir="docs/v1/"):
             relative_path = relative_dir + doc_directory + "/"
             logging.info("Evaluating relative path: ")
             logging.info(relative_path)
-            for markdown_file in glob.glob(relative_dir + "*.md"):
+
+            """
+                Gets the markdown file
+            """
+            for markdown_file in glob.glob(relative_path + "*.md"):
                 logging.info("Markdown file: ")
                 logging.info(markdown_file)
-                import pdb; pdb.set_trace()
+                call_showdown(markdown_file)
+
 
     logging.info("config file after modification: ")
 
-    logging.info(original_file)
     """
     with open(webpage_config_dir, 'w') as modified_config:
         json.dump(original_file, modified_config, indent=4)
