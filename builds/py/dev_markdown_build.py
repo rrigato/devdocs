@@ -72,8 +72,26 @@ def iterate_markdown(relative_dir="docs/v1/"):
             not found
     '''
 
+    """
+        dirs, files will be a list of directories/files
+        in the relative_dir folders
+    """
     for root, dirs, files in os.walk(relative_dir):
-        import pdb; pdb.set_trace()
+        logging.info("Directories found: ")
+        logging.info(dirs)
+        """
+            Iterating over each subdirectory
+            with the intent of checking for
+            markdown files with extension .md
+        """
+        for doc_directory in dirs:
+            relative_path = relative_dir + doc_directory + "/"
+            logging.info("Evaluating relative path: ")
+            logging.info(relative_path)
+            for markdown_file in glob.glob(relative_dir + "*.md"):
+                logging.info("Markdown file: ")
+                logging.info(markdown_file)
+                import pdb; pdb.set_trace()
 
     logging.info("config file after modification: ")
 
