@@ -46,8 +46,9 @@ Resources:
     Type: AWS::CodeCommit::Repository
     Properties:
         RepositoryDescription:
-            Repo for devdocs, automated markdown to html builds
-        RepositoryName: devdocs
+            !Join ['', ['Repo for ', !Ref ProjectName,
+            ', automated markdown to html builds']]
+        RepositoryName: !Ref ProjectName
   DevArtifactsBucket:
     Type: AWS::S3::Bucket
     Properties:
