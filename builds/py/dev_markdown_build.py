@@ -126,6 +126,7 @@ def template_wrapper(markdown_path, version='v1'):
             Raises an assertion error if the
             stder is not empty
     '''
+    documentation_dir = str(Path(markdown_path).parent
     """
         Turns a file path into the name of the markdown file
         ex:
@@ -135,7 +136,17 @@ def template_wrapper(markdown_path, version='v1'):
     """
     html_file_name = os.path.basename(
         markdown_path).split('.')[0]
-    output_html
+
+    """
+        Inserts the converted markdown
+        into an html template
+    """
+    output_html = HTML_TEMPLATE.format(
+        documentation_dir +
+        '/markdown_output.html')
+    )
+    logging.info("popultated the output template")
+    logging.info(output_html)
     import pdb; pdb.set_trace()
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
