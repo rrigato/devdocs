@@ -141,14 +141,25 @@ def template_wrapper(markdown_path, version='v1'):
         Inserts the converted markdown
         into an html template
     """
-    import pdb; pdb.set_trace()
+
     with open(documentation_dir +'/markdown_output.html',
         "r") as converted_markdown:
         output_html = HTML_TEMPLATE.format(
             showdown_output=converted_markdown.read()
         )
+    import pdb; pdb.set_trace()
     logging.info("popultated the output template")
     logging.info(output_html)
+
+    """
+        Writes the populated html to
+        the documentation folder
+    """
+    with open((documentation_dir + "/" + html_file_name
+        + ".html"), "w") as html_documentation:
+        html_documentation.write(output_html)
+
+    logging.info("Wrote the documentation html file")
 
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
