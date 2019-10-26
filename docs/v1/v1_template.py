@@ -12,27 +12,27 @@ HTML_TEMPLATE = """
     *Info panel on the
     *left side of the page
     ****************/
-    #left-panel {
+    #left-panel {{
         width: 25%;
         min-height:100%;
         position:absolute;
         height:100%;
         font-size: 12px;
-    }
+    }}
     /*****************
     *
     *
     ******************/
-    #docs-wrapper {
+    #docs-wrapper {{
         right: 75%;
         margin-left: 25%;
         font-size: 22px;
-    }
-    .alert.is-info{
+    }}
+    .alert.is-info{{
         margin-top: 0;
         height:100%;
 
-    }
+    }}
     </style>
 </head>
 <body>
