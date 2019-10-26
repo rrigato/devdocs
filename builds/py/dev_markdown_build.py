@@ -1,4 +1,4 @@
-from docs.v1.v1_template import HTML_TEMPLATE
+
 from pathlib import Path
 import boto3
 import glob
@@ -7,6 +7,11 @@ import logging
 import os
 import subprocess
 WORKING_DIRECTORY = os.getcwd()
+
+os.sys.path.append(WORKING_DIRECTORY)
+#Needs to be run after the current working directory is
+#added to path
+from docs.v1.v1_template import HTML_TEMPLATE
 
 def get_logger():
     '''Returns a logger
@@ -101,13 +106,16 @@ def showdown_output(markdown_path):
     assert showdown_output.stderr.decode() == '',(
         "Unable to convert the markdown to html"
     )
-def template_wrapper(markdown_path):
+def template_wrapper(markdown_path, version='v1'):
     '''Places the html from showdownjs library into a template file
 
         Parameters
         ----------
         markdown_path : str
             path to the markdown file
+
+        version : str
+            version of the documentation to be released
 
         Returns
         -------
@@ -127,6 +135,7 @@ def template_wrapper(markdown_path):
     """
     html_file_name = os.path.basename(
         markdown_path).split('.')[0]
+    output_html
     import pdb; pdb.set_trace()
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
