@@ -1,3 +1,4 @@
+from docs.v1.v1_template import HTML_TEMPLATE
 from pathlib import Path
 import boto3
 import glob
@@ -54,7 +55,7 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     '''
     return(boto3.client(resource_name, region_name))
 
-def (markdown_path):
+def showdown_output(markdown_path):
     '''Calls showdownjs to turn markdown into html
 
         Parameters
@@ -125,7 +126,7 @@ def template_wrapper(markdown_path):
             'standards'
     """
     html_file_name = os.path.basename(
-        markdown_file).split('.')[0]
+        markdown_path).split('.')[0]
     import pdb; pdb.set_trace()
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
