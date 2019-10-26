@@ -54,7 +54,7 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     '''
     return(boto3.client(resource_name, region_name))
 
-def call_showdown(markdown_path):
+def (markdown_path):
     '''Calls showdownjs to turn markdown into html
 
         Parameters
@@ -117,7 +117,16 @@ def template_wrapper(markdown_path):
             Raises an assertion error if the
             stder is not empty
     '''
-    os.path.basename(markdown_file).split('.')[0]
+    """
+        Turns a file path into the name of the markdown file
+        ex:
+            'docs/v1/standards/standards.md'
+            to
+            'standards'
+    """
+    html_file_name = os.path.basename(
+        markdown_file).split('.')[0]
+    import pdb; pdb.set_trace()
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
 
@@ -160,11 +169,10 @@ def iterate_markdown(relative_dir="docs/v1/"):
             for markdown_file in glob.glob(relative_path + "*.md"):
                 logging.info("Markdown file: ")
                 logging.info(markdown_file)
-                call_showdown(markdown_file)
+                (markdown_file)
 
                 template_wrapper(markdown_file)
-                import pdb; pdb.set_trace()
-                os.path.basename(markdown_file).split('.')[0]
+
 
 
     logging.info("config file after modification: ")
