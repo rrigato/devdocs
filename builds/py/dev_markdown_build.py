@@ -70,23 +70,21 @@ def call_showdown(markdown_path):
     '''
     import pdb; pdb.set_trace()
     """
+        calls the showdown command line utility
+        to turn markdown into html
+
         pass an arguement of shell=True to provide a
         string for bash to run instead of a command
         with arguements passed to the list
-    """
-    subprocess.call([
-        (
-        'showdown makehtml -i ' + markdown_path +
-        ' -o ' + str(Path(markdown_path).parent) +
-        "/markdown_output.html"
-        )]
-        , shell=True
-        """
-            'showdown', 'makehtml', '-i' , markdown_path ,
-            '-o' , (str(Path(markdown_path).parent) +
-            '/markdown_output.html')
-                    """
 
+    """
+    showdown_output = subprocess.run([
+
+        'showdown', 'makehtml', '-i' , markdown_path ,
+        '-o' , (str(Path(markdown_path).parent) +
+        '/markdown_output.html')
+        ],
+        capture_output=True
     )
 
 
