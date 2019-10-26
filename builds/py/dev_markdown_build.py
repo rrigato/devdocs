@@ -67,8 +67,12 @@ def call_showdown(markdown_path):
 
         Raises
         ------
+        AE : AssertionError
+            Raises an assertion error if the
+            stder is not empty
     '''
-    import pdb; pdb.set_trace()
+    logging.info("Converting markdown for: " + markdown_path)
+
     """
         calls the showdown command line utility
         to turn markdown into html
@@ -86,7 +90,16 @@ def call_showdown(markdown_path):
         ],
         capture_output=True
     )
+    logging.info(showdown_output)
 
+    """
+        Checks that the stderr is empty,
+        if it is not we had an error converting the
+        markdown to html
+    """
+    assert showdown_output.stderr.decode() == '',(
+        "Unable to convert the markdown to html"
+    )
 
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
