@@ -100,7 +100,24 @@ def call_showdown(markdown_path):
     assert showdown_output.stderr.decode() == '',(
         "Unable to convert the markdown to html"
     )
+def template_wrapper(markdown_path):
+    '''Places the html from showdownjs library into a template file
 
+        Parameters
+        ----------
+        markdown_path : str
+            path to the markdown file
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            Raises an assertion error if the
+            stder is not empty
+    '''
+    os.path.basename(markdown_file).split('.')[0]
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown files
 
@@ -144,6 +161,10 @@ def iterate_markdown(relative_dir="docs/v1/"):
                 logging.info("Markdown file: ")
                 logging.info(markdown_file)
                 call_showdown(markdown_file)
+
+                template_wrapper(markdown_file)
+                import pdb; pdb.set_trace()
+                os.path.basename(markdown_file).split('.')[0]
 
 
     logging.info("config file after modification: ")
