@@ -175,11 +175,32 @@ class MarkdownLogic(unittest.TestCase):
                         etc.
                     """
                     for root, dirs, files in os.walk(potential_project):
-                        import pdb; pdb.set_trace()
-                        logging.info("Directories found: ")
-                        logging.info(dirs)
+
+                        logging.info("Project files found: ")
+                        logging.info(files)
+                        markdown_counter = 0
+
+                        """
+                            Iterating over all files
+                            in a project
+                        """
+
+                        for project_file in files:
+                            """
+                                Gets the markdown file and makes sure it is
+                                named the same as the project folder
+                            """
+
+                            if project_file.split('.')[1].lower() == 'md':
+                                markdown_counter += 1
+                                logging.info("Ensuring the markdown file is named the same as the project")
+                                self.assertEqual(project_name,
+                                    project_file.split('.')[0]
+                                    )
 
 
+                        logging.info("Making sure we only have one markdown file per project")
+                        #self.assertEqual(markdown_counter, 1 )
 
 if __name__ == '__main__':
     '''
