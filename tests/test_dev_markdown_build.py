@@ -130,25 +130,34 @@ class MarkdownLogic(unittest.TestCase):
             dirs gets all directories in
             the docs folder
         """
-        for dir_name in os.listdir(docs_dir):
-            logging.info("Testing directory: ")
-            logging.info(dir_name)
+        for ver_name in os.listdir(docs_dir):
+            logging.info("docs directory: ")
+            logging.info(ver_name)
             """
                 Iterating over each version
                 /docs/v1/
                 /docs/v2/
                 etc.
             """
-            """
-                dirs gets all directories in
-                the docs folder
+            for project_name in os.listdir(ver_name):
+                logging.info("Project directory: ")
+                logging.info(project_name)
+                """
+                    dirs gets all directories in
+                    the docs folder
 
-                dirs, files will be a list of directories/files
-                in the relative_dir folders
-            """
-            for root, dirs, files in os.walk(markdown_dir):
-                logging.info("Directories found: ")
-                logging.info(dirs)
+                    dirs, files will be a list of directories/files
+                    in the relative_dir folders
+
+                    Will walk over all files in the
+                    /docs/v1/project1_name
+                    /docs/v1/project2_name
+                    /docs/v2/project1_name
+                    etc.                   
+                """
+                for root, dirs, files in os.walk(project_name):
+                    logging.info("Directories found: ")
+                    logging.info(dirs)
 
 
 
