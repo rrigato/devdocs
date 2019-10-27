@@ -133,15 +133,21 @@ class MarkdownLogic(unittest.TestCase):
         for ver_name in os.listdir(docs_dir):
             logging.info("docs directory: ")
             logging.info(ver_name)
+            self.assertTrue(os.path.isdir(
+                os.path.join(docs_dir, ver_name)
+                )
+            )
             """
                 Iterating over each version
                 /docs/v1/
                 /docs/v2/
                 etc.
             """
-            for project_name in os.listdir(ver_name):
+            for project_name in os.listdir(os.path.join(
+                docs_dir, ver_name)):
                 logging.info("Project directory: ")
                 logging.info(project_name)
+                import pdb; pdb.set_trace()
                 """
                     dirs gets all directories in
                     the docs folder
@@ -153,7 +159,7 @@ class MarkdownLogic(unittest.TestCase):
                     /docs/v1/project1_name
                     /docs/v1/project2_name
                     /docs/v2/project1_name
-                    etc.                   
+                    etc.
                 """
                 for root, dirs, files in os.walk(project_name):
                     logging.info("Directories found: ")
