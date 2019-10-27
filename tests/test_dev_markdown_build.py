@@ -135,6 +135,8 @@ class MarkdownLogic(unittest.TestCase):
 
             Returns
             -------
+            success_ind : int
+                0 if successful
 
             Raises
             ------
@@ -187,6 +189,7 @@ class MarkdownLogic(unittest.TestCase):
                 logging.info("""Making sure we
                  only have one markdown file per project""")
                 self.assertEqual(markdown_counter, 1 )
+        return(0)
 
     def test_markdown_convention(self,
         docs_dir=(WORKING_DIRECTORY + "/docs")):
@@ -234,7 +237,7 @@ class MarkdownLogic(unittest.TestCase):
                     docs_dir, ver_name, project_name)
                 logging.info("Project directory: ")
                 logging.info(potential_project)
-                self.check_project_value(
+                project_result = self.check_project_value(
                     potential_project=potential_project,
                     project_name=project_name
                 )
