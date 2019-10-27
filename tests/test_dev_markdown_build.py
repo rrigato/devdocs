@@ -102,18 +102,16 @@ class MarkdownLogic(unittest.TestCase):
             dirs gets all directories in
             the docs folder
         """
-        for root, dirs, files in os.walk(relative_dir):
-            logging.info("""Testing naming conventions of the
-            following directories""")
-            logging.info(dirs)
+        for dir_name in os.listdir(relative_dir):
+            logging.info("Testing directory: ")
+            logging.info(dir_name)
             """
                 Making sure each directory
                 starts with the character v and
                 then a numeric
             """
-            for dir_name in dirs:
-                self.assertEqual(dir_name[0], "v")
-                self.assertTrue(dir_name[1:].isnumeric())
+            self.assertEqual(dir_name[0], "v")
+            self.assertTrue(dir_name[1:].isnumeric())
 
 if __name__ == '__main__':
     '''
