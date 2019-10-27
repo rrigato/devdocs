@@ -50,12 +50,14 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
 
+      #runs tests on aws resources created in previous steps
+      - python tests/test_dev_markdown_build.py
+
       #Builds the html files using markdown
       - python builds/py/dev_markdown_build.py
 
 
-      #runs tests on aws resources created in previous steps
-      - python tests/test_dev_markdown_build.py
+
 
 
 
