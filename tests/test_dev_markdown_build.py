@@ -131,39 +131,53 @@ class MarkdownLogic(unittest.TestCase):
             the docs folder
         """
         for ver_name in os.listdir(docs_dir):
+
+
+            next_dir = os.path.join(docs_dir, ver_name)
             logging.info("docs directory: ")
-            logging.info(ver_name)
+            logging.info(next_dir)
+
             self.assertTrue(os.path.isdir(
-                os.path.join(docs_dir, ver_name)
+                next_dir
                 )
             )
+
+
             """
                 Iterating over each version
                 /docs/v1/
                 /docs/v2/
                 etc.
             """
-            for project_name in os.listdir(os.path.join(
-                docs_dir, ver_name)):
+            for project_name in os.listdir(next_dir):
+
+                """
+                Checking if the subdirectories under
+                the version number are a project
+                """
+                potential_project = os.path.join(
+                    docs_dir, ver_name, project_name)
                 logging.info("Project directory: ")
-                logging.info(project_name)
-                import pdb; pdb.set_trace()
-                """
-                    dirs gets all directories in
-                    the docs folder
+                logging.info(potential_project)
 
-                    dirs, files will be a list of directories/files
-                    in the relative_dir folders
+                if os.path.isdir(potential_project):
+                    """
+                        dirs gets all directories in
+                        the docs folder
 
-                    Will walk over all files in the
-                    /docs/v1/project1_name
-                    /docs/v1/project2_name
-                    /docs/v2/project1_name
-                    etc.
-                """
-                for root, dirs, files in os.walk(project_name):
-                    logging.info("Directories found: ")
-                    logging.info(dirs)
+                        dirs, files will be a list of directories/files
+                        in the relative_dir folders
+
+                        Will walk over all files in the
+                        /docs/v1/project1_name
+                        /docs/v1/project2_name
+                        /docs/v2/project1_name
+                        etc.
+                    """
+                    for root, dirs, files in os.walk(potential_project):
+                        import pdb; pdb.set_trace()
+                        logging.info("Directories found: ")
+                        logging.info(dirs)
 
 
 
