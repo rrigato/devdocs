@@ -147,7 +147,7 @@ def template_wrapper(markdown_path, version='v1'):
         output_html = HTML_TEMPLATE.format(
             showdown_output=converted_markdown.read()
         )
-    import pdb; pdb.set_trace()
+
     logging.info("popultated the output template")
     logging.info(output_html)
 
