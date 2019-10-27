@@ -115,9 +115,23 @@ class MarkdownLogic(unittest.TestCase):
 
     def check_project_value(self,
         potential_project, project_name):
-        '''Tests naming conventions for markdown files
+        '''Function wrapper for test_markdown_convention test case
+
+            Validates that a potiential project follows the correct
+            Naming conventions
+
+            everything under a given version is passed to
+            this function
+
             Parameters
             ----------
+            potential_project : str
+                Full Path that could point to a potiential project
+                ex: ~/docs/v1/project1_name
+
+            project_name : str
+                relative directory
+                ex: project1_name
 
             Returns
             -------
