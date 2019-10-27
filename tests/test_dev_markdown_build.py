@@ -84,8 +84,9 @@ class MarkdownLogic(unittest.TestCase):
         from docs.v1.v1_template import HTML_TEMPLATE
         from pathlib import Path
 
-    @unittest.skip("Skipping for now")
-    def test_version_convention(self):
+
+    def test_version_convention(self,
+        relative_dir=(WORKING_DIRECTORY + "/docs")):
         '''Tests that all necessary library dependencies are available
 
             Parameters
@@ -97,8 +98,14 @@ class MarkdownLogic(unittest.TestCase):
             Raises
             ------
         '''
-        from docs.v1.v1_template import HTML_TEMPLATE
-        from pathlib import Path
+        """
+            dirs gets all directories in
+            the docs folder
+        """
+        for root, dirs, files in os.walk(relative_dir):
+            import pdb; pdb.set_trace()
+            for dir_name in dirs:
+                self.assertEqual()
 
 if __name__ == '__main__':
     '''
