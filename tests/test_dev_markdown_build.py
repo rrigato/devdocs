@@ -159,8 +159,11 @@ class MarkdownLogic(unittest.TestCase):
                     docs_dir, ver_name, project_name)
                 logging.info("Project directory: ")
                 logging.info(potential_project)
-
-                if os.path.isdir(potential_project):
+                """
+                    Testing to make sure the path object is a directory
+                    and not hidden/__pycache__ directory
+                """
+                if (os.path.isdir(potential_project) and (project_name[0] not in ['_','.']) ):
                     """
                         dirs gets all directories in
                         the docs folder
@@ -200,7 +203,7 @@ class MarkdownLogic(unittest.TestCase):
 
 
                         logging.info("Making sure we only have one markdown file per project")
-                        #self.assertEqual(markdown_counter, 1 )
+                        self.assertEqual(markdown_counter, 1 )
 
 if __name__ == '__main__':
     '''
