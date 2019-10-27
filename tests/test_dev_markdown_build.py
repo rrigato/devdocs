@@ -125,27 +125,31 @@ class MarkdownLogic(unittest.TestCase):
             Raises
             ------
         '''
+
         """
             dirs gets all directories in
             the docs folder
-
-            dirs, files will be a list of directories/files
-            in the relative_dir folders
         """
-        for root, dirs, files in os.walk(docs_dir):
-            logging.info("Directories found: ")
-            logging.info(dirs)
+        for dir_name in os.listdir(docs_dir):
+            logging.info("Testing directory: ")
+            logging.info(dir_name)
             """
-                Iterating over each subdirectory
-                with the intent of checking for
-                markdown files with extension .md
+                Iterating over each version
+                /docs/v1/
+                /docs/v2/
+                etc.
             """
-            for doc_directory in dirs:
-                relative_path = relative_dir + doc_directory + "/"
-                logging.info("Evaluating relative path: ")
-                logging.info(relative_path)
-                self.assertEqual(dir_name[0], "v")
-                self.assertTrue(dir_name[1:].isnumeric())
+            """
+                dirs gets all directories in
+                the docs folder
+
+                dirs, files will be a list of directories/files
+                in the relative_dir folders
+            """
+            for root, dirs, files in os.walk(markdown_dir):
+                logging.info("Directories found: ")
+                logging.info(dirs)
+
 
 
 if __name__ == '__main__':
