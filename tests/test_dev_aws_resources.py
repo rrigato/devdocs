@@ -108,6 +108,8 @@ class WebappLive(unittest.TestCase):
             Raises
             ------
         '''
+        from docs.v1.v1_template import HTML_TEMPLATE
+        from pathlib import Path
 
     @unittest.skip("SKipping for now")
     def test_home_page(self):
