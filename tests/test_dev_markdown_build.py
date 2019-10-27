@@ -113,6 +113,41 @@ class MarkdownLogic(unittest.TestCase):
             self.assertEqual(dir_name[0], "v")
             self.assertTrue(dir_name[1:].isnumeric())
 
+    def test_markdown_convention(self,
+        docs_dir=(WORKING_DIRECTORY + "/docs")):
+        '''Tests naming conventions for markdown files
+            Parameters
+            ----------
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        """
+            dirs gets all directories in
+            the docs folder
+
+            dirs, files will be a list of directories/files
+            in the relative_dir folders
+        """
+        for root, dirs, files in os.walk(docs_dir):
+            logging.info("Directories found: ")
+            logging.info(dirs)
+            """
+                Iterating over each subdirectory
+                with the intent of checking for
+                markdown files with extension .md
+            """
+            for doc_directory in dirs:
+                relative_path = relative_dir + doc_directory + "/"
+                logging.info("Evaluating relative path: ")
+                logging.info(relative_path)
+                self.assertEqual(dir_name[0], "v")
+                self.assertTrue(dir_name[1:].isnumeric())
+
+
 if __name__ == '__main__':
     '''
     parser = argparse.ArgumentParser(description='Process some integers.')
