@@ -309,11 +309,11 @@ Resources:
                 #Permissions needed for aws
                 #CodeBuild service to run
                 #######################
-                - Sid: ServiceRole
+                - Sid: S3WebsiteCreation
                   Effect: Allow
                   #######################################
-                  #Allowing lambda to perform a PutItem on
-                  #DynamoDB
+                  #Allowing CodeBuild to create
+                  #resources necessary for s3 static webpage 
                   #
                   #######################################
                   Action:
@@ -353,8 +353,7 @@ Resources:
                 - Sid: IAMallow
                   Effect: Allow
                   #######################################
-                  #Allowing lambda to perform a PutItem on
-                  #DynamoDB
+                  #Allowing iam role manipulation
                   #
                   #######################################
                   Action:
