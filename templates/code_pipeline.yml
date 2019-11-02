@@ -347,6 +347,7 @@ Resources:
                   Action:
                     - cloudformation:CreateStack
                     - cloudformation:DeleteStack
+                    - cloudformation:DescribeStacks
                   Resource:
                     - "*"
 
