@@ -313,15 +313,18 @@ Resources:
                   Effect: Allow
                   #######################################
                   #Allowing CodeBuild to create
-                  #resources necessary for s3 static webpage 
+                  #resources necessary for s3 static webpage
                   #
                   #######################################
                   Action:
+                    - s3:CreateBucket
                     - s3:GetObject
                     - s3:GetObjectVersion
                     - s3:PutObject
                     - s3:GetBucketAcl
                     - s3:GetBucketLocation
+                    - cloudformation:*
+
                   Resource:
                     - "*"
 
