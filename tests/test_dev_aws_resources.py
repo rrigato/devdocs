@@ -154,8 +154,8 @@ class WebappLive(unittest.TestCase):
 
 
     @unittest.skip("SKipping for now")
-    def test_home_page(self):
-        '''Tests that the aws resources necessary for the webpage are running
+    def test_standards_project(self):
+        '''Tests that the /docs/v1/standards/standards.html is alive
 
             Parameters
             ----------
@@ -169,7 +169,7 @@ class WebappLive(unittest.TestCase):
         '''
         logging.info("Testing if the website is alive")
         r = requests.get(
-            HOMEPAGE_URL
+            HOMEPAGE_URL + "docs/v1/standards/standards.html"
         )
         self.assertEqual(r.status_code, 200)
         logging.info("The website is live")
