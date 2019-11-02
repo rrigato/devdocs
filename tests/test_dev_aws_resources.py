@@ -138,11 +138,12 @@ class WebappLive(unittest.TestCase):
             Raises
             ------
         '''
-        logging.info("Testing if the website bucket exists")
+        logging.info("Testing if the website bucket stack exists")
 
-        cf_client = get_boto_clients(resource_name='cloudformation')
-        self.assertEqual(r.status_code, 200)
-        logging.info("The website is live")
+        webpage_stack = describe_stacks_response(
+            stack_name=stack_name)
+
+        import pdb; pdb.set_trace()
 
 
 
