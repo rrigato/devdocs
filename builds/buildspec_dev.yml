@@ -61,7 +61,8 @@ phases:
       #Builds the html files using markdown
       - python builds/py/dev_markdown_build.py
 
-
+      #waiting for static webpage
+      - python builds/py/cf_waiter.py dev-devdocs-webpage
 
       ############################################
       #Uploads all converted html files to s3
