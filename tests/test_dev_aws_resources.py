@@ -96,21 +96,7 @@ class WebappLive(unittest.TestCase):
         get_logger()
         os.sys.path.append(WORKING_DIRECTORY)
 
-    def test_library_imports(self):
-        '''Tests that all necessary library dependencies are available
-
-            Parameters
-            ----------
-
-            Returns
-            -------
-
-            Raises
-            ------
-        '''
-        from docs.v1.v1_template import HTML_TEMPLATE
-        from pathlib import Path
-
+    
     @unittest.skip("SKipping for now")
     def test_home_page(self):
         '''Tests that the aws resources necessary for the webpage are running
