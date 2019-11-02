@@ -1,0 +1,98 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description:
+  Creates a static website using S3 for the Wild Rydes serverless web application workshop
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: The name for the bucket hosting your website, e.g. 'wildrydes-yourname'
+
+  CodeKeyPrefix:
+    Type: String
+    Default: WebApplication/1_StaticWebHosting
+    Description: Key prefix for resources referenced from the CodeBucket
+
+  WebsiteDomainName:
+    Type: String
+    Default: "http://*.amazonaws.com"
+    Description: String for prefixing resources to differentiate prod/dev
+
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Website Configuration"
+        Parameters:
+          - BucketName
+      -
+        Label:
+          default: "Advanced Configuration"
+        Parameters:
+          - CodeKeyPrefix
+    ParameterLabels:
+      BucketName:
+        default: "Website Bucket Name"
+
+Resources:
+  WebsiteBucket:
+
+    Properties:
+      BucketName: !Ref BucketName
+      #########################
+      #Used to determine cross origin
+      #resource sharing rules for javascript
+      #we only want to allow the s3 bucket and
+      #eventually the domain name the site is registered
+      #under to be able to upload images to this bucket
+      ##########################
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            #HTTP methods allowed on bucket
+            AllowedMethods:
+              - "GET"
+              - "POST"
+            #allowed origin domain names
+            AllowedOrigins:
+              - !Ref WebsiteDomainName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+    Type: "AWS::S3::Bucket"
+
+  WebsiteBucketPolicy:
+    Properties:
+      Bucket: !Ref WebsiteBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          -
+            Effect: Allow
+            Principal: "*"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::${WebsiteBucket}/*"
+    Type: "AWS::S3::BucketPolicy"
+
+  #################################
+  #Custom resource object
+  #Learn more about it here:
+  #https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html
+  #Allows you to run a lambda function on create, update or delete
+  #of cloudformation stack
+  #################################
+  # WebsiteContent:
+  #   Properties:
+  #     ServiceToken: !GetAtt CopyS3ObjectsFunction.Arn
+  #     SourceBucket: !Ref CodeBucket
+  #     SourcePrefix: !Sub "${CodeKeyPrefix}/website/"
+  #     Bucket: !Ref WebsiteBucket
+  #   Type: "Custom::S3Objects"
+
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt WebsiteBucket.WebsiteURL
