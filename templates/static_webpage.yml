@@ -2,7 +2,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 
 Description:
-  Creates a static website using S3 for the Wild Rydes serverless web application workshop
+  Creates a static website for hosting developer project documentation
 
 Parameters:
   BucketName:
