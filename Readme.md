@@ -90,6 +90,14 @@ Provides information on each directory/ source file
 
 ##### py
     Directory for custom python scripts that setup build configuration
+    - cf_waiter.py = python script that waits for the
+    cloudformation stack passed as a command line arguement to
+    return. Prevents situation where if the stack already exists the
+    aws cli waiter will throw an error causes your code build
+    to error out
+
+
+##### Buildspec Files
 - buildspec_dev.yml = Buildspec to use for the development (QA)
     CodeBuild project
 
