@@ -9,7 +9,7 @@ import unittest
 
 ENVIRON_DEF = "dev"
 
-HOMEPAGE_URL = ""
+HOMEPAGE_URL = "http://dev-devdocs.s3-website-us-east-1.amazonaws.com"
 WORKING_DIRECTORY = os.getcwd()
 
 def get_logger():
@@ -143,7 +143,11 @@ class WebappLive(unittest.TestCase):
         webpage_stack = describe_stacks_response(
             stack_name=stack_name)
 
-        import pdb; pdb.set_trace()
+        self.assertEqual(
+            webpage_stack['Outputs'][0]['OutputValue'],
+            HOMEPAGE_URL
+        )
+        logging.info("Output url for webpage is correct")
 
 
 
