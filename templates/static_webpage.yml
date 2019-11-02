@@ -7,12 +7,14 @@ Description:
 Parameters:
   BucketName:
     Type: String
-    Description: The name for the bucket hosting your website, e.g. 'wildrydes-yourname'
+    Default: devdocs
+    Description: The name for the bucket hosting the devdocs info
 
-  CodeKeyPrefix:
+  NamePrefix:
     Type: String
-    Default: WebApplication/1_StaticWebHosting
-    Description: Key prefix for resources referenced from the CodeBucket
+    Default: dev
+    Description: String for prefixing resources to differentiate prod/dev
+
 
   WebsiteDomainName:
     Type: String
