@@ -59,6 +59,34 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     '''
     return(boto3.client(resource_name, region_name))
 
+def describe_stacks_response(stack_name):
+    '''Returns a boto cloudformation describe_stacks api call
+        Parameters
+        ----------
+        stack_name: str
+            Name of the stack
+
+        Returns
+        -------
+        cf_response : dict
+                Dictionary output of the describe_stacks api call
+
+        Raises
+        ------
+    '''
+    logging.info("Creating aws python client")
+    cf_client = boto3.client('cloudformation')
+    """
+        , =unpacks the list as a dictionary for searching
+    """
+    cf_response, = cf_client.describe_stacks(
+        StackName=stack_name)['Stacks']
+
+    logging.info("Cloudformation describe stacks response: ")
+    logging.info(cf_response)
+
+    return (cf_response)
+
 
 class WebappLive(unittest.TestCase):
     '''Tests that the aws resources necessary for the webpage are running
@@ -96,7 +124,30 @@ class WebappLive(unittest.TestCase):
         get_logger()
         os.sys.path.append(WORKING_DIRECTORY)
 
-    
+    def test_bucket_stack_exists(self,
+        stack_name='dev-devdocs-webpage'):
+        '''Tests that the templates/static_website stack exists
+
+            Parameters
+            ----------
+                stack_name : str
+                    name of the stack we are checking
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        logging.info("Testing if the website bucket exists")
+
+        cf_client = get_boto_clients(resource_name='cloudformation')
+        self.assertEqual(r.status_code, 200)
+        logging.info("The website is live")
+
+
+
+
+
     @unittest.skip("SKipping for now")
     def test_home_page(self):
         '''Tests that the aws resources necessary for the webpage are running
