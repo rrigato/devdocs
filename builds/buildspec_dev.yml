@@ -50,6 +50,11 @@ phases:
       - echo Entered the build phase...
       - echo Build started on `date`
 
+      #static s3 bucket for testing upload code
+      - aws cloudformation create-stack --stack-name dev-sneakpeek-webpage
+       --template-body file://templates/static_webpage.yml
+       --capabilities CAPABILITY_NAMED_IAM
+
       #runs tests on aws resources created in previous steps
       - python tests/test_dev_markdown_build.py
 
