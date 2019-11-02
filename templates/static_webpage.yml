@@ -20,28 +20,17 @@ Parameters:
     Description: String for prefixing resources to differentiate prod/dev
 
 
-Metadata:
-  AWS::CloudFormation::Interface:
-    ParameterGroups:
-      -
-        Label:
-          default: "Website Configuration"
-        Parameters:
-          - BucketName
-      -
-        Label:
-          default: "Advanced Configuration"
-        Parameters:
-          - CodeKeyPrefix
-    ParameterLabels:
-      BucketName:
-        default: "Website Bucket Name"
+
 
 Resources:
   WebsiteBucket:
 
     Properties:
-      BucketName: !Ref BucketName
+      BucketName: !Join
+                    - '-'
+                    #The second argument is a list
+                    - - !Ref NamePrefix
+                      - !Ref BucketName
       #########################
       #Used to determine cross origin
       #resource sharing rules for javascript
@@ -77,20 +66,7 @@ Resources:
             Resource: !Sub "arn:aws:s3:::${WebsiteBucket}/*"
     Type: "AWS::S3::BucketPolicy"
 
-  #################################
-  #Custom resource object
-  #Learn more about it here:
-  #https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-custom-resources.html
-  #Allows you to run a lambda function on create, update or delete
-  #of cloudformation stack
-  #################################
-  # WebsiteContent:
-  #   Properties:
-  #     ServiceToken: !GetAtt CopyS3ObjectsFunction.Arn
-  #     SourceBucket: !Ref CodeBucket
-  #     SourcePrefix: !Sub "${CodeKeyPrefix}/website/"
-  #     Bucket: !Ref WebsiteBucket
-  #   Type: "Custom::S3Objects"
+
 
 
 Outputs:
