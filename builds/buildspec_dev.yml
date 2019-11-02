@@ -63,7 +63,14 @@ phases:
 
 
 
-
+      ############################################
+      #Uploads all converted html files to s3
+      #website hosted bucket
+      #recursively includes anything under the
+      #/docs directory
+      ############################################
+      - aws s3 cp ./docs/  s3://dev-devdocs --recursive
+        --include "*.html"
 
 
   post_build:
