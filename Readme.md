@@ -21,7 +21,7 @@ Below is a high level description of the automated CI/CD pipeline:
 ![Prod Build](devops/images/pipeline_demo_4.png )
 
 
-### Project Directory Overview
+### Development Tooling Overview
 #### cfn-lint (cloudformation Linting)
 [cfn-lint](https://github.com/aws-cloudformation/cfn-python-lint.git) Provides yaml/json cloudformation validation and checks for best practices
 
@@ -96,9 +96,33 @@ Provides information on each directory/ source file
 - buildspec_prod.yml = Buildspec to use for the prod deployment CodeBuild project
 
 #### docs
-Used for auto-populated html documentation files for
-javascript documentation.js library and python sphinx library
+Directory where markdown for new projects is placed.
 
+The markdown in this directory will be built into html and
+hosted as documentation. Markdown must comply with the following
+structure:
+
+```
+
+├── docs
+│   ├── v1
+│   │   ├──project1_name
+│   │   |   ├──project1_name.md    
+│   ├── v1
+│   │   ├──project2_name
+│   │   |   ├──project2_name.md    
+│   ├── v2
+│   │   ├──project1_name
+│   │   |   ├──project1_name.md   
+
+```
+
+Rules:
+ - Each directory under docs must start with the character 'v'
+ - 'v' must be followed by a numeric representing the version number of the documentation
+
+ - Directory of project name must be under the version
+ - Markdown file must match the name of the directory
 
 Install and run documentation.js
 
