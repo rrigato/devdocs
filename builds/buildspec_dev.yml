@@ -76,7 +76,11 @@ phases:
   post_build:
     commands:
       - echo cleaning up resources if build was successful
+
       #deleting bucket and stack after testing
+      aws s3 rm s3://dev-devdocs --recursive
+
+      aws cloudformation delete-stack --stack-name dev-devdocs-webpage
 
 
 
