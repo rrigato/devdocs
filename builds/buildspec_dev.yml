@@ -51,7 +51,7 @@ phases:
       - echo Build started on `date`
 
       #static s3 bucket for testing upload code
-      - aws cloudformation create-stack --stack-name dev-sneakpeek-webpage
+      - aws cloudformation create-stack --stack-name dev-devdocs-webpage
        --template-body file://templates/static_webpage.yml
        --capabilities CAPABILITY_NAMED_IAM
 
