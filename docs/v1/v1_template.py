@@ -34,6 +34,14 @@ HTML_TEMPLATE = """
 
     }}
     </style>
+    <script>
+    /**********************
+    *The purpose of this script is to
+    *move the table of contents to the left panel of
+    *the output html
+    ***********************/
+    $('#tableofcontents').nextElementSibling
+    </script>
 </head>
 <body>
 <div id="left-panel">
