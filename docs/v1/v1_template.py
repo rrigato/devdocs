@@ -15,7 +15,7 @@ HTML_TEMPLATE = """
     #left-panel {{
         width: 25%;
         min-height:100%;
-        position:absolute;
+        position:fixed;
         height:100%;
         font-size: 12px;
     }}
@@ -51,13 +51,15 @@ HTML_TEMPLATE = """
     <span class="docon docon-status-error-outline"></span>
     {project_name} Table of Contents
   </p>
-  <p>Test note: this side panel will eventually be updated with the index</p>
+  <p id="list-table-of-contents">
+    <!--Table of contents will be placed here-->
+  </p>
 </div>
 </div>
 
     <div id= "docs-wrapper" class="column theme theme-high-contrast">
 
-            <div class="content">
+            <div id="showdownjs-output" class="content">
                 {showdown_output}
             </div>
     </div>
