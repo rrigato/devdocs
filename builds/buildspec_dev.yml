@@ -65,6 +65,8 @@ phases:
       #waiting for static webpage
       - python builds/py/cf_waiter.py dev-devdocs-webpage
 
+      - ls -l
+
       ############################################
       #Uploads all converted html files to s3
       #website hosted bucket
