@@ -72,8 +72,9 @@ phases:
       #/docs directory
       ############################################
       - aws s3 cp ./docs/  s3://dev-devdocs --recursive
-        --include "*.html"
+       --include "*.html"
 
+      - aws s3 ls s3://dev-devdocs --recursive
       #runs tests on aws resources created in previous steps
       - python tests/test_dev_aws_resources.py
 
