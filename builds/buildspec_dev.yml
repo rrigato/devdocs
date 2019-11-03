@@ -55,7 +55,8 @@ phases:
        --template-body file://templates/static_webpage.yml
        --capabilities CAPABILITY_NAMED_IAM
 
-      #runs tests on aws resources created in previous steps
+      #runs static code test to make sure /docs directory follows
+      #build rules
       - python tests/test_dev_markdown_build.py
 
       #Builds the html files using markdown
@@ -73,6 +74,8 @@ phases:
       - aws s3 cp ./docs/  s3://dev-devdocs --recursive
         --include "*.html"
 
+      #runs tests on aws resources created in previous steps
+      - python tests/test_dev_aws_resources.py
 
   post_build:
     commands:
