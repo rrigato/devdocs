@@ -40,19 +40,7 @@ HTML_TEMPLATE = """
 
     }}
     </style>
-    <script>
-    /**********************
-    *The purpose of this script is to
-    *move the table of contents to the left panel of
-    *the output html
-    *
-    *nextElementSibling = gets the ul which corresponds
-    *to the h3 (## in markdown) with the value table of contents
-    ***********************/
-    $("#list-table-of-contents").innerText = (
-        $("#tableofcontents").nextElementSibling.innerHtml
-    );
-    </script>
+
 </head>
 <body>
 <div id="left-panel">
@@ -75,6 +63,20 @@ HTML_TEMPLATE = """
             </div>
     </div>
 </body>
+
+    <script>
+    /**********************
+    *The purpose of this script is to
+    *move the table of contents to the left panel of
+    *the output html
+    *
+    *nextElementSibling = gets the ul which corresponds
+    *to the h3 (## in markdown) with the value table of contents
+    ***********************/
+    $("#list-table-of-contents").innerText = (
+        $("#tableofcontents").nextElementSibling.innerHtml
+    );
+    </script>
 
 </html>
 """
