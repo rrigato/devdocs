@@ -8,6 +8,8 @@ HTML_TEMPLATE = """
     -->
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+    crossorigin="anonymous"></script>
     /***************
     *Info panel on the
     *left side of the page
