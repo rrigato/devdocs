@@ -30,10 +30,10 @@ HTML_TEMPLATE = """
     *Just the html output by showdownjs
     *
     ******************/
-    #showdownjs-output{
+    #showdownjs-output{{
         margin-left: 2%;
         margin-top: 2%;
-    }
+    }}
     .alert.is-info{{
         margin-top: 0;
         height:100%;
