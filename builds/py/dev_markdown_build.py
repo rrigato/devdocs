@@ -60,7 +60,7 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     '''
     return(boto3.client(resource_name, region_name))
 
-def showdown_output(markdown_path):
+def showdown_subprocess(markdown_path):
     '''Calls showdownjs to turn markdown into html
 
         Parameters
@@ -203,7 +203,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
             for markdown_file in glob.glob(relative_path + "*.md"):
                 logging.info("Markdown file: ")
                 logging.info(markdown_file)
-                (markdown_file)
+                showdown_subprocess(markdown_file)
 
                 template_wrapper(markdown_file)
 
