@@ -137,6 +137,9 @@ def template_wrapper(markdown_path, version='v1'):
     html_file_name = os.path.basename(
         markdown_path).split('.')[0]
 
+    logging.info("documentation_dir and html_file_name: ")
+    logging.info(documentation_dir)
+    logging.info(html_file_name)
     """
         Inserts the converted markdown
         into an html template
