@@ -8,8 +8,7 @@ HTML_TEMPLATE = """
     -->
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-    crossorigin="anonymous"></script>
+
     /***************
     *Info panel on the
     *left side of the page
@@ -43,6 +42,7 @@ HTML_TEMPLATE = """
     }}
     </style>
 
+
 </head>
 <body>
 <div id="left-panel">
@@ -75,8 +75,10 @@ HTML_TEMPLATE = """
     *nextElementSibling = gets the ul which corresponds
     *to the h3 (## in markdown) with the value table of contents
     ***********************/
-    $("#list-table-of-contents").innerText = (
-        $("#tableofcontents").nextElementSibling.innerHtml
+    document.getElementById("list-table-of-contents").innerHTML = (
+
+    document.getElementById(
+        "tableofcontents").nextElementSibling.innerHTML
     );
     </script>
 
