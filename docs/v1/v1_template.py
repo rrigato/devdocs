@@ -46,7 +46,11 @@ HTML_TEMPLATE = """
 <body>
 <div id="left-panel">
     <div class="alert is-info">
-  <p class="alert-title"><span class="docon docon-status-error-outline"></span> Info</p>
+  <p class="alert-title">
+    <!--Info symbol-->
+    <span class="docon docon-status-error-outline"></span>
+    {project_name} Table of Contents
+  </p>
   <p>Test note: this side panel will eventually be updated with the index</p>
 </div>
 </div>
