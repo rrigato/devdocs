@@ -45,8 +45,13 @@ HTML_TEMPLATE = """
     *The purpose of this script is to
     *move the table of contents to the left panel of
     *the output html
+    *
+    *nextElementSibling = gets the ul which corresponds
+    *to the h3 (## in markdown) with the value table of contents
     ***********************/
-    $('#tableofcontents').nextElementSibling
+    $('#list-table-of-contents').innerText = (
+        $('#tableofcontents').nextElementSibling.innerHtml
+    );
     </script>
 </head>
 <body>
