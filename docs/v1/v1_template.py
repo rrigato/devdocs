@@ -49,8 +49,8 @@ HTML_TEMPLATE = """
     *nextElementSibling = gets the ul which corresponds
     *to the h3 (## in markdown) with the value table of contents
     ***********************/
-    $('#list-table-of-contents').innerText = (
-        $('#tableofcontents').nextElementSibling.innerHtml
+    $("#list-table-of-contents").innerText = (
+        $("#tableofcontents").nextElementSibling.innerHtml
     );
     </script>
 </head>
