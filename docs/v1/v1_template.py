@@ -19,15 +19,21 @@ HTML_TEMPLATE = """
         height:100%;
         font-size: 12px;
     }}
-    /*****************
-    *
-    *
-    ******************/
+
+
     #docs-wrapper {{
         right: 75%;
         margin-left: 25%;
         font-size: 22px;
     }}
+    /*****************
+    *Just the html output by showdownjs
+    *
+    ******************/
+    #showdownjs-output{
+        margin-left: 2%;
+        margin-top: 2%;
+    }
     .alert.is-info{{
         margin-top: 0;
         height:100%;
