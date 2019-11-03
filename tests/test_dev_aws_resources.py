@@ -140,6 +140,7 @@ class WebappLive(unittest.TestCase):
         '''
         logging.info("Testing if the website bucket stack exists")
 
+
         webpage_stack = describe_stacks_response(
             stack_name=stack_name)
 
@@ -153,7 +154,6 @@ class WebappLive(unittest.TestCase):
 
 
 
-    @unittest.skip("SKipping for now")
     def test_standards_project(self):
         '''Tests that the /docs/v1/standards/standards.html is alive
 
@@ -168,11 +168,12 @@ class WebappLive(unittest.TestCase):
             ------
         '''
         logging.info("Testing if the website is alive")
+
         r = requests.get(
-            HOMEPAGE_URL + "docs/v1/standards/standards.html"
+            HOMEPAGE_URL + "/v1/standards/standards.html"
         )
         self.assertEqual(r.status_code, 200)
-        logging.info("The website is live")
+        logging.info("The standards page is live")
 
 
 
