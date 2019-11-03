@@ -140,11 +140,17 @@ def template_wrapper(markdown_path, version='v1'):
     """
         Inserts the converted markdown
         into an html template
-    """
 
+        capitalizes the first letter of the project name
+        since this is used for the table contents description
+        (html_file_name[0].upper() + html_file_name[1:])
+    """
     with open(documentation_dir +'/markdown_output.html',
         "r") as converted_markdown:
         output_html = HTML_TEMPLATE.format(
+            project_name=(
+                html_file_name[0].upper() + html_file_name[1:]
+            ),
             showdown_output=converted_markdown.read()
         )
 
