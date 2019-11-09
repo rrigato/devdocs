@@ -22,9 +22,9 @@ Resources:
         Statement:
         - Action: ['sts:AssumeRole']
           Effect: Allow
-          Principal:
+          Principal: |
             !Join ['', ['arn:aws:iam::',
-             !Ref AWS::AccountId, ':user/*']]
+             !Ref DevelopmentAccount, ':user/*']]
         Version: '2012-10-17'
       #permissions policy for the role =
       #once the role is assumed what resources int the prod
