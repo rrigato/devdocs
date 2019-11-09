@@ -14,9 +14,10 @@ Parameters:
     Description: Account id allowed to assume the cross account role
 
 Resources:
-  BackendIamRole:
+  CrossAccountRole:
     Type: AWS::IAM::Role
     Properties:
+      #trust policy for the role = who is allowed to assume the role
       AssumeRolePolicyDocument:
         Statement:
         - Action: ['sts:AssumeRole']
@@ -25,6 +26,9 @@ Resources:
             !Join ['', ['arn:aws:iam::',
              !Ref AWS::AccountId, ':user/*']]
         Version: '2012-10-17'
+      #permissions policy for the role =
+      #once the role is assumed what resources int the prod
+      #account are allowed to be used
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
       Path: /
@@ -50,6 +54,6 @@ Resources:
                   Resource:
                     - "*"
 Outputs:
-  BackendIamRole:
-    Description: Reference to IAM role used for templates/backend.yml
-    Value: !Ref BackendIamRole
+  CrossAccountRoleArn:
+    Description: Arn for the cross account role
+    Value: !GetAtt CrossAccountRole.Arn
