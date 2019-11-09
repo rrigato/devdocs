@@ -22,9 +22,15 @@ Resources:
         Statement:
         - Action: ['sts:AssumeRole']
           Effect: Allow
-          Principal: |
-            !Join ['', ['arn:aws:iam::',
-             !Ref DevelopmentAccount, ':user/*']]
+          Principal: !Join
+              #What we use to concatenate items
+              #followed by a list of items to include
+              #in the string
+                - ''
+                - - 'arn:aws:iam::'
+                  - !Ref DevelopmentAccount
+                  - ':user/*'
+
         Version: '2012-10-17'
       #permissions policy for the role =
       #once the role is assumed what resources int the prod
