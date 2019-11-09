@@ -8,6 +8,10 @@ Parameters:
     Default: ryanrigato.com
     Description:
         The name for the bucket where the static webpage is hosted
+  DevelopmentAccount:
+    Type: String
+    Default: 1234567
+    Description: Account id allowed to assume the cross account role
 
 Resources:
   BackendIamRole:
@@ -18,7 +22,8 @@ Resources:
         - Action: ['sts:AssumeRole']
           Effect: Allow
           Principal:
-            Service: [cloudformation.amazonaws.com]
+            !Join ['', ['arn:aws:iam::',
+             !Ref AWS::AccountId, ':user/*']]
         Version: '2012-10-17'
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
