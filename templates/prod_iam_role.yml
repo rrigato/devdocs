@@ -5,5 +5,49 @@ Description:
 Parameters:
   BucketName:
     Type: String
-    Default: devdocs
-    Description: The name for the bucket hosting the devdocs info
+    Default: ryanrigato.com
+    Description:
+        The name for the bucket where the static webpage is hosted
+
+Resources:
+  BackendIamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: ['sts:AssumeRole']
+          Effect: Allow
+          Principal:
+            Service: [cloudformation.amazonaws.com]
+        Version: '2012-10-17'
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        #lambda full access managed policy also provides
+        #access to all dynamodb apis
+        - arn:aws:iam::aws:policy/AWSLambdaFullAccess
+        - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+      Path: /
+      Policies:
+          - PolicyName: PassIamRole
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Sid: IAMallow
+                  Effect: Allow
+                  #######################################
+                  #Allowing lambda to perform a PutItem on
+                  #DynamoDB
+                  #
+                  #######################################
+                  Action:
+                    #- iam:PassRole
+                    - iam:CreateRole
+                    - iam:GetRole
+                    - iam:UpdateAssumeRolePolicy
+                    - iam:DetachRolePolicy
+                  Resource:
+                    - "*"
+Outputs:
+  BackendIamRole:
+    Description: Reference to IAM role used for templates/backend.yml
+    Value: !Ref BackendIamRole
