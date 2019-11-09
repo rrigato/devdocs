@@ -22,14 +22,16 @@ Resources:
         Statement:
         - Action: ['sts:AssumeRole']
           Effect: Allow
-          Principal: !Join
-              #What we use to concatenate items
-              #followed by a list of items to include
-              #in the string
-                - ''
-                - - 'arn:aws:iam::'
-                  - !Ref DevelopmentAccount
-                  - ':user/*'
+          Principal:
+            AWS: "arn:aws:iam::12345:user/username"
+        #   Principal: !Join
+        #       #What we use to concatenate items
+        #       #followed by a list of items to include
+        #       #in the string
+        #         - ''
+        #         - - 'arn:aws:iam::'
+        #           - !Ref DevelopmentAccount
+        #           - ':user/*'
 
         Version: '2012-10-17'
       #permissions policy for the role =
@@ -38,27 +40,27 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
       Path: /
-      Policies:
-          - PolicyName: DevAccountAuthorization
-            PolicyDocument:
-              Version: "2012-10-17"
-              Statement:
-                - Sid: S3Allow
-                  Effect: Allow
-                  #######################################
-                  #Allowing lambda to perform a PutItem on
-                  #DynamoDB
-                  #
-                  #######################################
-                  Action:
-                    #- iam:PassRole
-                    - s3:ListBucket
-                    - s3:ListAllMyBuckets
-                    - s3:GetObject
-                    - s3:DeleteObject
-                    - s3:PutObject
-                  Resource:
-                    - "*"
+    #   Policies:
+    #       - PolicyName: DevAccountAuthorization
+    #         PolicyDocument:
+    #           Version: "2012-10-17"
+    #           Statement:
+    #             - Sid: S3Allow
+    #               Effect: Allow
+    #               #######################################
+    #               #Allowing lambda to perform a PutItem on
+    #               #DynamoDB
+    #               #
+    #               #######################################
+    #               Action:
+    #                 #- iam:PassRole
+    #                 - s3:ListBucket
+    #                 - s3:ListAllMyBuckets
+    #                 - s3:GetObject
+    #                 - s3:DeleteObject
+    #                 - s3:PutObject
+    #               Resource:
+    #                 - "*"
 Outputs:
   CrossAccountRoleArn:
     Description: Arn for the cross account role
