@@ -289,7 +289,7 @@ Resources:
                 Version: '1'
                 Provider: CodeBuild
             InputArtifacts:
-              - Name: !Ref GitRepoName
+              - Name: !GetAtt GitRepo.Name
             OutputArtifacts:
               - Name: BuildProd
             #########################################
@@ -298,7 +298,7 @@ Resources:
             #
             #########################################
             Configuration:
-                PrimarySource: !Ref GitRepoName
+                PrimarySource: !GetAtt GitRepo.Name
                 ProjectName:
                   !Join ['', ['codebuild-prod-', !Ref ProjectName]]
 
@@ -413,6 +413,7 @@ Resources:
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AWSCodeCommitPowerUser
         - arn:aws:iam::aws:policy/CloudWatchLogsFullAccess
+        - !Ref ProdCrossAccountArn
       Path: /
       Policies:
           - PolicyName: CodeBuildCustomerManaged
