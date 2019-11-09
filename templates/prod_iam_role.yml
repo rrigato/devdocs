@@ -21,18 +21,14 @@ Resources:
             Service: [cloudformation.amazonaws.com]
         Version: '2012-10-17'
       ManagedPolicyArns:
-        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-        #lambda full access managed policy also provides
-        #access to all dynamodb apis
-        - arn:aws:iam::aws:policy/AWSLambdaFullAccess
-        - arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator
+        - arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess
       Path: /
       Policies:
-          - PolicyName: PassIamRole
+          - PolicyName: DevAccountAuthorization
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
-                - Sid: IAMallow
+                - Sid: S3Allow
                   Effect: Allow
                   #######################################
                   #Allowing lambda to perform a PutItem on
@@ -41,10 +37,11 @@ Resources:
                   #######################################
                   Action:
                     #- iam:PassRole
-                    - iam:CreateRole
-                    - iam:GetRole
-                    - iam:UpdateAssumeRolePolicy
-                    - iam:DetachRolePolicy
+                    - s3:ListBucket
+                    - s3:ListAllMyBuckets
+                    - s3:GetObject
+                    - s3:DeleteObject
+                    - s3:PutObject
                   Resource:
                     - "*"
 Outputs:
