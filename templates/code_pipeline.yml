@@ -1,16 +1,20 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: Creates a CodePipeline that uses CodeBuild and CodeDeploy for a CI/CD pipeline
 Parameters:
-  RepositoryBranch:
-    Type: String
-    Default: dev
+
+  ProdCrossAccountArn:
+    Description:
+        Arn of the role that will be used to update prod resources
+    
   #Default project name that
   #the git repo will be called
   ProjectName:
     Type: String
     Default: devdocs
 
-
+  RepositoryBranch:
+    Type: String
+    Default: dev
 
 Resources:
   ArtifactStoreBucket:
