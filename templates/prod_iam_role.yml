@@ -1,0 +1,9 @@
+Description:
+  Cross account role that lives in production bucket for >
+  updating webpage
+
+Parameters:
+  BucketName:
+    Type: String
+    Default: devdocs
+    Description: The name for the bucket hosting the devdocs info
