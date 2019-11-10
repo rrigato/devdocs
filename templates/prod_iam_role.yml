@@ -23,7 +23,7 @@ Resources:
         - Action: ['sts:AssumeRole']
           Effect: Allow
           Principal:
-            AWS: "arn:aws:iam::12345:user/username"
+            AWS: "arn:aws:iam::12345:root"
         #   Principal: !Join
         #       #What we use to concatenate items
         #       #followed by a list of items to include
