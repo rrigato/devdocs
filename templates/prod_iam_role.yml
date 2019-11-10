@@ -1,6 +1,8 @@
+# cross account role modified from this aws news update:
+# https://aws.amazon.com/blogs/apn/easing-the-creation-of-cross-account-roles-for-customers/
 Description:
-  Cross account role that lives in production bucket for >
-  updating webpage
+  Cross account role that lives in production bucket for
+  updating a static hosted website
 
 Parameters:
   BucketName:
@@ -12,6 +14,14 @@ Parameters:
     Type: String
     Default: 1234567
     Description: Account id allowed to assume the cross account role
+
+  #root defaults to all users
+  DevelopmentUser:
+    Type: String
+    Default: user_name
+    Description:
+      Username you want to be able to assume the cross-account role
+      in the development account
 
 Resources:
   CrossAccountRole:
@@ -33,7 +43,8 @@ Resources:
                 - ''
                 - - 'arn:aws:iam::'
                   - !Ref DevelopmentAccount
-                  - ':root'
+                  - ':'
+                  - !Ref DevelopmentUser
 
         Version: '2012-10-17'
       #permissions policy for the role =
