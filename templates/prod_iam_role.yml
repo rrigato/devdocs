@@ -56,12 +56,26 @@ Resources:
             PolicyDocument:
               Version: "2012-10-17"
               Statement:
-                - Sid: S3ListBuckets
+                - Sid: S3WebsiteListBuckets
                   Effect: Allow
                   #######################################
-                  #Allowing the cross account role to list buckets
-                  #
+                  #Allowing the cross account role to list
+                  #all buckets in parent account
                   #######################################
+                  Action:
+                    - s3:ListBucket
+                    - s3:ListAllMyBuckets
+                  Resource:
+                    - "*"
+
+                  #######################################
+                  #Allowing the cross account role to
+                  #update a specific bucket provided by the
+                  #BucketName parameter
+                  #######################################
+                - Sid: S3EditWebsiteBucket
+                  Effect: Allow
+
                   Action:
                     # - s3:GetObject
                     # - s3:DeleteObject
