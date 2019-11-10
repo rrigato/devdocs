@@ -22,16 +22,18 @@ Resources:
         Statement:
         - Action: ['sts:AssumeRole']
           Effect: Allow
+        #arn of the user allowed to assume the cross account role:
+        #"arn:aws:iam::account_id:user_name"
           Principal:
-            AWS: "arn:aws:iam::12345:root"
-        #   Principal: !Join
-        #       #What we use to concatenate items
-        #       #followed by a list of items to include
-        #       #in the string
-        #         - ''
-        #         - - 'arn:aws:iam::'
-        #           - !Ref DevelopmentAccount
-        #           - ':user/*'
+            AWS:
+              !Join
+              #What we use to concatenate items
+              #followed by a list of items to include
+              #in the string
+                - ''
+                - - 'arn:aws:iam::'
+                  - !Ref DevelopmentAccount
+                  - ':root'
 
         Version: '2012-10-17'
       #permissions policy for the role =
