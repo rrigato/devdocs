@@ -1,0 +1,50 @@
+############################
+#Build project for production
+#
+#
+############################
+version: 0.2
+
+
+
+phases:
+  ###########################################
+  #Uses a python runtime
+  #Note that you do not need the \ to escape
+  #aws cli commands
+  ###########################################
+  install:
+    runtime-versions:
+       python: 3.7
+    commands:
+      - echo Entered the install phase...
+
+      - BUILD_ENVIRONMENT=prod
+      - pip install -r tests/requirements.txt
+      - ls -l
+    finally:
+
+  #Builds the cloudformation stack that contains the
+  #static webpage
+  build:
+    commands:
+      - echo $BUILD_ENVIRONMENT
+      - echo Entered the build phase...
+      - echo Build started on `date`
+
+
+      #merges dev branch into master now that all tests have
+      #been passed and artifacts created
+      - aws codecommit merge-branches-by-fast-forward
+        --source-commit-specifier dev
+        --destination-commit-specifier master
+        --repository-name devdocs
+
+  post_build:
+    commands:
+      - echo Entered the post_build phase...
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - ./logs/*
