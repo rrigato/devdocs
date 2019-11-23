@@ -67,4 +67,7 @@ def main():
     get_logger()
 
     sts_client = get_boto_clients('sts')
+
+    print(os.environ.get('PROD_CROSS_ACCOUNT_ARN'))
+
 main()
