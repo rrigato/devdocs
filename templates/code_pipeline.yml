@@ -485,6 +485,22 @@ Resources:
                   Resource:
                     - "*"
 
+                #######################
+                #Permissions needed for aws
+                #CodeBuild to assume the production
+                #cross account role
+                #######################
+                - Sid: AssumeProdAccountRole
+                  Effect: Allow
+                  #######################################
+                  #Allowing CodeBuild to update
+                  #resources necessary for s3 static webpage
+                  #
+                  #######################################
+                  Action:
+                    - sts:AssumeRole
+                  Resource:
+                    - "*"
 
   CFNRole:
     Type: AWS::IAM::Role
