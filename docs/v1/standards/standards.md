@@ -7,11 +7,9 @@ This documentation provides an overview of development best practices across pyt
     * [Python Documentation](#python-documentation)
     * [Python Tests](#python-tests)
 
-- [Paragraphs](#paragraphs)
-- [Headings](#headings)
-    * [Atx Style](#atx-style)
-    * [Setext style](#setext-style)
-    * [Header IDs](#header-ids)
+- [SQL](#sql)
+    * [SQL Table Creation](#sql-table-creation)
+    * [SQL Subqueries](#sql-subqueries)
 
 ## Python
 
@@ -46,4 +44,43 @@ Build python documentation into html files using sphinx [sphinx](http://www.sphi
 
 Code Coverage should be 80% or higher.
 
-Write unit, integration and end-to-end tests using the built in [unittest module]()
+Write unit, integration and end-to-end tests using the built in [unittest module](https://docs.python.org/3/library/unittest.html)
+
+Code coverage should be built into html files using the coverage [module] (https://coverage.readthedocs.io/en/v4.5.x/)
+
+
+# SQL
+
+## SQL Table Creation
+Always use subqueries instead of creating temporary tables. The only table created should be the final output table
+
+Always have a primary key on the table.
+
+## SQL Subquery
+
+Always provide a meaningful alias for the subquery. Ex:
+
+```
+(
+    --Querying weather data
+) WEATHER_DATA
+```
+
+
+Above each subquery provide a block comment which provides an overview of the subquery and the unique columns from the subquery. Ex:
+
+```
+-------------------------
+--My block comment explaining domain knowledge from
+--FOO_FIELDS subquery
+--
+--PK is COL1 and COL2
+--SELECT COUNT(*), COUNT(DISTINCT COL1 || COL2)
+
+--100, 100
+-------------------------
+(
+    SELECT COL1, COL2, etc..
+    FROM FOO
+)FOO_FIELDS
+```
