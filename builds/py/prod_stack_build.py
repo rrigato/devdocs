@@ -73,7 +73,6 @@ def get_prod_client():
     PROD_CROSS_ACCOUNT_ARN = os.environ.get(
     'PROD_CROSS_ACCOUNT_ARN')
 
-    import pdb; pdb.set_trace()
     """
         Short term access key id,
         access secret and session token from
@@ -102,7 +101,9 @@ def get_prod_client():
     )
 
     logging.info("Got the temporary prod credentials")
-    return(boto3.client(resource_name, region_name))
+
+    return(s3_prod_client)
+
 def main():
     '''Entry point into the script
         Parameters
@@ -116,6 +117,8 @@ def main():
     '''
     get_logger()
 
-    get_prod_client()
+    s3_prod_client = get_prod_client()
+
+    print(s3_prod_client.list_buckets())
 
 main()
