@@ -56,7 +56,7 @@ Always use subqueries instead of creating temporary tables. The only table creat
 
 Always have a primary key on the table.
 
-## SQL Subquery
+## SQL Subqueries
 
 Always provide a meaningful alias for the subquery. Ex:
 
