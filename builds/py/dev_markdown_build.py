@@ -150,7 +150,7 @@ def template_wrapper(markdown_path, version='v1'):
     """
     with open(documentation_dir +'/markdown_output.html',
         "r") as converted_markdown:
-        
+
         output_html = HTML_TEMPLATE.format(
             project_name=(
                 html_file_name[0].upper() + html_file_name[1:]
@@ -172,7 +172,7 @@ def template_wrapper(markdown_path, version='v1'):
     logging.info("Wrote the documentation html file")
 
 def iterate_markdown(relative_dir="docs/v1/"):
-    '''Iterates over all markdown files
+    '''Iterates over all markdown projects within a version
 
         Parameters
         ----------
@@ -229,7 +229,24 @@ def iterate_markdown(relative_dir="docs/v1/"):
     logging.info("Wrote the new cognito credientials to the config file")
 
 
+def iterate_versions(docs_dir="docs"):
+    '''Calls iterate_markdown for each version
 
+        Parameters
+        ----------
+        docs_dir : str
+            Directory where all versions of documentation
+            are stored
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            AssertionError is raised the proper files are
+            not found
+    '''
 
 def main():
     '''Entry point into the script
