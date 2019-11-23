@@ -4,12 +4,12 @@ This documentation provides an overview of development best practices across pyt
 ## Table of contents
 
 - [Python](#python)
-    * [Python Documentation](#python-documentation)
-    * [Python Tests](#python-tests)
+    * [Python Documentation](#pythondocumentation)
+    * [Python Tests](#pythontests)
 
 - [SQL](#sql)
-    * [SQL Table Creation](#sql-table-creation)
-    * [SQL Subqueries](#sql-subqueries)
+    * [SQL Table Creation](#sqltablecreation)
+    * [SQL Subqueries](#sqlsubqueries)
 
 ## Python
 
