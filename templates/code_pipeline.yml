@@ -157,8 +157,15 @@ Resources:
      #Standard Linux Image environment
      Environment:
        ComputeType: BUILD_GENERAL1_SMALL
-       Type: LINUX_CONTAINER
+       #Used to pass the production account arn
+       #to the builds/py/prod_stack_build.py
+       EnvironmentVariables:
+         -
+           Name: PROD_CROSS_ACCOUNT_ARN
+           Value: !Ref ProdCrossAccountArn
        Image: aws/codebuild/standard:2.0
+       Type: LINUX_CONTAINER
+
      Name:
         !Join ['', ['prod-build-', !Ref ProjectName]]
      ServiceRole: !Ref ProdCodeBuildRole
