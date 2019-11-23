@@ -36,6 +36,8 @@ phases:
       - aws sts get-caller-identity
       - aws sts assume-role --role-arn arn:aws:iam::972323850308:role/prodPersonalWebsiteCrossAccountRo-CrossAccountRole-1CTVWLAH998J4
         --role-session-name prod-build
+
+      - python builds/py/prod_stack_build.py
       #merges dev branch into master now that all tests have
       #been passed and artifacts created
       - aws codecommit merge-branches-by-fast-forward
