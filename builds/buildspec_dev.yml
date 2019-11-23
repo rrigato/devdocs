@@ -86,3 +86,4 @@ phases:
 artifacts:
   files:
     - ./logs/*
+    - ./docs/*
