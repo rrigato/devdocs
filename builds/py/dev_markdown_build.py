@@ -254,15 +254,16 @@ def iterate_versions(docs_dir="docs/"):
         Iterating over all versions in the
         documentation directory
         this will pass
-        /docs/v1
-        /docs/v2
+        /docs/v1/
+        /docs/v2/
         etc..
         to iterate_markdown
     """
     for version_dir in all_dirs:
         logging.info("Iterating version ")
-        logging.info(docs_dir + version_dir)
-        iterate_markdown(docs_dir + version_dir)
+        logging.info(docs_dir + version_dir + "/")
+        iterate_markdown(
+            docs_dir + version_dir + "/")
 
 def main():
     '''Entry point into the script
