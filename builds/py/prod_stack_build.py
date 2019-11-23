@@ -52,25 +52,56 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     return(boto3.client(resource_name, region_name))
 
 
-def get_prod_client(resource_name, region_name='us-east-1'):
+def get_prod_client():
     '''Returns the boto s3 client in the production account
-    
+
         Parameters
         ----------
-        resource_name : str
-            Name of the resource for the client
-
-        region_name : str
-                aws region you are using, defaults to
-                us-east-1
 
         Returns
         -------
-
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
 
         Raises
         ------
     '''
+    sts_client = get_boto_clients('sts')
+
+    logging.info("Got the sts client")
+    PROD_CROSS_ACCOUNT_ARN = os.environ.get(
+    'PROD_CROSS_ACCOUNT_ARN')
+
+    import pdb; pdb.set_trace()
+    """
+        Short term access key id,
+        access secret and session token from
+        the prod cross account role
+    """
+    cross_account_credentials = sts_client.assume_role(
+        RoleArn=PROD_CROSS_ACCOUNT_ARN,
+        RoleSessionName="PROD_DEV_DOCS_CODE_BUILD"
+        )
+
+    """
+        Uses short term credentials from cross
+        account assume role to get an s3 client in the prod account
+    """
+    s3_prod_client = boto3.client(
+        's3',
+        aws_access_key_id=(
+        cross_account_credentials['Credentials']['AccessKeyId']
+        ),
+        aws_secret_access_key=(
+        cross_account_credentials['Credentials']['SecretAccessKey']
+        ),
+        aws_session_token=(
+        cross_account_credentials['Credentials']['SessionToken']
+        )
+    )
+
+    logging.info("Got the temporary prod credentials")
     return(boto3.client(resource_name, region_name))
 def main():
     '''Entry point into the script
@@ -85,14 +116,6 @@ def main():
     '''
     get_logger()
 
-    sts_client = get_boto_clients('sts')
+    get_prod_client()
 
-    PROD_CROSS_ACCOUNT_ARN = os.environ.get(
-    'PROD_CROSS_ACCOUNT_ARN')
-
-    import pdb; pdb.set_trace()
-    cross_account_credentials = sts_client.assume_role(
-        RoleArn=PROD_CROSS_ACCOUNT_ARN,
-        RoleSessionName="PROD_DEV_DOCS_CODE_BUILD"
-        )
 main()
