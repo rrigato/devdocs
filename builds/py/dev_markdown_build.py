@@ -229,7 +229,8 @@ def iterate_markdown(relative_dir="docs/v1/"):
     logging.info("Wrote the new cognito credientials to the config file")
 
 
-def iterate_versions(docs_dir="docs"):
+
+def iterate_versions(docs_dir="docs/"):
     '''Calls iterate_markdown for each version
 
         Parameters
@@ -244,12 +245,30 @@ def iterate_versions(docs_dir="docs"):
         Raises
         ------
         AE : AssertionError
-            AssertionError is raised the proper files are
-            not found
+            AssertionError is raised if the version naming
+            convention is not followed
     '''
+    all_dirs = os.listdir(docs_dir)
+
+    """
+        Iterating over all versions in the
+        documentation directory
+        this will pass
+        /docs/v1
+        /docs/v2
+        etc..
+        to iterate_markdown
+    """
+    for version_dir in all_dirs:
+        logging.info("Iterating version ")
+        logging.info(docs_dir + version_dir)
+        iterate_markdown(docs_dir + version_dir)
 
 def main():
     '''Entry point into the script
+
+        Note that the directory structure was validated
+        by tests/test_dev_markdown_build.py
         Parameters
         ----------
 
@@ -261,7 +280,7 @@ def main():
     '''
     get_logger()
 
-    iterate_markdown()
+    iterate_versions()
 
 
 main()
