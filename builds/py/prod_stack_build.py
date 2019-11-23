@@ -52,7 +52,26 @@ def get_boto_clients(resource_name, region_name='us-east-1'):
     return(boto3.client(resource_name, region_name))
 
 
+def get_prod_client(resource_name, region_name='us-east-1'):
+    '''Returns the boto s3 client in the production account
+    
+        Parameters
+        ----------
+        resource_name : str
+            Name of the resource for the client
 
+        region_name : str
+                aws region you are using, defaults to
+                us-east-1
+
+        Returns
+        -------
+
+
+        Raises
+        ------
+    '''
+    return(boto3.client(resource_name, region_name))
 def main():
     '''Entry point into the script
         Parameters
@@ -68,6 +87,12 @@ def main():
 
     sts_client = get_boto_clients('sts')
 
-    print(os.environ.get('PROD_CROSS_ACCOUNT_ARN'))
+    PROD_CROSS_ACCOUNT_ARN = os.environ.get(
+    'PROD_CROSS_ACCOUNT_ARN')
 
+    import pdb; pdb.set_trace()
+    cross_account_credentials = sts_client.assume_role(
+        RoleArn=PROD_CROSS_ACCOUNT_ARN,
+        RoleSessionName="PROD_DEV_DOCS_CODE_BUILD"
+        )
 main()
