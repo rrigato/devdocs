@@ -87,3 +87,5 @@ artifacts:
   files:
     - ./logs/*
     - ./docs/*
+  name: test-dependency
+  discard-paths: false

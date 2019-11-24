@@ -31,7 +31,7 @@ phases:
       - echo $BUILD_ENVIRONMENT
       - echo Entered the build phase...
       - echo Build started on `date`
-
+      - printenv
 
       - aws sts get-caller-identity
       - aws sts assume-role --role-arn arn:aws:iam::972323850308:role/prodPersonalWebsiteCrossAccountRo-CrossAccountRole-1CTVWLAH998J4
