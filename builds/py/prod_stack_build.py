@@ -125,7 +125,9 @@ def upload_html_file(s3_prod_client):
         Filename='docs/v1/standards/standards.html',
         Bucket='ryanrigato.com',
         Key='docs/v1/standards/standards.html',
-        ExtraArgs={"ContentType":"text/html"}
+        ExtraArgs={
+            "ContentType":"text/html"
+        }
     )
 
 
@@ -145,7 +147,6 @@ def main():
 
     s3_prod_client = get_prod_client()
 
-    upload_html_file(s3_prod_client)
     """
         According to this documentation:
 
