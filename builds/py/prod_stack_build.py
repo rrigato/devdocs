@@ -104,6 +104,32 @@ def get_prod_client():
 
     return(s3_prod_client)
 
+def upload_html_file(s3_prod_client):
+    '''Uploads html files to s3 static website
+
+        Parameters
+        ----------
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
+
+        Returns
+        -------
+
+        Raises
+        ------
+    '''
+    import pdb; pdb.set_trace()
+
+    s3_prod_client.upload_file(
+        Filename='docs/v1/standards/standards.html',
+        Bucket='ryanrigato.com',
+        Key='docs/v1/standards/standards.html',
+        ExtraArgs={"ContentType":"text/html"}
+    )
+
+
+
 def main():
     '''Entry point into the script
         Parameters
@@ -119,14 +145,7 @@ def main():
 
     s3_prod_client = get_prod_client()
 
-    s3_prod_client.upload_file(
-        Filename='docs/v1/standards/standards.html',
-        Bucket='ryanrigato.com',
-        Key='docs/v1/standards/standards.html',
-        ExtraArgs={"ContentType":"text/html"}
-    )
-
-    import pdb; pdb.set_trace()
+    upload_html_file(s3_prod_client)
     """
         According to this documentation:
 
