@@ -119,6 +119,14 @@ def main():
 
     s3_prod_client = get_prod_client()
 
+    s3_prod_client.upload_file(
+        Filename='docs/v1/standards/standards.html',
+        Bucket='ryanrigato.com',
+        Key='docs/v1/standards/standards.html',
+        ExtraArgs={"ContentType":"text/html"}
+    )
+
+    import pdb; pdb.set_trace()
     """
         According to this documentation:
 
@@ -132,7 +140,7 @@ def main():
 
         $CODEBUILD_SRC_DIR_BuildDev contains the output
         ./docs directory after everything was built in
-        the development stage 
+        the development stage
     """
     artifact_dependency = os.environ.get('')
 main()
