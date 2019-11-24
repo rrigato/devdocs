@@ -119,6 +119,20 @@ def main():
 
     s3_prod_client = get_prod_client()
 
-    print(s3_prod_client.list_buckets())
+    """
+        According to this documentation:
 
+        https://docs.aws.amazon.com/codebuild/latest/userguide/sample-pipeline-multi-input-output.html
+
+        Any CodeBuild project that gets passed multiple
+        input artifacts gets the secondary artifact directory location
+        stored in an environment variable using the following
+        naming convention:
+        $CODEBUILD_SRC_DIR_<yourInputArtifactName>
+
+        $CODEBUILD_SRC_DIR_BuildDev contains the output
+        ./docs directory after everything was built in
+        the development stage 
+    """
+    artifact_dependency = os.environ.get('')
 main()
