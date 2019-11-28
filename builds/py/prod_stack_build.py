@@ -3,7 +3,9 @@ import glob
 import json
 import logging
 import os
-WORKING_DIRECTORY = os.getcwd()
+LOG_DIRECTORY = "$CODEBUILD_SRC_DIR"
+
+WORKING_DIRECTORY = "$CODEBUILD_SRC_DIR_BuildDev"
 
 def get_logger():
     '''Returns a logger
@@ -24,7 +26,7 @@ def get_logger():
         the extension
     """
     logging.basicConfig(
-        filename=os.path.join(WORKING_DIRECTORY, 'logs/',
+        filename=os.path.join(LOG_DIRECTORY, 'logs/',
         os.path.basename(__file__).split('.')[0]),
         format='%(asctime)s %(message)s',
          datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG
@@ -286,6 +288,7 @@ def main():
     '''
     get_logger()
 
+    os.chdir(WORKING_DIRECTORY)
     s3_prod_client = get_prod_client()
 
 
