@@ -108,7 +108,8 @@ def get_prod_client():
 
 
 
-def upload_html_file(s3_prod_client):
+def upload_html_file(s3_prod_client, file_local_path,
+    s3_path_key):
     '''Uploads html files to s3 static website
 
         Parameters
@@ -116,6 +117,14 @@ def upload_html_file(s3_prod_client):
         s3_prod_client : client
             Boto3 client for connecting to the production s3
             bucket
+
+        local_path : str
+            relative path to the file we want to upload
+
+        s3_path_key : str
+            key and folder structure for uploading file from
+            local_path to s3
+
 
         Returns
         -------
@@ -163,7 +172,7 @@ def iterate_html(relative_dir="docs/v1/"):
         """
             Iterating over each subdirectory
             with the intent of checking for
-            markdown files with extension .html
+            text files with extension .html
         """
         for doc_directory in dirs:
             relative_path = relative_dir + doc_directory + "/"
@@ -173,11 +182,13 @@ def iterate_html(relative_dir="docs/v1/"):
             """
                 Gets the html file
             """
-            for markdown_file in glob.glob(relative_path + "*.html"):
+            for html_file in glob.glob(relative_path + "*.html"):
                 logging.info("Markdown file: ")
-                logging.info(markdown_file)
-                print(markdown_file)
-                print(relative_path)
+                logging.info(html_file)
+                upload_html_file
+                print(html_file)
+                print(os.path.basename(html_file).split('.')[0])
+                print(doc_directory)
 
 
 
