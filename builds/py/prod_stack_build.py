@@ -134,7 +134,7 @@ def upload_html_file(s3_prod_client, file_local_path,
         Raises
         ------
     '''
-
+    import pdb; pdb.set_trace()
     s3_prod_client.upload_file(
         Filename=file_local_path,
         Bucket='ryanrigato.com',
@@ -145,7 +145,7 @@ def upload_html_file(s3_prod_client, file_local_path,
     )
     logging.info("Uploaded the html file")
 
-def iterate_html(relative_dir="docs/v1/"):
+def iterate_html(relative_dir="docs/v1/", s3_prod_client=None):
     '''Iterates over all html projects within a version
 
         Parameters
@@ -153,6 +153,11 @@ def iterate_html(relative_dir="docs/v1/"):
         relative_dir : str
             Directory representing the relative placeholder
             for html files
+
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
+
 
         Returns
         -------
@@ -183,15 +188,30 @@ def iterate_html(relative_dir="docs/v1/"):
 
             """
                 Gets the html file
+                html_file will include relative_path
+                as well
+                Ex:
+                docs/v1/standards/standards.html
             """
             for html_file in glob.glob(relative_path + "*.html"):
                 logging.info("Markdown file: ")
                 logging.info(html_file)
                 #upload_html_file(s3_prod_client)
 
-                print(html_file)
-                print(os.path.basename(html_file).split('.')[0])
-                print(doc_directory)
+                """
+                    Checking that the name of the html file is
+                    equal to the name of one directory up
+                    Ex:
+                    docs/v1/standards/standards.html
+                    standards from .html is equal to standards
+                    directory
+                """
+                if (os.path.basename(html_file).split('.')[0]
+                    == doc_directory):
+                    upload_html_file(
+                        s3_prod_client=s3_prod_client,
+                        file_local_path=html_file,
+                        s3_path_key=html_file)
 
 
 
@@ -207,7 +227,7 @@ def iterate_html(relative_dir="docs/v1/"):
 
 
 
-def iterate_versions(docs_dir="docs/", s3_prod_client):
+def iterate_versions(docs_dir="docs/", s3_prod_client=None):
     '''Calls iterate_html for each version
 
         Parameters
