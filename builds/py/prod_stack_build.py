@@ -118,12 +118,14 @@ def upload_html_file(s3_prod_client, file_local_path,
             Boto3 client for connecting to the production s3
             bucket
 
-        local_path : str
+        file_local_path : str
             relative path to the file we want to upload
+            ex: docs/v1/standards/standards.html
 
         s3_path_key : str
             key and folder structure for uploading file from
             local_path to s3
+            ex: docs/v1/standards/standards.html
 
 
         Returns
@@ -134,9 +136,9 @@ def upload_html_file(s3_prod_client, file_local_path,
     '''
 
     s3_prod_client.upload_file(
-        Filename='docs/v1/standards/standards.md',
+        Filename=file_local_path,
         Bucket='ryanrigato.com',
-        Key='docs/v1/standards/standards.md',
+        Key=s3_path_key,
         ExtraArgs={
             "ContentType":"text/html"
         }
@@ -185,7 +187,8 @@ def iterate_html(relative_dir="docs/v1/"):
             for html_file in glob.glob(relative_path + "*.html"):
                 logging.info("Markdown file: ")
                 logging.info(html_file)
-                upload_html_file
+                #upload_html_file(s3_prod_client)
+
                 print(html_file)
                 print(os.path.basename(html_file).split('.')[0])
                 print(doc_directory)
@@ -204,7 +207,7 @@ def iterate_html(relative_dir="docs/v1/"):
 
 
 
-def iterate_versions(docs_dir="docs/"):
+def iterate_versions(docs_dir="docs/", s3_prod_client):
     '''Calls iterate_html for each version
 
         Parameters
@@ -212,6 +215,10 @@ def iterate_versions(docs_dir="docs/"):
         docs_dir : str
             Directory where all versions of documentation
             are stored
+
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
 
         Returns
         -------
@@ -271,7 +278,8 @@ def main():
         the development stage
     """
 
-    upload_html_file(s3_prod_client)
 
-    iterate_versions()
+
+    iterate_versions(docs_dir="docs/",
+        s3_prod_client=s3_prod_client)
 main()
