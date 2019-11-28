@@ -104,6 +104,9 @@ def get_prod_client():
 
     return(s3_prod_client)
 
+
+
+
 def upload_html_file(s3_prod_client):
     '''Uploads html files to s3 static website
 
@@ -130,6 +133,99 @@ def upload_html_file(s3_prod_client):
     )
     logging.info("Uploaded the html file")
 
+def iterate_markdown(relative_dir="docs/v1/"):
+    '''Iterates over all markdown projects within a version
+
+        Parameters
+        ----------
+        relative_dir : str
+            Directory representing the relative placeholder
+            for markdown files
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            AssertionError is raised the proper files are
+            not found
+    '''
+
+    """
+        dirs, files will be a list of directories/files
+        in the relative_dir folders
+    """
+    for root, dirs, files in os.walk(relative_dir):
+        logging.info("Directories found: ")
+        logging.info(dirs)
+        """
+            Iterating over each subdirectory
+            with the intent of checking for
+            markdown files with extension .md
+        """
+        for doc_directory in dirs:
+            relative_path = relative_dir + doc_directory + "/"
+            logging.info("Evaluating relative path: ")
+            logging.info(relative_path)
+
+            """
+                Gets the markdown file
+            """
+            for markdown_file in glob.glob(relative_path + "*.md"):
+                logging.info("Markdown file: ")
+                logging.info(markdown_file)
+                showdown_subprocess(markdown_file)
+
+                template_wrapper(markdown_file)
+
+
+
+    logging.info("config file after modification: ")
+
+    """
+    with open(webpage_config_dir, 'w') as modified_config:
+        json.dump(original_file, modified_config, indent=4)
+    """
+
+    logging.info("Wrote the new cognito credientials to the config file")
+
+
+
+def iterate_versions(docs_dir="docs/"):
+    '''Calls iterate_markdown for each version
+
+        Parameters
+        ----------
+        docs_dir : str
+            Directory where all versions of documentation
+            are stored
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            AssertionError is raised if the version naming
+            convention is not followed
+    '''
+    all_dirs = os.listdir(docs_dir)
+
+    """
+        Iterating over all versions in the
+        documentation directory
+        this will pass
+        /docs/v1/
+        /docs/v2/
+        etc..
+        to iterate_markdown
+    """
+    for version_dir in all_dirs:
+        logging.info("Iterating version ")
+        logging.info(docs_dir + version_dir + "/")
+        iterate_markdown(
+            docs_dir + version_dir + "/")
 
 
 def main():
