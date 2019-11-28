@@ -134,7 +134,6 @@ def upload_html_file(s3_prod_client, file_local_path,
         Raises
         ------
     '''
-    import pdb; pdb.set_trace()
     s3_prod_client.upload_file(
         Filename=file_local_path,
         Bucket='ryanrigato.com',
@@ -264,7 +263,8 @@ def iterate_versions(docs_dir="docs/", s3_prod_client=None):
         logging.info("Iterating version ")
         logging.info(docs_dir + version_dir + "/")
         iterate_html(
-            docs_dir + version_dir + "/")
+            relative_dir = docs_dir + version_dir + "/",
+            s3_prod_client=s3_prod_client)
 
 
 def main():
