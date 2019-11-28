@@ -38,7 +38,9 @@ phases:
         --role-session-name prod-build
 
       - printenv
-      - ls -ld $CODEBUILD_SRC_DIR_BuildDev
+      - cd $CODEBUILD_SRC_DIR_BuildDev
+      - ls -l
+      - cd $CODEBUILD_SRC_DIR
 
       - python builds/py/prod_stack_build.py
       #merges dev branch into master now that all tests have
