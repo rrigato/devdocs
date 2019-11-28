@@ -31,7 +31,6 @@ phases:
       - echo $BUILD_ENVIRONMENT
       - echo Entered the build phase...
       - echo Build started on `date`
-      - printenv
 
       - aws sts get-caller-identity
       - aws sts assume-role --role-arn arn:aws:iam::972323850308:role/prodPersonalWebsiteCrossAccountRo-CrossAccountRole-1CTVWLAH998J4
@@ -54,9 +53,10 @@ phases:
         ##############################################
       - cd $CODEBUILD_SRC_DIR_BuildDev
 
+      - ls -l
       #python script needs to be run where the
       #built html files are sitting
-      - python builds/py/prod_stack_build.py
+      - python $CODEBUILD_SRC_DIR/builds/py/prod_stack_build.py
 
       #moving back to original code repo location
       - cd $CODEBUILD_SRC_DIR
