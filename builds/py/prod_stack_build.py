@@ -3,9 +3,11 @@ import glob
 import json
 import logging
 import os
-LOG_DIRECTORY = os.environ.get("$CODEBUILD_SRC_DIR")
+"""
+"""
+LOG_DIRECTORY = os.environ.get("CODEBUILD_SRC_DIR")
 
-WORKING_DIRECTORY = os.environ.get("$CODEBUILD_SRC_DIR_BuildDev")
+WORKING_DIRECTORY = os.environ.get("CODEBUILD_SRC_DIR_BuildDev")
 
 def get_logger():
     '''Returns a logger
@@ -288,6 +290,11 @@ def main():
     '''
     get_logger()
 
+    """
+        Changing working directory to where the artifacts
+        built by CodeBuild in the dev stage are
+        located
+    """
     os.chdir(WORKING_DIRECTORY)
     s3_prod_client = get_prod_client()
 
