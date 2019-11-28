@@ -134,6 +134,12 @@ def upload_html_file(s3_prod_client, file_local_path,
         Raises
         ------
     '''
+    logging.info("Logging local file ")
+    logging.info(file_local_path)
+
+    logging.info("To the following s3 location: ")
+    logging.info(s3_path_key)
+    
     s3_prod_client.upload_file(
         Filename=file_local_path,
         Bucket='ryanrigato.com',
