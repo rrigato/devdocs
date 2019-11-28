@@ -119,16 +119,16 @@ def upload_html_file(s3_prod_client):
         Raises
         ------
     '''
-    import pdb; pdb.set_trace()
 
     s3_prod_client.upload_file(
-        Filename='docs/v1/standards/standards.html',
+        Filename='docs/v1/standards/standards.md',
         Bucket='ryanrigato.com',
-        Key='docs/v1/standards/standards.html',
+        Key='docs/v1/standards/standards.md',
         ExtraArgs={
             "ContentType":"text/html"
         }
     )
+    logging.info("Uploaded the html file")
 
 
 
@@ -163,4 +163,6 @@ def main():
         the development stage
     """
     artifact_dependency = os.environ.get('')
+
+    upload_html_file(s3_prod_client)
 main()
