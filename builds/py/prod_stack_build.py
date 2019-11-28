@@ -1,4 +1,5 @@
 import boto3
+import glob
 import json
 import logging
 import os
@@ -133,14 +134,14 @@ def upload_html_file(s3_prod_client):
     )
     logging.info("Uploaded the html file")
 
-def iterate_markdown(relative_dir="docs/v1/"):
-    '''Iterates over all markdown projects within a version
+def iterate_html(relative_dir="docs/v1/"):
+    '''Iterates over all html projects within a version
 
         Parameters
         ----------
         relative_dir : str
             Directory representing the relative placeholder
-            for markdown files
+            for html files
 
         Returns
         -------
@@ -162,7 +163,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
         """
             Iterating over each subdirectory
             with the intent of checking for
-            markdown files with extension .md
+            markdown files with extension .html
         """
         for doc_directory in dirs:
             relative_path = relative_dir + doc_directory + "/"
@@ -170,14 +171,14 @@ def iterate_markdown(relative_dir="docs/v1/"):
             logging.info(relative_path)
 
             """
-                Gets the markdown file
+                Gets the html file
             """
-            for markdown_file in glob.glob(relative_path + "*.md"):
+            for markdown_file in glob.glob(relative_path + "*.html"):
                 logging.info("Markdown file: ")
                 logging.info(markdown_file)
-                showdown_subprocess(markdown_file)
+                print(markdown_file)
+                print(relative_path)
 
-                template_wrapper(markdown_file)
 
 
 
@@ -193,7 +194,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
 
 
 def iterate_versions(docs_dir="docs/"):
-    '''Calls iterate_markdown for each version
+    '''Calls iterate_html for each version
 
         Parameters
         ----------
@@ -219,12 +220,12 @@ def iterate_versions(docs_dir="docs/"):
         /docs/v1/
         /docs/v2/
         etc..
-        to iterate_markdown
+        to iterate_html
     """
     for version_dir in all_dirs:
         logging.info("Iterating version ")
         logging.info(docs_dir + version_dir + "/")
-        iterate_markdown(
+        iterate_html(
             docs_dir + version_dir + "/")
 
 
@@ -258,7 +259,8 @@ def main():
         ./docs directory after everything was built in
         the development stage
     """
-    artifact_dependency = os.environ.get('')
 
     upload_html_file(s3_prod_client)
+
+    iterate_versions()
 main()
