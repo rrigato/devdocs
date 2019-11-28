@@ -81,11 +81,16 @@ phases:
 
       - aws cloudformation delete-stack --stack-name dev-devdocs-webpage
 
+      - ls -l
 
 
 artifacts:
   files:
-    - ./logs/*
-    - ./docs/*
-  name: test-dependency
-  discard-paths: false
+    ##########################
+    #Gets all subdirectories under docs
+    #recursively
+    #logs will only take the files
+    #under that directory
+    ##########################
+    - 'docs/**/*'
+    - 'logs/*'
