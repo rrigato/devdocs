@@ -139,7 +139,7 @@ def upload_html_file(s3_prod_client, file_local_path,
 
     logging.info("To the following s3 location: ")
     logging.info(s3_path_key)
-    
+
     s3_prod_client.upload_file(
         Filename=file_local_path,
         Bucket='ryanrigato.com',
@@ -287,23 +287,6 @@ def main():
     get_logger()
 
     s3_prod_client = get_prod_client()
-
-    """
-        According to this documentation:
-
-        https://docs.aws.amazon.com/codebuild/latest/userguide/sample-pipeline-multi-input-output.html
-
-        Any CodeBuild project that gets passed multiple
-        input artifacts gets the secondary artifact directory location
-        stored in an environment variable using the following
-        naming convention:
-        $CODEBUILD_SRC_DIR_<yourInputArtifactName>
-
-        $CODEBUILD_SRC_DIR_BuildDev contains the output
-        ./docs directory after everything was built in
-        the development stage
-    """
-
 
 
     iterate_versions(docs_dir="docs/",
