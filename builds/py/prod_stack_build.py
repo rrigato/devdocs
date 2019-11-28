@@ -3,9 +3,9 @@ import glob
 import json
 import logging
 import os
-LOG_DIRECTORY = "$CODEBUILD_SRC_DIR"
+LOG_DIRECTORY = os.environ.get("$CODEBUILD_SRC_DIR")
 
-WORKING_DIRECTORY = "$CODEBUILD_SRC_DIR_BuildDev"
+WORKING_DIRECTORY = os.environ.get("$CODEBUILD_SRC_DIR_BuildDev")
 
 def get_logger():
     '''Returns a logger
