@@ -126,8 +126,34 @@ class WebappLive(unittest.TestCase):
 
 
 
-    def test_standards_project(self):
+    def test_standards_project(self, domain_url=HOMEPAGE_URL):
         '''Tests that the /docs/v1/standards/standards.html is alive
+
+            Parameters
+            ----------
+                domain_url : str
+                    Url string to send the request to
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        logging.info("Testing if the standards webpage is alive")
+
+        standards_test = (
+            domain_url + "/docs/v1/standards/standards.html"
+        )
+        logging.info(standards_test)
+
+        r = requests.get(standards_test)
+
+        self.assertEqual(r.status_code, 200)
+        logging.info("The standards page is live")
+
+
+    def test_homepage_live(self):
+        '''Testing different schemes to call the same homepage
 
             Parameters
             ----------
@@ -139,7 +165,7 @@ class WebappLive(unittest.TestCase):
             Raises
             ------
         '''
-        logging.info("Testing if the website is alive")
+        logging.info("Testing if the standards webpage is alive")
 
         standards_test = (
             HOMEPAGE_URL + "/docs/v1/standards/standards.html"
