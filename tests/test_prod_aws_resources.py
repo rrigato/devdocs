@@ -206,8 +206,9 @@ class WebappLive(unittest.TestCase):
             bsObj = BeautifulSoup(homepage_request.text,
                 "html.parser")
 
+            logging.info("Homepage call was redirected")
 
-            import pdb; pdb.set_trace()
+
             """
                 Testing the text value of an html link
             """
@@ -216,9 +217,16 @@ class WebappLive(unittest.TestCase):
                 {"href":"https://github.com/rrigato"}).text,
                 "Check out my GitHub account"
             )
-            logging.info("Homepage call was redirected")
 
+            """
+                Testing that we have 3 info boxes
+            """
+            self.assertEqual(
+                len(bsObj.findAll("div", {"id":"info"})),
+                3
+            )
 
+            logging.info("Validated the content of the homepage")
 
             """
                 Request started as http
