@@ -61,6 +61,9 @@ phases:
       #moving back to original code repo location
       - cd $CODEBUILD_SRC_DIR
 
+      #tests that the prod website was deployed to
+      #successfully
+      - python tests/test_prod_aws_resources.py
 
       #merges dev branch into master now that all tests have
       #been passed and artifacts created
