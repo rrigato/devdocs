@@ -152,8 +152,8 @@ class WebappLive(unittest.TestCase):
         logging.info("The standards page is live")
 
 
-    def test_homepage_live(self):
-        '''Testing different schemes to call the same homepage
+    def test_homepage_http(self):
+        '''Testing that webpage is live under http scheme
 
             Parameters
             ----------
@@ -168,20 +168,53 @@ class WebappLive(unittest.TestCase):
             "http://ryanrigato.com",
             "http://www.ryanrigato.com"
         ]
-        logging.info("Testing if the homepage is alive")
+        logging.info("Testing if the http homepage is alive")
 
-        import pdb; pdb.set_trace()
-        logging.info("")
+
 
         """
             Makes sure that http is redirected
             to more secure https
         """
         for domain_name in REDIRECT_DOMAINS:
-            home_page_request = requests.get("http://ryanrigato.com")
+            logging.info("Domain name: ")
+            logging.info(domain_name)
 
-        self.assertEqual(r.status_code, 200)
-        logging.info("The home page is live across many scheme")
+            homepage_request = requests.get(domain_name)
+            """
+                Tests that the request was successfull
+            """
+            self.assertEqual(
+                homepage_request.status_code, 200
+            )
+
+            logging.info("Homepage call successful")
+            """
+                Ensuring the original request got a 301
+                redirect
+                .history = list of request history
+            """
+            self.assertEqual(
+                homepage_request.history[0].status_code,
+                301
+            )
+
+            logging.info("Homepage call was redirected")
+
+
+
+            """
+                Request started as http
+                This check ensures it ended up as
+                https
+            """
+            self.assertEqual(
+                homepage_request.url[0:5],
+                'https'
+            )
+            logging.info("The request was upgraded to https")
+
+
 
 if __name__ == '__main__':
     '''
