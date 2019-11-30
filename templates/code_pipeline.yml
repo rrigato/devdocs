@@ -21,6 +21,11 @@ Parameters:
     Default: dev
 
 Resources:
+  #################################
+  #Everything from the InputArtifact
+  #and OutputArtifact for all CodeBuild stages
+  #will be stored in this s3 bucket
+  #################################
   ArtifactStoreBucket:
     Type: AWS::S3::Bucket
     Properties:
@@ -71,7 +76,7 @@ Resources:
       Tags:
         -
           Key: stage
-          Value: dev
+          Value: prod
         -
           Key: retain
           Value: "false"
