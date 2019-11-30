@@ -199,6 +199,23 @@ class WebappLive(unittest.TestCase):
                 301
             )
 
+            """
+                Getting a BeautifulSoup object to
+                test content of the html page
+            """
+            bsObj = BeautifulSoup(homepage_request.text,
+                "html.parser")
+
+
+            import pdb; pdb.set_trace()
+            """
+                Testing the text value of an html link
+            """
+            self.assertEqual(
+                bsObj.find("a",
+                {"href":"https://github.com/rrigato"}).text,
+                "Check out my GitHub account"
+            )
             logging.info("Homepage call was redirected")
 
 
