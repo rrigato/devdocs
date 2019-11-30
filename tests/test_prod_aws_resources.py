@@ -152,31 +152,36 @@ class WebappLive(unittest.TestCase):
         logging.info("The standards page is live")
 
 
-    @unittest.skip("Skipping for now")
     def test_homepage_live(self):
         '''Testing different schemes to call the same homepage
 
             Parameters
             ----------
-                request_url : str
-                    Url string to send the request to
+
             Returns
             -------
 
             Raises
             ------
         '''
-        logging.info("Testing if the standards webpage is alive")
+        REDIRECT_DOMAINS = [
+            "http://ryanrigato.com",
+            "http://www.ryanrigato.com"
+        ]
+        logging.info("Testing if the homepage is alive")
 
-        standards_test = (
-            HOMEPAGE_URL + "/docs/v1/standards/standards.html"
-        )
-        logging.info(standards_test)
+        import pdb; pdb.set_trace()
+        logging.info("")
 
-        r = requests.get(standards_test)
+        """
+            Makes sure that http is redirected
+            to more secure https
+        """
+        for domain_name in REDIRECT_DOMAINS:
+            home_page_request = requests.get("http://ryanrigato.com")
 
         self.assertEqual(r.status_code, 200)
-        logging.info("The standards page is live")
+        logging.info("The home page is live across many scheme")
 
 if __name__ == '__main__':
     '''
