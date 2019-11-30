@@ -3,9 +3,7 @@ Description: Creates a CodePipeline that uses CodeBuild and CodeDeploy for a CI/
 Parameters:
 
   ProdCrossAccountArn:
-    Default:         -
-              Key: project
-              Value: !Ref ProjectName
+    Default: arn/placeholder
     Description:
         Arn of the role that will be used to update prod resources
     Type: String
