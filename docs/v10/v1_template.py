@@ -14,18 +14,26 @@ HTML_TEMPLATE = """
     *left side of the page
     ****************/
     #left-panel {{
-        width: 25%;
+        width: 20%;
         min-height:100%;
         position:fixed;
         height:100%;
-        font-size: 12px;
+        font-size:large;
+        background-color: lightgray;
+    }}
+    /*
+    *Title and body of table of contents
+    *inherit font size from left-panel
+    */
+    .is-info{{
+        font-size:inherit;
     }}
 
 
     #docs-wrapper {{
-        right: 75%;
-        margin-left: 25%;
-        font-size: 22px;
+        right: 80%;
+        margin-left: 20%;
+        font-size: x-large;
     }}
     /*****************
     *Just the html output by showdownjs
@@ -40,13 +48,35 @@ HTML_TEMPLATE = """
         height:100%;
 
     }}
+    /*
+        Used to make code block more readable
+    */
+    code{{
+        font-size:x-large;
+        /*
+            Using important here isnt great, but the
+            code block in the import template is using it as
+            well plus there isnt an easy way to add a class to
+            showdown
+            Making the line-height:1.6 really improves readability
+        */
+        line-height:1.6 !important;
+    }}
+
+    #alert-override{{
+
+        font-color: black;
+        margin-left:5%;
+        margin-top:8%;
+
+    }}
     </style>
 
 
 </head>
 <body>
 <div id="left-panel">
-    <div class="alert is-info">
+    <div id="alert-override" >
   <p class="alert-title">
     <!--Info symbol-->
     <span class="docon docon-status-error-outline"></span>
@@ -58,11 +88,19 @@ HTML_TEMPLATE = """
 </div>
 </div>
 
-    <div id= "docs-wrapper" class="column theme theme-high-contrast">
+    <div id= "docs-wrapper" class="column theme theme-dark">
 
             <div id="showdownjs-output" class="content">
                 {showdown_output}
             </div>
+    </div>
+    <!--
+    Custom Footer to provide some room at bottom of page
+    Potientially add a watermark/copyright in the future
+    -->
+    <div id="markdown-footer" class="column theme theme-dark">
+        <br>
+        <br>
     </div>
 </body>
 
