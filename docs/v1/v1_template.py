@@ -18,8 +18,16 @@ HTML_TEMPLATE = """
         min-height:100%;
         position:fixed;
         height:100%;
+        font-size:large;
     }}
-
+    /*
+    *Title and body of table of contents
+    *inherit font size from left-panel
+    */
+    .is-info{{
+        font-size:inherit;
+    }}
+    
 
     #docs-wrapper {{
         right: 80%;
