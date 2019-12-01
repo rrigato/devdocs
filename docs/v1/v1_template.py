@@ -94,7 +94,14 @@ HTML_TEMPLATE = """
                 {showdown_output}
             </div>
     </div>
-    
+    <!--
+    Custom Footer to provide some room at bottom of page
+    Potientially add a watermark/copyright in the future
+    -->
+    <div id="markdown-footer" class="column theme theme-dark">
+        <br>
+        <br>
+    </div>
 </body>
 
     <script>
