@@ -18,7 +18,6 @@ HTML_TEMPLATE = """
         min-height:100%;
         position:fixed;
         height:100%;
-        font-size: x-large;
     }}
 
 
@@ -45,7 +44,11 @@ HTML_TEMPLATE = """
     */
     code{{
         font-size:x-large;
-        line-height:normal;
+        //Using important here isnt great, but the
+        //code block in the import template is using it as
+        //well plus there isnt an easy way to add a class to
+        //showdown
+        line-height:1.6 !important;
     }}
     </style>
 
