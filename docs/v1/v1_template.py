@@ -19,6 +19,7 @@ HTML_TEMPLATE = """
         position:fixed;
         height:100%;
         font-size:large;
+        background-color: lightgray;
     }}
     /*
     *Title and body of table of contents
@@ -61,13 +62,21 @@ HTML_TEMPLATE = """
         */
         line-height:1.6 !important;
     }}
+
+    #alert-override{{
+
+        font-color: black;
+        margin-left:5%;
+        margin-top:8%;
+
+    }}
     </style>
 
 
 </head>
 <body>
 <div id="left-panel">
-    <div class="alert is-info">
+    <div id="alert-override" >
   <p class="alert-title">
     <!--Info symbol-->
     <span class="docon docon-status-error-outline"></span>
@@ -85,6 +94,7 @@ HTML_TEMPLATE = """
                 {showdown_output}
             </div>
     </div>
+    
 </body>
 
     <script>
