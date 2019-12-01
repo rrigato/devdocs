@@ -40,6 +40,12 @@ HTML_TEMPLATE = """
         height:100%;
 
     }}
+    /*
+        Used to make code block more readable
+    */
+    code{
+        font-size:x-large;
+    };
     </style>
 
 
@@ -58,7 +64,7 @@ HTML_TEMPLATE = """
 </div>
 </div>
 
-    <div id= "docs-wrapper" class="column theme theme-high-contrast">
+    <div id= "docs-wrapper" class="column theme theme-dark">
 
             <div id="showdownjs-output" class="content">
                 {showdown_output}
