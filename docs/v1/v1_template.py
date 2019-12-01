@@ -27,7 +27,7 @@ HTML_TEMPLATE = """
     .is-info{{
         font-size:inherit;
     }}
-    
+
 
     #docs-wrapper {{
         right: 80%;
@@ -52,10 +52,13 @@ HTML_TEMPLATE = """
     */
     code{{
         font-size:x-large;
-        //Using important here isnt great, but the
-        //code block in the import template is using it as
-        //well plus there isnt an easy way to add a class to
-        //showdown
+        /*
+            Using important here isnt great, but the
+            code block in the import template is using it as
+            well plus there isnt an easy way to add a class to
+            showdown
+            Making the line-height:1.6 really improves readability
+        */
         line-height:1.6 !important;
     }}
     </style>
