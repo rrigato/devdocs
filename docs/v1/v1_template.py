@@ -14,18 +14,18 @@ HTML_TEMPLATE = """
     *left side of the page
     ****************/
     #left-panel {{
-        width: 25%;
+        width: 20%;
         min-height:100%;
         position:fixed;
         height:100%;
-        font-size: 12px;
+        font-size: x-large;
     }}
 
 
     #docs-wrapper {{
-        right: 75%;
-        margin-left: 25%;
-        font-size: 22px;
+        right: 80%;
+        margin-left: 20%;
+        font-size: x-large;
     }}
     /*****************
     *Just the html output by showdownjs
@@ -43,9 +43,10 @@ HTML_TEMPLATE = """
     /*
         Used to make code block more readable
     */
-    code{
+    code{{
         font-size:x-large;
-    };
+        line-height:normal;
+    }}
     </style>
 
 
