@@ -9,6 +9,8 @@ HTML_TEMPLATE = """
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
 
+
+    @media only screen and (min-width: 500px) {
     /***************
     *Info panel on the
     *left side of the page
