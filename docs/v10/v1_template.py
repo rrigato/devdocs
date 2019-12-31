@@ -9,17 +9,31 @@ HTML_TEMPLATE = """
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
 
+
     /***************
-    *Info panel on the
-    *left side of the page
+    *Hiding the left info table of contents
+    *if the screen is less than 400 px wide
     ****************/
-    #left-panel {{
-        width: 20%;
-        min-height:100%;
-        position:fixed;
-        height:100%;
-        font-size:large;
-        background-color: lightgray;
+    @media only screen and (min-width: 400px) {{
+        /***************
+        *Info panel on the
+        *left side of the page
+        ****************/
+        #left-panel {{
+            width: 20%;
+            min-height:100%;
+            position:fixed;
+            height:100%;
+            font-size:large;
+            background-color: lightgray;
+        }}
+
+        #docs-wrapper {{
+            right: 80%;
+            margin-left: 20%;
+            font-size: x-large;
+        }}
+
     }}
     /*
     *Title and body of table of contents
@@ -30,11 +44,7 @@ HTML_TEMPLATE = """
     }}
 
 
-    #docs-wrapper {{
-        right: 80%;
-        margin-left: 20%;
-        font-size: x-large;
-    }}
+
     /*****************
     *Just the html output by showdownjs
     *
