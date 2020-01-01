@@ -10,14 +10,11 @@ HTML_TEMPLATE = """
     <style>
 
 
-    /***************
-    *Hiding the left info table of contents
-    *if the screen is less than 400 px wide
-    ****************/
-    @media only screen and (min-width: 400px) {{
+
         /***************
         *Info panel on the
         *left side of the page
+        *with table of contents
         ****************/
         #left-panel {{
             width: 20%;
@@ -26,6 +23,7 @@ HTML_TEMPLATE = """
             height:100%;
             font-size:large;
             background-color: lightgray;
+            display: inline;
         }}
 
         #docs-wrapper {{
@@ -34,6 +32,20 @@ HTML_TEMPLATE = """
             font-size: x-large;
         }}
 
+    /***************
+    *Hiding the left info table of contents
+    *if the width of the screen is 750px or
+    *less
+    ****************/
+    @media screen and (max-width: 750px) {{
+
+        #left-panel {{
+            display: none;
+        }}
+        #docs-wrapper {{
+            right: 100%;
+            margin-left: 0%;
+        }}
     }}
     /*
     *Title and body of table of contents

@@ -34,10 +34,10 @@ HTML_TEMPLATE = """
 
     /***************
     *Hiding the left info table of contents
-    *if the width of the screen is 550px or
+    *if the width of the screen is 750px or
     *less
     ****************/
-    @media screen and (max-width: 550px) {{
+    @media screen and (max-width: 750px) {{
 
         #left-panel {{
             display: none;
