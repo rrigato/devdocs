@@ -9,6 +9,12 @@ HTML_TEMPLATE = """
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
 
+    /***************
+    *Defaults to not having the table of contents
+    ****************/
+    #left-panel {{
+        display: none;
+    }}
 
     /***************
     *Hiding the left info table of contents
