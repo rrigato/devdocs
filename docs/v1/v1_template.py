@@ -12,9 +12,9 @@ HTML_TEMPLATE = """
 
     /***************
     *Hiding the left info table of contents
-    *if the screen is less than 400 px wide
+    *if the screen is less than 550 px wide
     ****************/
-    @media only screen and (min-width: 400px) {{
+    @media only screen and (min-width: 550px) {{
         /***************
         *Info panel on the
         *left side of the page
