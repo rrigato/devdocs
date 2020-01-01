@@ -9,18 +9,8 @@ HTML_TEMPLATE = """
     <link rel="stylesheet" href="https://static.docs.com/ui/latest/site/en-us/styles/site-ltr.css">
     <style>
 
-    /***************
-    *Defaults to not having the table of contents
-    ****************/
-    #left-panel {{
-        display: none;
-    }}
 
-    /***************
-    *Hiding the left info table of contents
-    *if the screen is less than 550 px wide
-    ****************/
-    @media only screen and (min-width: 550px) {{
+
         /***************
         *Info panel on the
         *left side of the page
@@ -32,6 +22,7 @@ HTML_TEMPLATE = """
             height:100%;
             font-size:large;
             background-color: lightgray;
+            display: inline;
         }}
 
         #docs-wrapper {{
@@ -39,6 +30,18 @@ HTML_TEMPLATE = """
             margin-left: 20%;
             font-size: x-large;
         }}
+
+    /***************
+    *Hiding the left info table of contents
+    *if the screen is less than 550 px wide
+    ****************/
+    @media screen and (max-width: 550px) {{
+    /***************
+    *Defaults to not having the table of contents
+    ****************/
+    #left-panel {{
+        display: none;
+    }}
 
     }}
     /*
