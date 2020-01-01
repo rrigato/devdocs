@@ -14,6 +14,7 @@ HTML_TEMPLATE = """
         /***************
         *Info panel on the
         *left side of the page
+        *with table of contents
         ****************/
         #left-panel {{
             width: 20%;
@@ -33,16 +34,18 @@ HTML_TEMPLATE = """
 
     /***************
     *Hiding the left info table of contents
-    *if the screen is less than 550 px wide
+    *if the width of the screen is 550px or
+    *less
     ****************/
     @media screen and (max-width: 550px) {{
-    /***************
-    *Defaults to not having the table of contents
-    ****************/
-    #left-panel {{
-        display: none;
-    }}
 
+        #left-panel {{
+            display: none;
+        }}
+        #docs-wrapper {{
+            right: 100%;
+            margin-left: 0%;
+        }}
     }}
     /*
     *Title and body of table of contents
