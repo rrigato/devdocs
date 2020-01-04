@@ -282,7 +282,18 @@ class MarkdownLogic(unittest.TestCase):
             self.assertTrue(
                 "html_template.py" in os.listdir(next_dir)
             )
+            """
+                Getting all files in the version directory that end
+                with .py
+                There should only be one python file per documetnation
+                directory
 
+            """
+            py_files = ([all_files for all_files
+                in os.listdir(next_dir)
+                if all_files[-3:] =='.py' ])
+
+            self.assertEqual(len(py_files), 1)
 
 
 #for root, dirs, files in os.walk(relative_dir):
