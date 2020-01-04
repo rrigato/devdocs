@@ -242,10 +242,13 @@ class MarkdownLogic(unittest.TestCase):
                     project_name=project_name
                 )
 
-    def test_markdown_convention(self):
+    def test_html_template(self, docs_dir="docs/"):
         '''Tests that each version has an html template
+
             Parameters
             ----------
+            docs_dir : str
+                relative path to documentation directory
 
             Returns
             -------
@@ -253,6 +256,7 @@ class MarkdownLogic(unittest.TestCase):
             Raises
             ------
         '''
+        import importlib
 
         """
             dirs gets all directories in
@@ -265,30 +269,14 @@ class MarkdownLogic(unittest.TestCase):
             logging.info("docs directory: ")
             logging.info(next_dir)
 
+            import pdb; pdb.set_trace()
+            self.assertTrue(
+                "html_template.py" in os.listdir(next_dir)
+            )
 
 
-            """
-                Iterating over each version
-                /docs/v1/
-                /docs/v2/
-                etc.
-            """
-            for project_name in os.listdir(next_dir):
 
-                """
-                Checking if the subdirectories under
-                the version number are a project
-                """
-                potential_project = os.path.join(
-                    docs_dir, ver_name, project_name)
-                logging.info("Project directory: ")
-                logging.info(potential_project)
-                project_result = self.check_project_value(
-                    potential_project=potential_project,
-                    project_name=project_name
-                )
-
-for root, dirs, files in os.walk(relative_dir):
+#for root, dirs, files in os.walk(relative_dir):
 if __name__ == '__main__':
     '''
     parser = argparse.ArgumentParser(description='Process some integers.')
