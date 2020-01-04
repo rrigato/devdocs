@@ -12,7 +12,7 @@ WORKING_DIRECTORY = os.getcwd()
 os.sys.path.append(WORKING_DIRECTORY)
 #Needs to be run after the current working directory is
 #added to path
-from docs.v1.v1_template import HTML_TEMPLATE
+
 
 def get_logger():
     '''Returns a logger
