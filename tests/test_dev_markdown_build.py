@@ -81,7 +81,6 @@ class MarkdownLogic(unittest.TestCase):
             Raises
             ------
         '''
-        from docs.v1.v1_template import HTML_TEMPLATE
         from pathlib import Path
 
 
