@@ -22,7 +22,7 @@ HTML_TEMPLATE = """
             position:fixed;
             height:100%;
             font-size:large;
-            background-color: lightgray;
+            background-color: darkturquoise;
             display: inline;
         }}
 
