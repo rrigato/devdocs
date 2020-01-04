@@ -265,11 +265,20 @@ class MarkdownLogic(unittest.TestCase):
         for ver_name in os.listdir(docs_dir):
 
 
+            """
+                next_dir will be like the following examples:
+                /docs/v1
+                /docs/v10
+                etc.
+            """
             next_dir = os.path.join(docs_dir, ver_name)
             logging.info("docs directory: ")
             logging.info(next_dir)
 
-            import pdb; pdb.set_trace()
+            """
+                Asserts that the string html_template.py
+                is in the list of files in docs/v1
+            """
             self.assertTrue(
                 "html_template.py" in os.listdir(next_dir)
             )
