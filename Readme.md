@@ -4,14 +4,29 @@ Serverless project for deploying markdown files to html web pages
 
 ### Adding New Markdown FAQ
 
+- Each docs version must have an html template file
+    - Example directory structure
+
+    ```
+    ├── docs
+    │   ├── v1
+    │   │   ├──html_template.py
+    │   │   |      
+    │   ├── v2
+    │   │   ├──html_template.py      
+    ```
+    - The template does not need to be the same across versions
+    - There must be only one html template per version and it must be called html_template.py
+    
 - Each header element will be translated to a header tag in html
     - the id of the header tag in html will correspond to the value of the header in Markdown
     - Ex:
     ```
-        ### markdown section
+        ### Markdown Section
 
-        <h3 id="markdownsection"></h3>
+        <h3 id="markdownsection">Markdown Section</h3>
     ```
+
 
 ### Code Pipeline Deployment process
 
