@@ -175,6 +175,27 @@ class WebappLive(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         logging.info("The standards page is live")
 
+    @unittest.skip("SKipping for now")
+    def test_toc(self):
+        '''Tests that the /toc/index.html is alive
+
+            Parameters
+            ----------
+                request_url : str
+                    Url string to send the request to
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        logging.info("Testing if the toc page is alive")
+
+        r = requests.get(
+            HOMEPAGE_URL + "/toc/index.html"
+        )
+        self.assertEqual(r.status_code, 200)
+        logging.info("The toc page is live")
 
 
     @unittest.skip("SKipping for now")
