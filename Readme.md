@@ -4,6 +4,12 @@ Serverless project for deploying markdown files to html web pages
 
 ### Adding New Markdown FAQ
 
+ - Directory of project name must be under the version
+
+ - Each directory under docs must start with the character 'v'
+    - 'v' must be followed by a numeric representing the version number of the documentation
+
+
 - Each docs version must have an html template file
     - Example directory structure
 
@@ -17,7 +23,7 @@ Serverless project for deploying markdown files to html web pages
     ```
     - The template does not need to be the same across versions
     - There must be only one html template per version and it must be called html_template.py
-    
+
 - Each header element will be translated to a header tag in html
     - the id of the header tag in html will correspond to the value of the header in Markdown
     - Ex:
@@ -26,7 +32,7 @@ Serverless project for deploying markdown files to html web pages
 
         <h3 id="markdownsection">Markdown Section</h3>
     ```
-
+ - Markdown file must match the name of the directory
 
 ### Code Pipeline Deployment process
 
@@ -151,12 +157,7 @@ structure:
 
 ```
 
-Rules:
- - Each directory under docs must start with the character 'v'
- - 'v' must be followed by a numeric representing the version number of the documentation
 
- - Directory of project name must be under the version
- - Markdown file must match the name of the directory
 
 Install and run documentation.js
 
