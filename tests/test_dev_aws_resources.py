@@ -176,8 +176,8 @@ class WebappLive(unittest.TestCase):
         logging.info("The standards page is live")
 
     @unittest.skip("SKipping for now")
-    def test_toc(self):
-        '''Tests that the /toc/index.html is alive
+    def test_apps(self):
+        '''Tests that the /apps/index.html is alive
 
             Parameters
             ----------
@@ -189,13 +189,13 @@ class WebappLive(unittest.TestCase):
             Raises
             ------
         '''
-        logging.info("Testing if the toc page is alive")
+        logging.info("Testing if the apps page is alive")
 
         r = requests.get(
-            HOMEPAGE_URL + "/toc/index.html"
+            HOMEPAGE_URL + "/apps/index.html"
         )
         self.assertEqual(r.status_code, 200)
-        logging.info("The toc page is live")
+        logging.info("The apps page is live")
 
 
     @unittest.skip("SKipping for now")
