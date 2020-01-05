@@ -32,7 +32,10 @@ Serverless project for deploying markdown files to html web pages
 
         <h3 id="markdownsection">Markdown Section</h3>
     ```
- - Markdown file must match the name of the directory
+- Markdown file must match the name of the directory
+
+- The description used under the header1 markdown tag will be used in the table of contents for all documentation
+    - Attempt to describe the project in less than 50 words
 
 ### Code Pipeline Deployment process
 
