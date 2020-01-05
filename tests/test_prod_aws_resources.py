@@ -318,6 +318,27 @@ class WebappLive(unittest.TestCase):
             )
             logging.info("The request was upgraded to https")
 
+    @unittest.skip("SKipping for now")
+    def test_apps(self):
+        '''Tests that the /apps/index.html is alive
+
+            Parameters
+            ----------
+                request_url : str
+                    Url string to send the request to
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        logging.info("Testing if the apps page is alive")
+
+        r = requests.get(
+            HOMEPAGE_URL + "/apps/index.html"
+        )
+        self.assertEqual(r.status_code, 200)
+        logging.info("The apps page is live")
 
 if __name__ == '__main__':
     '''
