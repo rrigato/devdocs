@@ -37,6 +37,9 @@ Serverless project for deploying markdown files to html web pages
 - The description used under the header1 markdown tag will be used in the table of contents for all documentation
     - Attempt to describe the project in less than 50 words
 
+### apps
+- app_template.py = HTML template that will be used to link to all auto-built documentation
+
 ### Code Pipeline Deployment process
 
 Below is a high level description of the automated CI/CD pipeline:
