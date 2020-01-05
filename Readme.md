@@ -2,6 +2,17 @@
 
 Serverless project for deploying markdown files to html web pages
 
+### Adding New Markdown FAQ
+
+- Each header element will be translated to a header tag in html
+    - the id of the header tag in html will correspond to the value of the header in Markdown
+    - Ex:
+    ```
+        ### markdown section
+
+        <h3 id="markdownsection"></h3>
+    ```
+
 ### Code Pipeline Deployment process
 
 Below is a high level description of the automated CI/CD pipeline:
