@@ -38,7 +38,7 @@ Serverless project for deploying markdown files to html web pages
     - Attempt to describe the project in less than 50 words
 
 ### apps
-- app_template.py = HTML template that will be used to link to all auto-built documentation
+- apps_template.py = HTML template that will be used to link to all auto-built documentation
 
 ### Code Pipeline Deployment process
 
