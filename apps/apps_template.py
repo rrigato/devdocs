@@ -5,8 +5,20 @@ example Developed By Yasser Mas:
 https://codepen.io/shaban07/pen/BxwqyR
 -->
 <head>
+
     <meta name="viewport"
     content="width=device-width, initial-scale=1">
+<!--
+    Linking to external libraries and css/js files locally
+-->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="apps_template.css">
+
+    <script type="text/javascript"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="apps_template.js"></script>
 </head>
 <body>
 <div class="container">
@@ -74,6 +86,5 @@ https://codepen.io/shaban07/pen/BxwqyR
 </body>
 
 </html>
-
 
 """
