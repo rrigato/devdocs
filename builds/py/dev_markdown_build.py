@@ -207,6 +207,15 @@ def scrape_built_html(markdown_path):
         ------
 
     '''
+    """
+        goes from this:
+        'docs/v10/standards/standards.md'
+
+        to a str like this:
+        'docs/v10/standards/standards.html'
+    """
+    built_html_file = (markdown_path.split('.')[0]
+        + ".html")
     import pdb; pdb.set_trace()
 
 def iterate_markdown(relative_dir="docs/v1/"):
