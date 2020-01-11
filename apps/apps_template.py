@@ -85,3 +85,13 @@ https://codepen.io/shaban07/pen/BxwqyR
 
 
 """
+
+
+ROW_TEMPLATE = """
+	<tr>
+		<td>{project_name}</td>
+		<td>{project_description}</td>
+
+		<td><a href="{href_link}">{link_name}</a></td>
+	</tr>
+""""
