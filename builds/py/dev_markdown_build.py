@@ -205,6 +205,17 @@ def iterate_markdown(relative_dir="docs/v1/"):
             AssertionError is raised the proper files are
             not found
     '''
+    """
+        formatted_apps_page = full html template
+        that lists all markdown apps
+
+        html_table_body = string that contains each
+        row of the html output table that will
+        be placed in the html_table string
+        specifier of formatted_apps_page
+    """
+    formatted_apps_page = APPS_HTML_TEMPLATE
+    html_table_body = ""
 
     """
         dirs, files will be a list of directories/files
@@ -231,7 +242,11 @@ def iterate_markdown(relative_dir="docs/v1/"):
                 logging.info(markdown_file)
                 showdown_subprocess(markdown_file)
 
+                """
+
+                """
                 template_wrapper(markdown_file)
+                import pdb; pdb.set_trace()
 
 
 
