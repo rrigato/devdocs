@@ -1,4 +1,4 @@
-
+from bs4 import BeautifulSoup
 from pathlib import Path
 import boto3
 import glob
@@ -10,9 +10,11 @@ import subprocess
 WORKING_DIRECTORY = os.getcwd()
 
 os.sys.path.append(WORKING_DIRECTORY)
+
 #Needs to be run after the current working directory is
 #added to path
-
+from apps.apps_template import APPS_HTML_TEMPLATE
+from apps.apps_template import ROW_TEMPLATE
 
 def get_logger():
     '''Returns a logger
