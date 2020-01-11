@@ -187,6 +187,28 @@ def template_wrapper(markdown_path, version='v1'):
 
     logging.info("Wrote the documentation html file")
 
+
+def scrape_built_html(markdown_path):
+    '''Scrapes the built html file to populate ROW_TEMPLATE
+        This function will take the project name and
+        project description from the a built html file
+        The information will be used to populate an index
+        of all built markdown projects
+
+        Parameters
+        ----------
+        markdown_path : str
+            path to the markdown file
+
+        Returns
+        -------
+
+        Raises
+        ------
+
+    '''
+    import pdb; pdb.set_trace()
+
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown projects within a version
 
@@ -246,7 +268,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
 
                 """
                 template_wrapper(markdown_file)
-                import pdb; pdb.set_trace()
+                scrape_built_html(markdown_file)
 
 
 
