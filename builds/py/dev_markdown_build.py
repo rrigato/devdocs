@@ -216,7 +216,14 @@ def scrape_built_html(markdown_path):
     """
     built_html_file = (markdown_path.split('.')[0]
         + ".html")
-    import pdb; pdb.set_trace()
+
+    """
+        Opening local html file for parsing
+    """
+    with open(built_html_file, "r") as html_file:
+        bsObj = BeautifulSoup(html_file, "html.parser")
+
+    return(ROW_TEMPLATE)
 
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown projects within a version
@@ -277,7 +284,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
 
                 """
                 template_wrapper(markdown_file)
-                scrape_built_html(markdown_file)
+                html_table_body += scrape_built_html(markdown_file)
 
 
 
