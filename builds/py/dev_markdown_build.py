@@ -202,6 +202,8 @@ def scrape_built_html(markdown_path):
 
         Returns
         -------
+        formatted_row : str
+            ROW_TEMPLATE populated with project information
 
         Raises
         ------
@@ -222,6 +224,20 @@ def scrape_built_html(markdown_path):
     """
     with open(built_html_file, "r") as html_file:
         bsObj = BeautifulSoup(html_file, "html.parser")
+
+        """
+            formatting the ROW_TEMPLATE
+            project_name= corresponds to h1 value
+            project_description= <p> tag from h1
+            href_link=html link
+            link_name=html link
+        """
+        formatted_row = ROW_TEMPLATE.format(
+            project_name=
+            project_description=
+            href_link="../" + built_html_file
+            link_name=
+        )
 
     return(ROW_TEMPLATE)
 
