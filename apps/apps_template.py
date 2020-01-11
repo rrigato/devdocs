@@ -94,4 +94,4 @@ ROW_TEMPLATE = """
 
 		<td><a href="{href_link}">{link_name}</a></td>
 	</tr>
-""""
+"""

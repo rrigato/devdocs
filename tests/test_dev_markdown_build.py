@@ -294,29 +294,29 @@ class MarkdownLogic(unittest.TestCase):
 
             self.assertEqual(len(py_files), 1)
 
-@unittest.skip("SKipping for now")
-def test_row_template(self):
-    '''Tests apps_template import of ROW_TEMPLATE
 
-        Parameters
-        ----------
+    def test_row_template(self):
+        '''Tests apps_template import of ROW_TEMPLATE
 
-        Returns
-        -------
+            Parameters
+            ----------
 
-        Raises
-        ------
-    '''
-    from apps.apps_template import ROW_TEMPLATE
+            Returns
+            -------
 
-    """
-        Counts the number of format specifiers for
-        the ROW_TEMPLATE <tr> block, could not think of
-        a better way to test this
-    """
-    self.assertEqual(ROW_TEMPLATE.count("{"), 4)
-    self.assertEqual(ROW_TEMPLATE.count("}"), 4)
-    logging.info("Import of ROW_TEMPLATE string successful")
+            Raises
+            ------
+        '''
+        from apps.apps_template import ROW_TEMPLATE
+
+        """
+            Counts the number of format specifiers for
+            the ROW_TEMPLATE <tr> block, could not think of
+            a better way to test this
+        """
+        self.assertEqual(ROW_TEMPLATE.count("{"), 4)
+        self.assertEqual(ROW_TEMPLATE.count("}"), 4)
+        logging.info("Import of ROW_TEMPLATE string successful")
 
 
 #for root, dirs, files in os.walk(relative_dir):
