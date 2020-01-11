@@ -14,10 +14,11 @@ https://codepen.io/shaban07/pen/BxwqyR
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="apps_template.css">
 
-    <script type="text/javascript"
-    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript"
+    src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="apps_template.js"></script>
 </head>
 <body>
@@ -54,17 +55,12 @@ https://codepen.io/shaban07/pen/BxwqyR
 <tr>
 		<th>Project Name</th>
 		<th>Project Description</th>
-		<th>Date</th>
+		<th>Project Link</th>
 	</tr>
   </thead>
 <tbody>
 
-	<tr>
-		<td>Griffith Flowers</td>
-		<td>Ut.tincidunt@tellus.ca</td>
-
-		<td>Sep 12, 2015</td>
-	</tr>
+    {html_table}
 
 
     <tbody>
@@ -78,7 +74,7 @@ https://codepen.io/shaban07/pen/BxwqyR
 				  </ul>
 				</nav>
 			</div>
-      <div class="rows_count">Showing 11 to 20 of 91 entries</div>
+      <div class="rows_count">Showing 1 to 10 of 1 entries</div>
 
 </div> <!-- 		End of Container -->
 
@@ -86,5 +82,6 @@ https://codepen.io/shaban07/pen/BxwqyR
 </body>
 
 </html>
+
 
 """
