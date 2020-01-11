@@ -255,6 +255,8 @@ def iterate_markdown(relative_dir="docs/v1/"):
 
         Returns
         -------
+        version_rows : str
+            html table rows for all projects in a given version
 
         Raises
         ------
@@ -263,16 +265,13 @@ def iterate_markdown(relative_dir="docs/v1/"):
             not found
     '''
     """
-        formatted_apps_page = full html template
-        that lists all markdown apps
 
-        html_table_body = string that contains each
-        row of the html output table that will
-        be placed in the html_table string
-        specifier of formatted_apps_page
+        version_rows = string that contains each
+        rows for the html output for a projects within a
+        given html version
     """
     formatted_apps_page = APPS_HTML_TEMPLATE
-    html_table_body = ""
+    version_rows = ""
 
     """
         dirs, files will be a list of directories/files
@@ -305,11 +304,13 @@ def iterate_markdown(relative_dir="docs/v1/"):
                     Appends each row that will be the body
                     of the html table
                 """
-                html_table_body += scrape_built_html(markdown_file)
+                version_rows += scrape_built_html(markdown_file)
 
 
+    logging.info("Formatted version_rows")
+    logging.info(version_rows)
 
-    import pdb; pdb.set_trace()
+    return(version_rows)
 
 
 
@@ -331,6 +332,16 @@ def iterate_versions(docs_dir="docs/"):
             AssertionError is raised if the version naming
             convention is not followed
     '''
+    """
+        formatted_apps_page = full html template
+        that lists all markdown apps
+
+        full_html_table = string that contains all rows
+        for built html, reguardless of documentation version
+    """
+    formatted_apps_page = APPS_HTML_TEMPLATE
+    full_html_table = ""
+
     all_dirs = os.listdir(docs_dir)
 
     """
@@ -345,7 +356,7 @@ def iterate_versions(docs_dir="docs/"):
     for version_dir in all_dirs:
         logging.info("Iterating version ")
         logging.info(docs_dir + version_dir + "/")
-        iterate_markdown(
+        full_html_table += iterate_markdown(
             docs_dir + version_dir + "/")
 
 def main():
