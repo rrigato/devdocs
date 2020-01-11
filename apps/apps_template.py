@@ -4,6 +4,10 @@ APPS_HTML_TEMPLATE = """
 example Developed By Yasser Mas:
 https://codepen.io/shaban07/pen/BxwqyR
 -->
+<head>
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+</head>
 <body>
 <div class="container">
       <div class="header_wrap">
@@ -12,7 +16,10 @@ https://codepen.io/shaban07/pen/BxwqyR
 				<div class="form-group"> 	<!--		Show Numbers Of Rows 		-->
 			 		<select class  ="form-control" name="state" id="maxRows">
 
-
+                        <!--
+                            Provides the options of how many rows
+                            to view at a time
+                        -->
 						 <option value="10">10</option>
 						 <option value="15">15</option>
 						 <option value="20">20</option>
@@ -67,5 +74,6 @@ https://codepen.io/shaban07/pen/BxwqyR
 </body>
 
 </html>
+
 
 """
