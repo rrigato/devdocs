@@ -233,7 +233,6 @@ def scrape_built_html(markdown_path):
             href_link=html link
             link_name=corresponds to h1 text
         """
-        import pdb; pdb.set_trace()
         formatted_row = ROW_TEMPLATE.format(
             project_name=bsObj.find("h1").text,
             project_description=bsObj.find("h1").findNext().text,
@@ -243,7 +242,7 @@ def scrape_built_html(markdown_path):
 
     logging.info("Formatted table row to return: ")
     logging.info(formatted_row)
-    return(ROW_TEMPLATE)
+    return(formatted_row)
 
 def iterate_markdown(relative_dir="docs/v1/"):
     '''Iterates over all markdown projects within a version
@@ -300,22 +299,17 @@ def iterate_markdown(relative_dir="docs/v1/"):
                 logging.info(markdown_file)
                 showdown_subprocess(markdown_file)
 
-                """
 
-                """
                 template_wrapper(markdown_file)
+                """
+                    Appends each row that will be the body
+                    of the html table
+                """
                 html_table_body += scrape_built_html(markdown_file)
 
 
 
-    logging.info("config file after modification: ")
-
-    """
-    with open(webpage_config_dir, 'w') as modified_config:
-        json.dump(original_file, modified_config, indent=4)
-    """
-
-    logging.info("Wrote the new cognito credientials to the config file")
+    import pdb; pdb.set_trace()
 
 
 
