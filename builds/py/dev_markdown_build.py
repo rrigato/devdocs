@@ -219,6 +219,7 @@ def scrape_built_html(markdown_path):
     built_html_file = (markdown_path.split('.')[0]
         + ".html")
 
+    logging.info("Creating a link to {}".format(built_html_file))
     """
         Opening local html file for parsing
     """
@@ -227,18 +228,21 @@ def scrape_built_html(markdown_path):
 
         """
             formatting the ROW_TEMPLATE
-            project_name= corresponds to h1 value
-            project_description= <p> tag from h1
+            project_name= corresponds to h1 text
+            project_description= <p> tag after h1
             href_link=html link
-            link_name=html link
+            link_name=corresponds to h1 text
         """
+        import pdb; pdb.set_trace()
         formatted_row = ROW_TEMPLATE.format(
-            project_name=
-            project_description=
-            href_link="../" + built_html_file
-            link_name=
+            project_name=bsObj.find("h1").text,
+            project_description=bsObj.find("h1").findNext().text,
+            href_link="../" + built_html_file,
+            link_name=bsObj.find("h1").text
         )
 
+    logging.info("Formatted table row to return: ")
+    logging.info(formatted_row)
     return(ROW_TEMPLATE)
 
 def iterate_markdown(relative_dir="docs/v1/"):
