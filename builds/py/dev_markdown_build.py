@@ -318,7 +318,7 @@ def iterate_markdown(relative_dir="docs/v1/"):
 
 
 def write_apps_index(formatted_apps_page,
-    full_html_table,
+    full_html_table, apps_index_location="apps/index.html"
     ):
     '''Collates built html files into /apps/index.html
 
@@ -341,9 +341,7 @@ def write_apps_index(formatted_apps_page,
 
         Raises
         ------
-        AE : AssertionError
-            AssertionError is raised if the version naming
-            convention is not followed
+
     '''
     pass
 

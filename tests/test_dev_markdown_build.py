@@ -318,7 +318,22 @@ class MarkdownLogic(unittest.TestCase):
         self.assertEqual(ROW_TEMPLATE.count("}"), 4)
         logging.info("Import of ROW_TEMPLATE string successful")
 
+    @unittest.skip("Skipping for now")
+    def test_write_apps_index(self):
+        '''Tests apps_template import of ROW_TEMPLATE
 
+            Parameters
+            ----------
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        from builds.py.dev_markdown_build import write_apps_index
+        os.path.isfile("apps/html_table.html")
+        #os.remove("apps/html_table.html")
 #for root, dirs, files in os.walk(relative_dir):
 if __name__ == '__main__':
     '''
