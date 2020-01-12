@@ -343,7 +343,15 @@ def write_apps_index(formatted_apps_page,
         ------
 
     '''
-    pass
+    formated_apps_html = formatted_apps_page.format(
+        html_table=full_html_table)
+
+    logging.info("Formatted apps html page")
+
+    with open(apps_index_location, "w") as apps_index:
+        apps_index.write(formated_apps_html)
+        
+    logging.info("Wrote the apps index page")
 
 def iterate_versions(docs_dir="docs/"):
     '''Calls iterate_markdown for each version
