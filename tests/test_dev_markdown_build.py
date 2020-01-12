@@ -341,14 +341,26 @@ class MarkdownLogic(unittest.TestCase):
         """
         apps_index_location = "test_apps/index.html"
         from builds.py.dev_markdown_build import write_apps_index
-        
+
+        """
+            Writting test data to disk
+        """
+        write_apps_index(
+            formatted_apps_page=formatted_apps_page,
+            full_html_table=full_html_table,
+            apps_index_location=apps_index_location
+        )
         """
             Asserting the file was created in the
             specified location
         """
         self.assertTrue(os.path.isfile(apps_index_location))
         logging.info("Validated the apps overview was created")
-        #os.remove("apps/html_table.html")
+
+        """
+            Cleaning up after test case
+        """
+        os.remove(apps_index_location)
 #for root, dirs, files in os.walk(relative_dir):
 if __name__ == '__main__':
     '''
