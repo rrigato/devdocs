@@ -242,7 +242,7 @@ def scrape_built_html(markdown_path):
             href_link="../" + built_html_file,
             link_name=bsObj.find("h1").text
         )
-        
+
 
     logging.info("Formatted table row to return: ")
     logging.info(formatted_row)
@@ -317,6 +317,25 @@ def iterate_markdown(relative_dir="docs/v1/"):
     return(version_rows)
 
 
+def write_apps_index():
+    '''Collates built html files into /apps/index.html
+
+        Parameters
+        ----------
+        docs_dir : str
+            Directory where all versions of documentation
+            are stored
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            AssertionError is raised if the version naming
+            convention is not followed
+    '''
+    pass
 
 def iterate_versions(docs_dir="docs/"):
     '''Calls iterate_markdown for each version
