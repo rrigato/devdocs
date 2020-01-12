@@ -68,6 +68,16 @@ phases:
       - aws s3 cp ./docs/  s3://dev-devdocs --recursive
        --include "*.html"
 
+      ###########################################
+      #recursively includes anything under the
+      #/apps directory that is html/css/javascript
+      #This directory contains the apps/index.html
+      #which is an overview of all projects where an
+      #html page was built from a markdown file
+      ############################################
+      - aws s3 cp ./apps/  s3://dev-devdocs --recursive
+       --include "*.html" --include "*.js" --include "*.css"
+
       - aws s3 ls s3://dev-devdocs --recursive
       #runs tests on aws resources created in previous steps
       - python tests/test_dev_aws_resources.py
