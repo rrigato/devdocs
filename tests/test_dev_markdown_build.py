@@ -339,7 +339,7 @@ class MarkdownLogic(unittest.TestCase):
         full_html_table = """
             "hello world"
         """
-        apps_index_location = "test_apps/index.html"
+        apps_index_location = "unit_test_write_apps_index.html"
         from builds.py.dev_markdown_build import write_apps_index
 
         """

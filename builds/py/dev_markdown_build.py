@@ -341,7 +341,10 @@ def write_apps_index(formatted_apps_page,
 
         Raises
         ------
-
+        FileNotFoundError: Exception
+            Returns FileNotFoundError no such file or directory
+            if the path to the index file being written does
+            not exit
     '''
     formated_apps_html = formatted_apps_page.format(
         html_table=full_html_table)
