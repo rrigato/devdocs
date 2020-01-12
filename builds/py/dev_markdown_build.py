@@ -317,14 +317,24 @@ def iterate_markdown(relative_dir="docs/v1/"):
     return(version_rows)
 
 
-def write_apps_index():
+def write_apps_index(formatted_apps_page,
+    full_html_table,
+    ):
     '''Collates built html files into /apps/index.html
 
         Parameters
         ----------
-        docs_dir : str
-            Directory where all versions of documentation
-            are stored
+        formatted_apps_page : str
+            Html string that will get formatted by full_html_table
+            and written to apps_index_location
+
+        full_html_table : str
+            html table body to insert into formatted_apps_page
+            string html_table format accessor
+
+        apps_index_location : str
+            Directory and filename of where to put
+            the project apps overview
 
         Returns
         -------
