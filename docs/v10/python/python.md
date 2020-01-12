@@ -1,4 +1,4 @@
-# Development Standards
+# Python Example Standards
 This documentation provides an overview of development best practices across python, sql, continuous integration
 
 ## Table of contents

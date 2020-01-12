@@ -350,7 +350,7 @@ def write_apps_index(formatted_apps_page,
 
     with open(apps_index_location, "w") as apps_index:
         apps_index.write(formated_apps_html)
-        
+
     logging.info("Wrote the apps index page")
 
 def iterate_versions(docs_dir="docs/"):
@@ -400,6 +400,11 @@ def iterate_versions(docs_dir="docs/"):
 
     logging.info("full_html_table body: ")
     logging.info(full_html_table)
+
+    write_apps_index(
+        formatted_apps_page=formatted_apps_page,
+        full_html_table=full_html_table
+    )
 
 def main():
     '''Entry point into the script
