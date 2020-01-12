@@ -228,17 +228,21 @@ def scrape_built_html(markdown_path):
 
         """
             formatting the ROW_TEMPLATE
-            project_name= corresponds to h1 text
+            project_name= <version_number> + " - "
+            + h1 text
+            ex: v10 - Standards Documentation
             project_description= <p> tag after h1
             href_link=html link
             link_name=corresponds to h1 text
         """
         formatted_row = ROW_TEMPLATE.format(
-            project_name=bsObj.find("h1").text,
+            project_name=( built_html_file.split('/')[1] +
+             " - " + bsObj.find("h1").text),
             project_description=bsObj.find("h1").findNext().text,
             href_link="../" + built_html_file,
             link_name=bsObj.find("h1").text
         )
+        
 
     logging.info("Formatted table row to return: ")
     logging.info(formatted_row)
@@ -358,6 +362,9 @@ def iterate_versions(docs_dir="docs/"):
         logging.info(docs_dir + version_dir + "/")
         full_html_table += iterate_markdown(
             docs_dir + version_dir + "/")
+
+    logging.info("full_html_table body: ")
+    logging.info(full_html_table)
 
 def main():
     '''Entry point into the script
