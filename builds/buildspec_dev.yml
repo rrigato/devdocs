@@ -103,6 +103,9 @@ artifacts:
     #logs will only take the files
     #under that directory
     ##########################
+    - 'apps/*.css'
+    - 'apps/*.html'
+    - 'apps/*.js'
     - 'docs/**/*'
     - 'logs/*'
   name: BuildDev
