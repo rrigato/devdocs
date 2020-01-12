@@ -75,8 +75,9 @@ phases:
       #which is an overview of all projects where an
       #html page was built from a markdown file
       ############################################
-      - aws s3 cp ./apps/  s3://dev-devdocs --recursive
-       --include "*.html" --include "*.js" --include "*.css"
+      - aws s3 cp ./ s3://dev-devdocs --exclude "*"
+        --include "apps/*.html" --include "apps/*.js"
+        --include "apps/*.css" --recursive
 
       - aws s3 ls s3://dev-devdocs --recursive
       #runs tests on aws resources created in previous steps
