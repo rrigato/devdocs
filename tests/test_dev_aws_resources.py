@@ -175,7 +175,7 @@ class WebappLive(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         logging.info("The standards page is live")
 
-    @unittest.skip("SKipping for now")
+
     def test_apps(self):
         '''Tests that the /apps/index.html is alive
 
