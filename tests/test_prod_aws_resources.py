@@ -447,12 +447,17 @@ class WebappLive(unittest.TestCase):
         upload_apps(apps_files=apps_files,
             s3_prod_client=None)
 
-        upload_apps.assert_called_with(apps_files=[
-            'apps/apps_template.css', 'apps/apps_template.js',
-            'apps/index.html'
-        ], s3_prod_client=None)
+        """
+            Note that we are testing the
+            upload_html_file function called by
+            upload_apps which is patched
+        """
+        upload_patch.assert_called_with(
+            file_local_path='apps/index.html',
+            s3_path_key='apps/index.html',
+            s3_prod_client=None)
 
-        logging.info("Apps upload call mocked")
+        logging.info("Apps upload call patch")
 
 
 if __name__ == '__main__':
