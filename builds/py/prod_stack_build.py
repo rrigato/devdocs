@@ -269,7 +269,7 @@ def iterate_versions(docs_dir="docs/", s3_prod_client=None):
             s3_prod_client=s3_prod_client)
 
 
-def iterate_apps(docs_dir="apps/",
+def iterate_apps(apps_dir="apps/",
     file_extensions=('*.html', '*.js', '*.css')):
     '''Iterates over built app directory
 
@@ -285,7 +285,8 @@ def iterate_apps(docs_dir="apps/",
 
         Returns
         -------
-
+        apps_files : list
+            all files in apps_dir
         Raises
         ------
         AE : AssertionError
@@ -302,7 +303,7 @@ def iterate_apps(docs_dir="apps/",
 
         Adds those files to the apps_files list
     """
-    for file_extension in :
+    for file_extension in file_extensions:
        apps_files.extend(glob.glob(
             os.path.join(apps_dir, file_extension))
             )
@@ -310,6 +311,7 @@ def iterate_apps(docs_dir="apps/",
     logging.info("Found the following file extension matches:")
     logging.info(apps_files)
 
+    return(apps_files)
 
 def main():
     '''Entry point into the script
