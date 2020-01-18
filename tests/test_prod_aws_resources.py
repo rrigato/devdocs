@@ -385,8 +385,13 @@ class WebappLive(unittest.TestCase):
         logging.info("Testing the upload_apps function call")
 
         apps_files = iterate_apps()
+
+        """
+            Sorts the list in ascending order to ensure
+            all files are called
+        """
+        apps_files.sort()
         upload_apps = MagicMock()
-        import pdb; pdb.set_trace()
         """
             This is now a mock, any calls to
             upload_apps will only confirm the arguements
@@ -394,10 +399,13 @@ class WebappLive(unittest.TestCase):
         """
         upload_apps(apps_files=apps_files,
             s3_prod_client=None)
+
         upload_apps.assert_called_with(apps_files=[
-            'apps/index.html', 'apps_template.js',
-            'apps/apps_template.js'
-        ])
+            'apps/apps_template.css', 'apps/apps_template.js',
+            'apps/index.html'
+        ], s3_prod_client=None)
+
+        logging.info("Apps upload call mocked")
 
 if __name__ == '__main__':
     '''
