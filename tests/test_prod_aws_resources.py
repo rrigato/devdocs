@@ -411,7 +411,7 @@ class WebappLive(unittest.TestCase):
 
     @patch('builds.py.prod_stack_build.upload_html_file')
     def test_html_patch(self, upload_patch):
-        '''Validates upload_apps is called with correct arguements
+        '''Patches upload_html_file when calling upload_apps
 
             Parameters
             ----------
@@ -428,7 +428,7 @@ class WebappLive(unittest.TestCase):
         from builds.py.prod_stack_build import upload_apps
         from builds.py.prod_stack_build import iterate_apps
 
-        logging.info("Testing the upload_apps function call")
+        logging.info("Testing the patched upload_apps")
 
         apps_files = iterate_apps()
 
@@ -437,13 +437,13 @@ class WebappLive(unittest.TestCase):
             all files are called
         """
         apps_files.sort()
-        import pdb; pdb.set_trace()
-        upload_apps = MagicMock()
+
         """
             This is now a mock, any calls to
             upload_apps will only confirm the arguements
             in the list
         """
+        import pdb; pdb.set_trace()
         upload_apps(apps_files=apps_files,
             s3_prod_client=None)
 
