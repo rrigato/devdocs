@@ -393,6 +393,9 @@ class WebappLive(unittest.TestCase):
             all files are called
         """
         apps_files.sort()
+
+        logging.info(apps_files)
+
         upload_apps = MagicMock()
         """
             This is now a mock, any calls to
@@ -438,6 +441,7 @@ class WebappLive(unittest.TestCase):
         """
         apps_files.sort()
 
+        logging.info(apps_files)
         """
             any calls made by
             upload_apps to upload_html_file
