@@ -325,7 +325,6 @@ def upload_apps(apps_files, s3_prod_client):
             bucket
 
 
-
         Returns
         -------
         apps_files : list
@@ -334,6 +333,17 @@ def upload_apps(apps_files, s3_prod_client):
         ------
 
     '''
+    """
+        Uploads each html file to s3 from
+        the apps_files in the apps directory
+    """
+    for app_file in app_files:
+        logging.info("Beginning s3 apps file upload")
+        import pdb; pdb.set_trace()
+        upload_html_file(
+            s3_prod_client=s3_prod_client,
+            file_local_path=app_file,
+            s3_path_key=app_file)
 
 def main():
     '''Entry point into the script
@@ -358,6 +368,11 @@ def main():
 
 
     iterate_versions(docs_dir="docs/",
+        s3_prod_client=s3_prod_client)
+
+    apps_files = iterate_apps()
+
+    upload_apps(apps_files=apps_files,
         s3_prod_client=s3_prod_client)
 if __name__ == '__main__':
     main()
