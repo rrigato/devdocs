@@ -439,11 +439,10 @@ class WebappLive(unittest.TestCase):
         apps_files.sort()
 
         """
-            This is now a mock, any calls to
-            upload_apps will only confirm the arguements
-            in the list
+            any calls made by
+            upload_apps to upload_html_file
+            will be patched
         """
-        import pdb; pdb.set_trace()
         upload_apps(apps_files=apps_files,
             s3_prod_client=None)
 

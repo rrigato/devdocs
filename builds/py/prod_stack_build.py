@@ -337,13 +337,13 @@ def upload_apps(apps_files, s3_prod_client):
         Uploads each html file to s3 from
         the apps_files in the apps directory
     """
-    for app_file in app_files:
+    for app_file in apps_files:
         logging.info("Beginning s3 apps file upload")
         upload_html_file(
             s3_prod_client=s3_prod_client,
             file_local_path=app_file,
             s3_path_key=app_file)
-            
+
     logging.info("Apps file upload complete")
 
 def main():
