@@ -73,6 +73,7 @@ Resources:
                   #update a specific bucket provided by the
                   #BucketName parameter
                   #only allowing these privleges under the
+                  #/apps or
                   #/docs folder
                   #######################################
                 - Sid: S3EditWebsiteBucket
@@ -92,7 +93,17 @@ Resources:
                         - ''
                         - - 'arn:aws:s3:::'
                           - !Ref BucketName
+                          - '/apps/*'
+                    -
+                        !Join
+                        #What we use to concatenate items
+                        #followed by a list of items to include
+                        #in the string
+                        - ''
+                        - - 'arn:aws:s3:::'
+                          - !Ref BucketName
                           - '/docs/*'
+
 
 Outputs:
   CrossAccountRoleArn:
