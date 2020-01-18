@@ -290,8 +290,19 @@ def iterate_apps(docs_dir="apps/", s3_prod_client=None):
             AssertionError is raised if the version naming
             convention is not followed
     '''
-    all_dirs = os.listdir(docs_dir)
 
+    apps_files = []
+    """
+        Iterates over each of the js, css, and html
+        file extensions
+        Searches for all files in the apps directory
+        for those extension types.
+
+        Adds those files to the apps_files list
+    """
+    for file_extension in ('*.html', '*.js', '*.css'):
+       apps_files.extend(glob.glob
+            (os.path.join(apps_dir, file_extension)))
     """
         Iterating over all versions in the
         documentation directory
