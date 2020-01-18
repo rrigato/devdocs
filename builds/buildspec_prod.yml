@@ -63,7 +63,7 @@ phases:
 
       #tests that the prod website was deployed to
       #successfully
-      - python tests/test_prod_aws_resources.py
+      - python $CODEBUILD_SRC_DIR/tests/test_prod_aws_resources.py
 
       #merges dev branch into master now that all tests have
       #been passed and artifacts created
