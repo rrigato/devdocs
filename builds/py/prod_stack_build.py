@@ -293,6 +293,9 @@ def iterate_apps(apps_dir="apps/",
             AssertionError is raised if the version naming
             convention is not followed
     '''
+    # if len(file_extensions) == 1:
+    #     return(glob.glob(
+    #         os.path.join(apps_dir, file_extensions)))
 
     apps_files = []
     """
@@ -304,8 +307,8 @@ def iterate_apps(apps_dir="apps/",
         Adds those files to the apps_files list
     """
     for file_extension in file_extensions:
-       apps_files.extend(glob.glob(
-            (apps_dir + file_extension))
+        apps_files.extend(glob.glob(
+            os.path.join(apps_dir, file_extension))
             )
 
     logging.info("Found the following file extension matches:")

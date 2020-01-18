@@ -354,10 +354,16 @@ class WebappLive(unittest.TestCase):
             ------
         '''
         from builds.py.prod_stack_build import iterate_apps
-        import pdb; pdb.set_trace()
         import glob
         markdown_test = glob.glob("*.md")
         logging.info("Testing the file count for a given extension")
+
+        self.assertEqual(len(markdown_test),
+            len(iterate_apps(apps_dir=".", file_extensions=("*.md",))
+            )
+        )
+
+        logging.info("Validated the list matches the markdown file count")
 
 
 if __name__ == '__main__':
