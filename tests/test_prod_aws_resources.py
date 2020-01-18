@@ -380,10 +380,24 @@ class WebappLive(unittest.TestCase):
             ------
         '''
         from builds.py.prod_stack_build import upload_apps
+        from builds.py.prod_stack_build import iterate_apps
 
         logging.info("Testing the upload_apps function call")
 
+        apps_files = iterate_apps()
         upload_apps = MagicMock()
+        import pdb; pdb.set_trace()
+        """
+            This is now a mock, any calls to
+            upload_apps will only confirm the arguements
+            in the list
+        """
+        upload_apps(apps_files=apps_files,
+            s3_prod_client=None)
+        upload_apps.assert_called_with(apps_files=[
+            'apps/index.html', 'apps_template.js',
+            'apps/apps_template.js'
+        ])
 
 if __name__ == '__main__':
     '''
