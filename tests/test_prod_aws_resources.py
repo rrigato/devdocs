@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from unittest.mock import MagicMock
 import argparse
 import boto3
 import json
@@ -365,6 +366,24 @@ class WebappLive(unittest.TestCase):
 
         logging.info("Validated the list matches the markdown file count")
 
+
+    def test_upload_apps(self):
+        '''Validates upload_apps is called with correct arguements
+
+            Parameters
+            ----------
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        from builds.py.prod_stack_build import upload_apps
+
+        logging.info("Testing the upload_apps function call")
+
+        upload_apps = MagicMock()
 
 if __name__ == '__main__':
     '''
