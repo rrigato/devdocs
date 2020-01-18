@@ -277,6 +277,47 @@ def iterate_versions(docs_dir="docs/", s3_prod_client=None):
             s3_prod_client=s3_prod_client)
 
 
+def iterate_apps(docs_dir="docs/", s3_prod_client=None):
+    '''Iterates over built app directory
+
+        Parameters
+        ----------
+        docs_dir : str
+            Directory where all versions of documentation
+            are stored
+
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
+
+        Returns
+        -------
+
+        Raises
+        ------
+        AE : AssertionError
+            AssertionError is raised if the version naming
+            convention is not followed
+    '''
+    all_dirs = os.listdir(docs_dir)
+
+    """
+        Iterating over all versions in the
+        documentation directory
+        this will pass
+        /docs/v1/
+        /docs/v2/
+        etc..
+        to iterate_html
+    """
+    for version_dir in all_dirs:
+        logging.info("Iterating version ")
+        logging.info(docs_dir + version_dir + "/")
+        iterate_html(
+            relative_dir = docs_dir + version_dir + "/",
+            s3_prod_client=s3_prod_client)
+
+
 def main():
     '''Entry point into the script
         Parameters
