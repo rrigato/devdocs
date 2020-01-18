@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from unittest.mock import MagicMock
+from unittest.mock import patch
 import argparse
 import boto3
 import json
@@ -373,6 +374,7 @@ class WebappLive(unittest.TestCase):
             Parameters
             ----------
 
+
             Returns
             -------
 
@@ -406,6 +408,52 @@ class WebappLive(unittest.TestCase):
         ], s3_prod_client=None)
 
         logging.info("Apps upload call mocked")
+
+    @patch('builds.py.prod_stack_build.upload_html_file')
+    def test_html_patch(self, upload_patch):
+        '''Validates upload_apps is called with correct arguements
+
+            Parameters
+            ----------
+            upload_patch : unittest.mock.MagicMock
+                replaces the upload_html_file with a
+                mock object
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        from builds.py.prod_stack_build import upload_apps
+        from builds.py.prod_stack_build import iterate_apps
+
+        logging.info("Testing the upload_apps function call")
+
+        apps_files = iterate_apps()
+
+        """
+            Sorts the list in ascending order to ensure
+            all files are called
+        """
+        apps_files.sort()
+        import pdb; pdb.set_trace()
+        upload_apps = MagicMock()
+        """
+            This is now a mock, any calls to
+            upload_apps will only confirm the arguements
+            in the list
+        """
+        upload_apps(apps_files=apps_files,
+            s3_prod_client=None)
+
+        upload_apps.assert_called_with(apps_files=[
+            'apps/apps_template.css', 'apps/apps_template.js',
+            'apps/index.html'
+        ], s3_prod_client=None)
+
+        logging.info("Apps upload call mocked")
+
 
 if __name__ == '__main__':
     '''
