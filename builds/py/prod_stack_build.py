@@ -289,13 +289,8 @@ def iterate_apps(apps_dir="apps/",
             all files in apps_dir
         Raises
         ------
-        AE : AssertionError
-            AssertionError is raised if the version naming
-            convention is not followed
+
     '''
-    # if len(file_extensions) == 1:
-    #     return(glob.glob(
-    #         os.path.join(apps_dir, file_extensions)))
 
     apps_files = []
     """
@@ -315,6 +310,30 @@ def iterate_apps(apps_dir="apps/",
     logging.info(apps_files)
 
     return(apps_files)
+
+def upload_apps(apps_files, s3_prod_client):
+    '''Iterates over built app directory
+
+        Parameters
+        ----------
+        apps_files : str
+            List of files and path for apps overview to
+            upload to s3
+
+        s3_prod_client : client
+            Boto3 client for connecting to the production s3
+            bucket
+
+
+
+        Returns
+        -------
+        apps_files : list
+            all files in apps_dir
+        Raises
+        ------
+
+    '''
 
 def main():
     '''Entry point into the script
