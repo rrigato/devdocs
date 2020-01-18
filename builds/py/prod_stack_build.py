@@ -225,14 +225,6 @@ def iterate_html(relative_dir="docs/v1/", s3_prod_client=None):
 
 
 
-    logging.info("config file after modification: ")
-
-    """
-    with open(webpage_config_dir, 'w') as modified_config:
-        json.dump(original_file, modified_config, indent=4)
-    """
-
-    logging.info("Wrote the new cognito credientials to the config file")
 
 
 
@@ -277,14 +269,13 @@ def iterate_versions(docs_dir="docs/", s3_prod_client=None):
             s3_prod_client=s3_prod_client)
 
 
-def iterate_apps(docs_dir="docs/", s3_prod_client=None):
+def iterate_apps(docs_dir="apps/", s3_prod_client=None):
     '''Iterates over built app directory
 
         Parameters
         ----------
-        docs_dir : str
-            Directory where all versions of documentation
-            are stored
+        apps_dir : str
+            Directory where apps overview is stored
 
         s3_prod_client : client
             Boto3 client for connecting to the production s3
