@@ -340,6 +340,25 @@ class WebappLive(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         logging.info("The apps page is live")
 
+    @unittest.skip("Skipping for now")
+    def test_iterate_apps(self):
+        '''Testing iterate_apps function
+
+            Parameters
+            ----------
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        from builds.py.prod_stack_build import iterate_apps
+        logging.info("Testing the file count extension")
+        import glob
+        markdown_test = glob.glob("*.md")
+
+
 if __name__ == '__main__':
     '''
     parser = argparse.ArgumentParser(description='Process some integers.')
