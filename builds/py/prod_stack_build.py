@@ -305,7 +305,7 @@ def iterate_apps(apps_dir="apps/",
     """
     for file_extension in file_extensions:
        apps_files.extend(glob.glob(
-            os.path.join(apps_dir, file_extension))
+            (apps_dir + file_extension))
             )
 
     logging.info("Found the following file extension matches:")
@@ -337,4 +337,5 @@ def main():
 
     iterate_versions(docs_dir="docs/",
         s3_prod_client=s3_prod_client)
-main()
+if __name__ == '__main__':
+    main()

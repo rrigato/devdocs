@@ -340,7 +340,7 @@ class WebappLive(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         logging.info("The apps page is live")
 
-    @unittest.skip("Skipping for now")
+
     def test_iterate_apps(self):
         '''Testing iterate_apps function
 
@@ -354,9 +354,10 @@ class WebappLive(unittest.TestCase):
             ------
         '''
         from builds.py.prod_stack_build import iterate_apps
-        logging.info("Testing the file count extension")
+        import pdb; pdb.set_trace()
         import glob
         markdown_test = glob.glob("*.md")
+        logging.info("Testing the file count for a given extension")
 
 
 if __name__ == '__main__':
