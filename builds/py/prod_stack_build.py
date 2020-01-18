@@ -269,7 +269,8 @@ def iterate_versions(docs_dir="docs/", s3_prod_client=None):
             s3_prod_client=s3_prod_client)
 
 
-def iterate_apps(docs_dir="apps/", s3_prod_client=None):
+def iterate_apps(docs_dir="apps/",
+    file_extensions=('*.html', '*.js', '*.css')):
     '''Iterates over built app directory
 
         Parameters
@@ -277,9 +278,10 @@ def iterate_apps(docs_dir="apps/", s3_prod_client=None):
         apps_dir : str
             Directory where apps overview is stored
 
-        s3_prod_client : client
-            Boto3 client for connecting to the production s3
-            bucket
+        file_extensions : tuple
+            file_extensions that you want searched for
+            in the apps_dir directory
+
 
         Returns
         -------
@@ -300,24 +302,13 @@ def iterate_apps(docs_dir="apps/", s3_prod_client=None):
 
         Adds those files to the apps_files list
     """
-    for file_extension in ('*.html', '*.js', '*.css'):
-       apps_files.extend(glob.glob
-            (os.path.join(apps_dir, file_extension)))
-    """
-        Iterating over all versions in the
-        documentation directory
-        this will pass
-        /docs/v1/
-        /docs/v2/
-        etc..
-        to iterate_html
-    """
-    for version_dir in all_dirs:
-        logging.info("Iterating version ")
-        logging.info(docs_dir + version_dir + "/")
-        iterate_html(
-            relative_dir = docs_dir + version_dir + "/",
-            s3_prod_client=s3_prod_client)
+    for file_extension in :
+       apps_files.extend(glob.glob(
+            os.path.join(apps_dir, file_extension))
+            )
+
+    logging.info("Found the following file extension matches:")
+    logging.info(apps_files)
 
 
 def main():
