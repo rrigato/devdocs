@@ -337,7 +337,7 @@ class WebappLive(unittest.TestCase):
             )
             logging.info("The request was upgraded to https")
 
-    @unittest.skip("SKipping for now")
+
     def test_apps(self):
         '''Tests that the /apps/index.html is alive
 
