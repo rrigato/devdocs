@@ -387,7 +387,7 @@ class WebappLive(unittest.TestCase):
             )
         if (artifacts_dir is not None):
             logging.info("Changed to artifacts directory:")
-            loggin.info(artifacts_dir)
+            logging.info(artifacts_dir)
             os.chdir(artifacts_dir)
 
         markdown_test = glob.glob("*.md")
@@ -431,7 +431,7 @@ class WebappLive(unittest.TestCase):
             )
         if (artifacts_dir is not None):
             logging.info("Changed to artifacts directory:")
-            loggin.info(artifacts_dir)
+            logging.info(artifacts_dir)
             os.chdir(artifacts_dir)
 
 
