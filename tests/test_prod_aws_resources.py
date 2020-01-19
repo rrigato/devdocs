@@ -419,6 +419,22 @@ class WebappLive(unittest.TestCase):
 
         logging.info("Testing the upload_apps function call")
 
+        """
+         $CODEBUILD_SRC_DIR_BuildDev = is the working
+         directory that contains the artifacts
+         from the Dev stage
+
+         Changing working directory to that location
+        """
+        artifacts_dir = os.environ.get(
+            'CODEBUILD_SRC_DIR_BuildDev'
+            )
+        if (artifacts_dir is not None):
+            logging.info("Changed to artifacts directory:")
+            loggin.info(artifacts_dir)
+            os.chdir(artifacts_dir)
+
+
         apps_files = iterate_apps()
 
         """
