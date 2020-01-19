@@ -83,7 +83,6 @@ class WebappLive(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         '''Unitest function that is run once for the class
-            Gets the arguements passed from the user
 
             Parameters
             ----------
@@ -96,6 +95,19 @@ class WebappLive(unittest.TestCase):
         '''
         get_logger()
         os.sys.path.append(WORKING_DIRECTORY)
+
+    def setUp(self):
+        '''Unitest function that is run once before each function
+            Parameters
+            ----------
+
+            Returns
+            -------
+
+            Raises
+            ------
+        '''
+        os.chdir(WORKING_DIRECTORY)
 
     @unittest.skip("Skipping for now")
     def test_bucket_stack_exists(self,
