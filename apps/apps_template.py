@@ -8,9 +8,11 @@ https://codepen.io/shaban07/pen/BxwqyR
 
     <meta name="viewport"
     content="width=device-width, initial-scale=1">
-<!--
+
+    <title>Application Documentation</title>
+    <!--
     Linking to external libraries and css/js files locally
--->
+    -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="apps_template.css">
 
