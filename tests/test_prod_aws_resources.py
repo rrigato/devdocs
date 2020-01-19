@@ -12,6 +12,11 @@ import unittest
 ENVIRON_DEF = "prod"
 
 HOMEPAGE_URL = "https://ryanrigato.com"
+"""
+    Defaults to $CODEBUILD_SRC_DIR
+    which is the working directory where the
+    code repository is built in codebuild
+"""
 WORKING_DIRECTORY = os.getcwd()
 
 def get_logger():
@@ -369,6 +374,17 @@ class WebappLive(unittest.TestCase):
         '''
         from builds.py.prod_stack_build import iterate_apps
         import glob
+        """
+         $CODEBUILD_SRC_DIR_BuildDev = is the working
+         directory that contains the artifacts
+         from the Dev stage
+
+         Changing working directory to that location
+        """
+        os.chdir(
+            os.environ.get('CODEBUILD_SRC_DIR_BuildDev')
+            )
+
         markdown_test = glob.glob("*.md")
         logging.info("Testing the file count for a given extension")
 
