@@ -374,6 +374,7 @@ class WebappLive(unittest.TestCase):
         '''
         from builds.py.prod_stack_build import iterate_apps
         import glob
+
         """
          $CODEBUILD_SRC_DIR_BuildDev = is the working
          directory that contains the artifacts
@@ -381,9 +382,13 @@ class WebappLive(unittest.TestCase):
 
          Changing working directory to that location
         """
-        os.chdir(
-            os.environ.get('CODEBUILD_SRC_DIR_BuildDev')
+        artifacts_dir = os.environ.get(
+            'CODEBUILD_SRC_DIR_BuildDev'
             )
+        if (artifacts_dir is not None):
+            logging.info("Changed to artifacts directory:")
+            loggin.info(artifacts_dir)
+            os.chdir(artifacts_dir)
 
         markdown_test = glob.glob("*.md")
         logging.info("Testing the file count for a given extension")
