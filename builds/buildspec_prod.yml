@@ -58,12 +58,12 @@ phases:
       #built html files are sitting
       - python $CODEBUILD_SRC_DIR/builds/py/prod_stack_build.py
 
-      #moving back to original code repo location
-      - cd $CODEBUILD_SRC_DIR
-
       #tests that the prod website was deployed to
       #successfully
       - python $CODEBUILD_SRC_DIR/tests/test_prod_aws_resources.py
+
+      #moving back to original code repo location
+      - cd $CODEBUILD_SRC_DIR
 
       #merges dev branch into master now that all tests have
       #been passed and artifacts created
