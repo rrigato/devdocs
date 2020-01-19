@@ -47,8 +47,9 @@ phases:
         # naming convention:
         # $CODEBUILD_SRC_DIR_<yourInputArtifactName>
         #
-        # $CODEBUILD_SRC_DIR_BuildDev contains the output
-        # ./docs directory after everything was built in
+        # $CODEBUILD_SRC_DIR_BuildDev contains the artifacts
+        #  from the Dev stage
+        #./apps and ./docs directory after everything was built in
         # the development stage
         ##############################################
       - cd $CODEBUILD_SRC_DIR_BuildDev
@@ -58,12 +59,12 @@ phases:
       #built html files are sitting
       - python $CODEBUILD_SRC_DIR/builds/py/prod_stack_build.py
 
-      #tests that the prod website was deployed to
-      #successfully
-      - python $CODEBUILD_SRC_DIR/tests/test_prod_aws_resources.py
-
       #moving back to original code repo location
       - cd $CODEBUILD_SRC_DIR
+
+      #These tests need to run in the working directory
+      #where the source code is
+      - python tests/test_prod_aws_resources.py
 
       #merges dev branch into master now that all tests have
       #been passed and artifacts created
