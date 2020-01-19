@@ -500,14 +500,24 @@ class WebappLive(unittest.TestCase):
             s3_prod_client=None)
 
         """
-            Note that we are testing the
-            upload_html_file function called by
-            upload_apps which is patched
+            Checks that patched upload_html
+            was called with the arguements
+            provided
+
+            call_args[1] = dict of arguements
+            passed to upload_html function where the key
+            is the arugement name and the value is the
+            value passed to the function
         """
-        upload_patch.assert_called_with(
-            file_local_path='apps/index.html',
-            s3_path_key='apps/index.html',
-            s3_prod_client=None)
+        self.assertIsNone(
+            upload_patch.call_args[1]['s3_prod_client']
+            )
+        self.assertIn(upload_patch.call_args[1]['file_local_path'],
+            apps_files
+            )
+        self.assertIn(upload_patch.call_args[1]['s3_path_key'],
+            apps_files)
+
 
         logging.info("Apps upload call patch")
 
