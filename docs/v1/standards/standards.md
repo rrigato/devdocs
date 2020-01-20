@@ -4,6 +4,7 @@ This documentation provides an overview of development best practices across pyt
 ## Table of contents
 
 - [App Requirements](#apprequirements)
+    * [Coverage](#coverage)
     * [Git](#git)
     * [HTML Code Docs](#htmlcodedocs)    
     * [HTML Features Docs](#htmlfeaturesdocs)
@@ -19,6 +20,10 @@ This documentation provides an overview of development best practices across pyt
 
 
 ## App Requirements
+
+### Coverage
+Project build status and code coverage should be included in Readme file.
+Individual file code coverage should be hosted on a webpage.
 
 ### Git
 Each project needs to be hosted in a remote git repository.
