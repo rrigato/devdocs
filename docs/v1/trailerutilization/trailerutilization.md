@@ -76,19 +76,19 @@ git secrets --scan -r .
 
 
 
-### Directory Overview
+## Directory Overview
 Provides information on each directory/ source file
 
-#### builds
+### builds
 
-##### py
+### py
     Directory for custom python scripts that setup build configuration
 - buildspec_dev.yml = Buildspec to use for the development (QA)
     CodeBuild project
 
 - buildspec_prod.yml = Buildspec to use for the prod deployment CodeBuild project
 
-#### docs
+### docs
 Used for auto-populated html documentation files for
 javascript documentation.js library and python sphinx library
 
@@ -104,12 +104,12 @@ documentation build static/js/** -f html -o docs/js
 
 ```
 
-#### devops
+### devops
 - CI.sh = Establishes CodeCommit Repo and CodeBuild Project
     - For debugging errors go to the Phase details section of the console
     - Or use the batch-get-builds command in the aws cli
 
-#### lambda
+### lambda
 - Used to build lambda functions
 - Note that each folder can be bundled into a deployment package if it has a dependency other than the standard template libraries or the aws sdk (Boto3)
 
@@ -133,20 +133,20 @@ For example I have had issues in the past with installing pandas on ubuntu, bund
 
 ```
 
-#### logs
+### logs
 - directory for python log files
 
-#### models
+### models
 - directory for image classification models
 
-#### static
+### static
 - css = static stylesheet files for web application
 - fonts = static fonts to use for web application
 - js = static javascript files for web application
 - images = static images for web applications
 - index.html = homepage for web applciation
 
-#### templates
+### templates
 
 - backend.yml = dynamodb, lambda, and api gateway resources
 
@@ -167,7 +167,7 @@ The reason being that a nested stack has to be in an s3 bucket to be used by the
 
 - static_webpage.yml = builds the S3 bucket enabled for web hosting
 
-#### tests
+### tests
 - test_dev_aws_resources.py = after the dev environment is spun up in the CodeBuild project for builds/buildspec_dev.yml this script is run to validate deployment of resources.
 
 If any of the test cases fail, the Pipeline stops before deploying to prod
@@ -175,7 +175,7 @@ If any of the test cases fail, the Pipeline stops before deploying to prod
 
 - test_prod_aws_resources.py = test cases run after the prod environment is spun up in the CodeBuild project for builds/buildspec_prod.yml
 
-#### static
+### static
 
 - dev_build_template.json = codeBuild project definition for devops/CI.sh
 
