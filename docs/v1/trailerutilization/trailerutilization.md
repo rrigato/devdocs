@@ -8,9 +8,16 @@ Serverless project used to build a web application to detect trailer utilization
     * [Git Secrets](#gitsecrets)
 
 - [Directory Overview](#directoryoverview)
-    * [cfn-lint](#cfn-lint)
+    * [builds](#builds)
+    * [docs](#docs)
+    * [devops](#devops)
+    * [lambda](#lambda)
+    * [logs](#logs)
+    * [models](#models)
     * [Git Secrets](#gitsecrets)
-
+    * [Git Secrets](#gitsecrets)
+    * [Git Secrets](#gitsecrets)
+    * [Git Secrets](#gitsecrets)
 
 ## Dev Tools
 
@@ -80,13 +87,14 @@ git secrets --scan -r .
 Provides information on each directory/ source file
 
 ### builds
-
-### py
-    Directory for custom python scripts that setup build configuration
 - buildspec_dev.yml = Buildspec to use for the development (QA)
     CodeBuild project
 
 - buildspec_prod.yml = Buildspec to use for the prod deployment CodeBuild project
+
+#### py
+    Directory for custom python scripts that setup build configuration
+
 
 ### docs
 Used for auto-populated html documentation files for
