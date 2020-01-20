@@ -5,7 +5,6 @@ This documentation provides an overview of development best practices across pyt
 
 - [App Requirements](#apprequirements)
     * [Git](#git)
-    * [Git](#git)
     * [HTML Code Docs](#htmlcodedocs)    
     * [HTML Features Docs](#htmlfeaturesdocs)
     * [Requirements](#requirements)
