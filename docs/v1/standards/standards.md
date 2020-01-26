@@ -11,6 +11,7 @@ This documentation provides an overview of development best practices across pyt
     * [Requirements](#requirements)
 
 - [Python](#python)
+    * [Code Style](#codestyle)
     * [Python Documentation](#pythondocumentation)
     * [Python Tests](#pythontests)
 
@@ -20,6 +21,7 @@ This documentation provides an overview of development best practices across pyt
 
 
 ## App Requirements
+
 
 ### Coverage
 Project build status and code coverage should be included in Readme file.
@@ -55,6 +57,8 @@ This should be treated as a developer guide as an overview of the project
 How to install dependencies and requirements for documentation
 
 ## Python
+
+### Code Style
 
 ### Python Documentation
 Follow the [numpy docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html) for each function/class. Ex:
