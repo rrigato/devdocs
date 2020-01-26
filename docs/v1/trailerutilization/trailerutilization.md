@@ -1,4 +1,4 @@
-### # Trailer Utilization
+# Trailer Utilization
 Serverless project used to build a web application to detect trailer utilization from an uploaded image
 
 ## Table of contents
