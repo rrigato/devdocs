@@ -207,6 +207,9 @@ def scrape_built_html(markdown_path):
 
         Raises
         ------
+        ValueError : Exception
+            ValueError is raised if the markdown does
+            not provide an h1 tag
 
     '''
     """
