@@ -60,6 +60,23 @@ How to install dependencies and requirements for documentation
 
 ### Code Style
 
+These python code style recommendations are mostly from [PEP8](https://www.python.org/dev/peps/pep-0008/)
+
+Any discrepancies from the PEP8 standard are noted:
+
+- 4 space indents
+- function names in lower case with underscores
+- Class names are CamelCase
+- Packages are one word all lower case
+- Imports are in alphabetical order
+- """ for docstrings and sqlcode you plan to import
+- Only use block comments with ''' in code
+- Use single line comments sparingly and only for different environments. Ex:
+    ```
+        email_list = ['dev_contact@example.com']
+        #email_list = ['prod_contact@example.com']
+    ```
+
 ### Python Documentation
 Follow the [numpy docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html) for each function/class. Ex:
 
