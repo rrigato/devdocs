@@ -227,6 +227,15 @@ def scrape_built_html(markdown_path):
         bsObj = BeautifulSoup(html_file, "html.parser")
 
         """
+            Raising a ValueError if the h1 is not found
+            This is the equilvalent of # in markdown
+            and is needed for formatting the app index
+            listing
+        """
+        if (bsObj.find("h1") is None):
+            raise(ValueError("Markdown did not have an h1 tag"))
+
+        """
             formatting the ROW_TEMPLATE
             project_name= <version_number> + " - "
             + h1 text
