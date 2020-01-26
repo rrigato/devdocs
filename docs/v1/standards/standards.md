@@ -72,10 +72,10 @@ Any discrepancies from the PEP8 standard are noted:
 - """ for docstrings and sqlcode you plan to import
 - Only use block comments with ''' in code
 - Use single line comments sparingly and only for different environments. Ex:
-    ```
-        email_list = ['dev_contact@example.com']
-        #email_list = ['prod_contact@example.com']
-    ```
+```
+    email_list = ['dev_contact@example.com']
+    #email_list = ['prod_contact@example.com']
+```
 
 ### Python Documentation
 Follow the [numpy docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html) for each function/class. Ex:
