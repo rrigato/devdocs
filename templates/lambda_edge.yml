@@ -1,0 +1,142 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+#Transforms any serverless code to cloudformation
+Transform: AWS::Serverless-2016-10-31
+
+Description:
+  Creates the Lambda function and role that will
+  be run at the edge of the cloudfront distribution
+Parameters:
+
+  LambdaCode:
+    Type: String
+    Default: dev
+    Description: String for where the lambda code is uploaded to
+
+  NamePrefix:
+    Type: String
+    #dynamic reference that resolves to a parameter store
+    #value
+    Default: '{{resolve:ssm:/dev/NamePrefix:1}}'
+    Description:
+        String for prefixing resources to differentiate prod/dev
+        Dynamic reference to parameter store value
+
+
+  WebsiteDomainName:
+    Type: String
+    Default: "http://*.amazonaws.com"
+    Description: String for prefixing resources to differentiate prod/dev
+
+
+Resources:
+
+#########################
+#The role that lambda will assume when it
+#is triggered by cloudfront
+#
+#
+#########################
+  LambdaRuntimeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+          Action: sts:AssumeRole
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Path: "/"
+      ################################
+      #
+      #Uses that arn to allow the following operations:
+      #
+      ###############################
+      Policies:
+        - PolicyName: LambdaDynamoDb
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: DynamoDbDevDocsTable
+                Effect: Allow
+                #######################################
+                #Allowing lambda to perform a PutItem on
+                #DynamoDB
+                #
+                #######################################
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:Scan
+
+                Resource:
+                  - !GetAtt DynamoDBTable.Arn
+              - Sid: DevDocsSsmLambda
+                Effect: Allow
+                #######################################
+                #Allowing lambda to get the name of the dynamo
+                #db table
+                #######################################
+                Action:
+                  - ssm:GetParameter
+                Resource:
+                  - "*"
+
+
+
+########################################
+#Lambda function that will be called
+#when the user gets to /ride.html
+#
+#
+#
+#######################################
+  AuthenticationLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: "s3://cf-to-backend/ride.zip"
+
+      # Event sources to attach to this function.
+      #The function is
+      # called when a HTTP request is made
+      #to the API Gateway endpoint.
+      Events:
+        #api gateway event that triggers lambda
+        ImageUploadApiGw:
+            # Define an API Gateway endpoint that responds
+            #to HTTP GET at /ride
+            Type: Api
+            Properties:
+                # Auth:
+                #     Authorizer: arn:aws:cognito-idp:us-east-1:350255258796:userpool/us-east-1_uWSFSS2Ph
+                Path: /ride
+                Method: GET
+      FunctionName:
+        Fn::Join:
+          - ""
+          - - !Ref NamePrefix
+            - "lambda-ride-devdocs"
+      MemorySize: 128
+      #filename.function_name for python script
+      Handler: ride.lambda_handler
+      Runtime: python3.7
+      Role:
+        #Gets the role created above
+        Fn::GetAtt:
+          - LambdaRuntimeRole
+          - Arn
+
+
+
+      Timeout: 60
+
+
+
+Outputs:
+  LambdaFunctionName:
+    Value: !Ref AuthenticationLambda
+  LambdaRoleArn:
+    Value: !GetAtt LambdaRuntimeRole.Arn
