@@ -4,7 +4,7 @@ This documentation provides an overview of development best practices across pyt
 ## Table of contents
 
 - [App Requirements](#apprequirements)
-    * [Coverage](#coverage)
+    * [CI/CD](#cicd)
     * [Git](#git)
     * [HTML Code Docs](#htmlcodedocs)    
     * [HTML Features Docs](#htmlfeaturesdocs)
@@ -23,18 +23,19 @@ This documentation provides an overview of development best practices across pyt
 ## App Requirements
 
 
-### Coverage
-Project build status and code coverage should be included in Readme file.
-Individual file code coverage should be hosted on a webpage.
+### CI/CD
+Remote repo type does not matter, but it needs to trigger continuous integration builds. Deployment Pipeline should have a qa environment where tests are run before rolling out to prod.
+
+Project build status should be included in Readme file.
+
 
 ### Git
 Each project needs to be hosted in a remote git repository.
-Remote repo type does not matter, but it needs to trigger continuous integration builds.
 Readme is required for each repo and it should match the format for showdown.js markdown builds.
 
 
 ### HTML Code Docs
-Auto-documentation of python functions describing inputs, outputs, exceptions
+Auto-documentation of python functions describing inputs, outputs, exceptions. Built automatically from function docstrings using  [sphinx](http://www.sphinx-doc.org/en/master/)
 
 ### HTML Features Docs
 HTML pages that describes the features/functionality of the application.
@@ -109,7 +110,7 @@ def new_function(arg_one):
     '''
 ```
 
-Build python documentation into html files using sphinx [sphinx](http://www.sphinx-doc.org/en/master/)
+
 
 
 ## Python Tests
