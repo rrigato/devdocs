@@ -88,6 +88,16 @@ These python code style recommendations are mostly from [PEP8](https://www.pytho
 
 Any discrepancies from the PEP8 standard are noted:
 
+- line width 79 characters with exceptions for classes
+
+- Functions, variables, modules should be lower case with underscores
+
+- Class names should be CamelCase
+
+- Package names should be lower case, one word
+
+- Constants should be all upper case seperated by underscores
+
 - Align closing parenthesis/brackets to first character of statement
 ```
 		'TelevisionInformation': {
