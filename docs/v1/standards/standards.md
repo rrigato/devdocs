@@ -96,23 +96,35 @@ Any discrepancies from the PEP8 standard are noted:
 			'ModelYear': 2019
 		}
 ```
+<br>
 - 4 space indents
 - function names in lower case with underscores
 - Class names are CamelCase
 - Packages are one word all lower case
 - Imports are in alphabetical order
+- Comments that contradict the code are worse than no comments
 - """ for docstrings and sqlcode you plan to import
 - Only use block comments with ''' in code
-- No spaces before a function call:
-```
-	foo(arg1, arg2)
-```
-- Use single line comments sparingly and only for different environments. Ex:
+- *Not Pep8* Use " for str in code
+- *Not Pep8* Use single line comments sparingly and only for different environments. Ex:
 ```
     email_list = ['dev_contact@example.com']
     #email_list = ['prod_contact@example.com']
 ```
+<br>
+
+- No spaces before a function call:
+```
+	foo(arg1, arg2)
+```
+<br>
+
+- No spaces around equal sign for default function arguements or calling named function parameters
+
+
 - *Not PEP8* imports should be in alphabetical order at top of script
+- One space after comma
+- One space on each side of binary, mathematic or comparison operators
 
 - Avoid import sys, os
 
