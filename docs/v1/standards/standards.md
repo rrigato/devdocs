@@ -8,12 +8,13 @@ This documentation provides an overview of development best practices across pyt
     * [Git](#git)
     * [HTML Code Docs](#htmlcodedocs)    
     * [HTML Features Docs](#htmlfeaturesdocs)
-    * [Requirements](#requirements)
+    * [Style](#style)
 
 - [Python](#python)
     * [Code Style](#codestyle)
     * [Python Documentation](#pythondocumentation)
     * [Python Tests](#pythontests)
+    * [Requirements](#requirements)
 
 - [SQL](#sql)
     * [SQL Table Creation](#sqltablecreation)
@@ -61,9 +62,9 @@ Built from readme using the following markdown rules from showdownjs library:
     - Attempt to describe the project in less than 50 words
 
 
+### Style
+Consistency with style conventions should take top priority. Follow the outlined [python](#python) and [sql](#sql) style guidelines outlined below.
 
-### Requirements
-How to install dependencies and requirements for documentation
 
 ## Python
 
@@ -120,6 +121,9 @@ Code Coverage should be 80% or higher.
 Write unit, integration and end-to-end tests using the built in [unittest module](https://docs.python.org/3/library/unittest.html)
 
 Code coverage should be built into html files using the coverage [module] (https://coverage.readthedocs.io/en/v4.5.x/)
+
+### Requirements
+requirements.txt file describing how to install dependencies and requirements for documentation
 
 
 # SQL
