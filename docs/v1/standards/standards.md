@@ -35,11 +35,11 @@ Readme is required for each repo and it should match the format for showdown.js 
 - Each header element will be translated to a header tag in html
     - the id of the header tag in html will correspond to the value of the header in Markdown
     - Ex:
-    ```
-        ### Markdown Section
+```
+    ### Markdown Section
 
-        <h3 id="markdownsection">Markdown Section</h3>
-    ```
+    <h3 id="markdownsection">Markdown Section</h3>
+```
 - Markdown file must match the name of the directory
 
 - The description used under the header1 markdown tag will be used in the table of contents for all documentation

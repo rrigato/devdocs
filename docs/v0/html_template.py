@@ -2,6 +2,11 @@ HTML_TEMPLATE = """
 <html>
 <head>
     <!--
+        Meta variables for determing device width
+    -->
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <!--
         Microsoft documentation theme,
         inspired by this codepen:
         https://codepen.io/jdanyow/pen/drVONG
