@@ -6,7 +6,8 @@ This documentation provides an overview of development best practices across pyt
 - [App Requirements](#apprequirements)
     * [CI/CD](#cicd)
     * [Git](#git)
-    * [HTML Code Docs](#htmlcodedocs)    
+    * [HTML Code Docs](#htmlcodedocs)  
+    * [HTML Coverage Docs](#htmlcoveragedocs)        
     * [HTML Features Docs](#htmlfeaturesdocs)
     * [Style](#style)
 
@@ -34,9 +35,22 @@ Project build status should be included in Readme file.
 Each project needs to be hosted in a remote git repository.
 Readme is required for each repo and it should match the format for showdown.js markdown builds.
 
+When a feature is merged into the dev branch a tag should be added using the following convention:
+
+```
+    v1.0
+    v1.1
+    ...
+    v1.9
+    v2.0
+    v2.1
+```
 
 ### HTML Code Docs
 Auto-documentation of python functions describing inputs, outputs, exceptions. Built automatically from function docstrings using  [sphinx](http://www.sphinx-doc.org/en/master/)
+
+### HTML Coverage Docs
+Code coverage should be built into html files using the [coverage module](https://coverage.readthedocs.io/en/v4.5.x/)
 
 ### HTML Features Docs
 HTML pages that describes the features/functionality of the application.
@@ -120,10 +134,11 @@ Code Coverage should be 80% or higher.
 
 Write unit, integration and end-to-end tests using the built in [unittest module](https://docs.python.org/3/library/unittest.html)
 
-Code coverage should be built into html files using the coverage [module] (https://coverage.readthedocs.io/en/v4.5.x/)
 
 ### Requirements
 requirements.txt file describing how to install dependencies and requirements for documentation
+
+
 
 
 # SQL
