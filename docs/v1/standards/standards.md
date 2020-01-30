@@ -88,6 +88,14 @@ These python code style recommendations are mostly from [PEP8](https://www.pytho
 
 Any discrepancies from the PEP8 standard are noted:
 
+- Align closing parenthesis/brackets to first character of statement
+```
+		'TelevisionInformation': {
+			'Weight': 50,
+			'ModelNumber': None,
+			'ModelYear': 2019
+		}
+```
 - 4 space indents
 - function names in lower case with underscores
 - Class names are CamelCase
@@ -95,11 +103,18 @@ Any discrepancies from the PEP8 standard are noted:
 - Imports are in alphabetical order
 - """ for docstrings and sqlcode you plan to import
 - Only use block comments with ''' in code
+- No spaces before a function call:
+```
+	foo(arg1, arg2)
+```
 - Use single line comments sparingly and only for different environments. Ex:
 ```
     email_list = ['dev_contact@example.com']
     #email_list = ['prod_contact@example.com']
 ```
+- *Not PEP8* imports should be in alphabetical order at top of script
+
+- Avoid import sys, os
 
 ### Python Documentation
 Follow the [numpy docstring format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html) for each function/class. Ex:
