@@ -107,11 +107,9 @@ Any discrepancies from the PEP8 standard are noted:
 ```
 <br>
 - 4 space indents
-- Class names are CamelCase
-- Imports are in alphabetical order
 - Comments that contradict the code are worse than no comments
 - """ for docstrings and sqlcode you plan to import
-- Only use block comments with ''' in code
+- *Not Pep8* Only use block comments with ''' in code
 - *Not Pep8* Use " for str in code
 - *Not Pep8* Use single line comments sparingly and only for different environments. Ex:
 ```
