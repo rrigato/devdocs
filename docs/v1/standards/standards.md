@@ -76,7 +76,7 @@ Built from readme using the following markdown rules from showdownjs library:
 
 
 ### Style
-Consistency with style conventions should take top priority. Follow the outlined [python](#python) and [sql](#sql) style guidelines outlined below.
+Consistency with style conventions should take top priority. Follow the [python](#python) and [sql](#sql) style guidelines outlined below.
 
 
 ## Python
@@ -87,7 +87,7 @@ These python code style recommendations are mostly from [PEP8](https://www.pytho
 
 Any discrepancies from the PEP8 standard are noted:
 
-- line width 79 characters with exceptions for classes
+- line width 79 characters
 
 - Functions, variables, modules should be lower case with underscores
 
@@ -107,9 +107,7 @@ Any discrepancies from the PEP8 standard are noted:
 ```
 <br>
 - 4 space indents
-- function names in lower case with underscores
 - Class names are CamelCase
-- Packages are one word all lower case
 - Imports are in alphabetical order
 - Comments that contradict the code are worse than no comments
 - """ for docstrings and sqlcode you plan to import
