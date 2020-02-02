@@ -26,14 +26,14 @@ This documentation provides an overview of development best practices across pyt
 
 
 ### CI/CD
-Remote repo type does not matter, but it needs to trigger continuous integration builds. Deployment Pipeline should have a qa environment where tests are run before rolling out to prod.
+Remote repo type does not matter, but it needs to trigger continuous integration builds. Deployment Pipeline should have a dev environment where tests are run before rolling out to prod.
 
 Project build status should be included in Readme file.
 
 
 ### Git
 Each project needs to be hosted in a remote git repository.
-Readme is required for each repo and it should match the format for showdown.js markdown builds.
+Readme is required for each repo and it should match the format for [showdown.js](#htmlfeaturesdocs) markdown builds.
 
 When a feature is merged into the dev branch a tag should be added using the following convention:
 
@@ -53,8 +53,7 @@ Auto-documentation of python functions describing inputs, outputs, exceptions. B
 Code coverage should be built into html files using the [coverage module](https://coverage.readthedocs.io/en/v4.5.x/)
 
 ### HTML Features Docs
-HTML pages that describes the features/functionality of the application.
-This should be treated as a developer guide as an overview of the project
+HTML pages that describes the features/functionality of the application that should be treadted as a developer guide
 
 Built from readme using the following markdown rules from showdownjs library:
 
