@@ -53,7 +53,7 @@ Auto-documentation of python functions describing inputs, outputs, exceptions. B
 Code coverage should be built into html files using the [coverage module](https://coverage.readthedocs.io/en/v4.5.x/)
 
 ### HTML Features Docs
-HTML pages that describes the features/functionality of the application that should be treadted as a developer guide
+HTML pages that describes the features/functionality of the application that should be treated as a developer guide
 
 Build readme using the following markdown rules from showdownjs library:
 
