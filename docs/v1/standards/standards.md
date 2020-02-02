@@ -55,7 +55,7 @@ Code coverage should be built into html files using the [coverage module](https:
 ### HTML Features Docs
 HTML pages that describes the features/functionality of the application that should be treadted as a developer guide
 
-Built from readme using the following markdown rules from showdownjs library:
+Build readme using the following markdown rules from showdownjs library:
 
 - Each header element will be translated to a header tag in html
     - the id of the header tag in html will correspond to the value of the header in Markdown
