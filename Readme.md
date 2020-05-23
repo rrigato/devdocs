@@ -1,4 +1,4 @@
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiWklJdHRBTHFYOWNCNEMvVVYxTmR4dmFtMGtBV045c1BqNElHeGpZRXk2UFI0TWFPQ0FxU2ErejdMNjRTRXE0NUQ0LzVZdTdtOUdQZGszZVVJOFduWjFFPSIsIml2UGFyYW1ldGVyU3BlYyI6ImU3N2xjdUhCaHF1Q2cxUlEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiWklJdHRBTHFYOWNCNEMvVVYxTmR4dmFtMGtBV045c1BqNElHeGpZRXk2UFI0TWFPQ0FxU2ErejdMNjRTRXE0NUQ0LzVZdTdtOUdQZGszZVVJOFduWjFFPSIsIml2UGFyYW1ldGVyU3BlYyI6ImU3N2xjdUhCaHF1Q2cxUlEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) ![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)
 
 Serverless project for deploying markdown files to html web pages
 
