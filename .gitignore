@@ -1,0 +1,2 @@
+localTesting.sh
+tests/test_dev_artifacts.py
