@@ -130,7 +130,7 @@ Resources:
       Environment:
         ComputeType: BUILD_GENERAL1_SMALL
         Type: LINUX_CONTAINER
-        Image: aws/codebuild/standard:2.0
+        Image: aws/codebuild/standard:4.0
       Name:
           !Join ['', ['dev-tests-', !Ref ProjectName]]
       ServiceRole: !Ref CodeBuildRole
@@ -183,7 +183,7 @@ Resources:
          -
            Name: PROD_CROSS_ACCOUNT_ARN
            Value: !Ref ProdCrossAccountArn
-       Image: aws/codebuild/standard:2.0
+       Image: aws/codebuild/standard:4.0
        Type: LINUX_CONTAINER
 
      Name:
